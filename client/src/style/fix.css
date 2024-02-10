@@ -1,0 +1,325 @@
+main{
+    padding-left:5% !important;
+    padding-right:5% !important;
+}
+
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ------------------HEADER NAVBAR------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+
+.webHeader {
+    background-color:rgb(4 4 4 / 88%) !important;
+    position:fixed !important;
+    width: 100%;
+    left:0;
+    top: 0;
+    margin-top:0px !important;
+    padding: 10px 40px !important;
+    display:flex;
+    align-items: center;
+    height: 80px;
+}
+
+.logoNavBar{
+width: 150px;
+}
+
+.headerLeft{ /* logo e items */
+display:flex;
+align-items: center;
+gap: 30px;
+}
+
+.headerRight a{
+    display:flex;
+align-items: center;
+gap: 10px;
+}
+
+/* Cada opcion de subpagina */
+
+
+
+.navbarOption a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color:transparent;
+    border: 1px solid transparent;
+    border-bottom-left-radius:7px !important;
+    border-bottom-right-radius:7px !important;
+    height: 80px;
+    gap:5px;
+}
+
+.navbarOption a:hover{
+   /* border: 1px solid white;*/
+   background-color:rgb(22, 22, 22);
+
+}
+
+
+/*  Separacion desde el navbar header y el principio del contenido body */
+
+main{
+    margin-top:60px !important;
+}
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ------------------TABLAS------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+
+/* tablePagination active border  */
+.tablePagination .active {
+    border: 1px solid white !important;
+    border-radius: 7px;
+}
+
+/* BOTON DE EDIT PRIMERA FILA DE ROW */
+.editContainer{
+    border: 1px solid rgb(66, 66, 66);
+    padding: 3px;
+    border-radius: 5px;
+    display:flex;
+    justify-content: center;
+}
+
+
+
+/* EditableRows add Button */
+
+.addButton{
+    display: flex;
+      border: 1px solid white;
+      border-radius: 7px;
+      gap: 10px;
+      padding-left: 11px;
+      height: 37.6px;
+      margin-right:25px;
+      align-items: center;
+  }
+
+  .addButton:hover{
+    border: 1px solid orange;
+  }
+
+  /* FORMULARIO QUE SE DESLIZA DE LA DERECHA */
+
+.modal-content{
+    background: #0c0c0ce8;
+}
+
+  /* Filas  patch */
+
+  .tableStart{
+    padding-top:20px;
+  }
+
+  .selected{
+    border: 1px solid orange !important;
+  
+  }
+
+  
+
+.filaTabla:hover{
+    border: rgb(214, 214, 214);
+  
+}
+
+ .filaTabla {
+    transition:0.5s;
+    border: 1px solid rgb(22, 22, 22) ;
+    background-color: rgb(22, 22, 22) ;
+    border-radius: 7px !important;
+}
+
+.filaTabla td:first-of-type{
+    border-top-left-radius:7px !important;
+    border-bottom-left-radius:7px !important;
+}
+
+.filaTabla td:last-of-type{
+    border-top-right-radius:7px !important;
+    border-bottom-right-radius:7px !important;
+}
+
+/* SEARCH TABLA */
+
+
+
+.search-input-container {
+    background-color: rgb(22, 22, 22) !important;
+    border-radius:7px;
+    margin-bottom: 13px !important;
+}
+
+
+/* RECOVER ACTION */
+
+.RecoverAction{
+    background-color:rgb(59, 154, 59) !important;
+    border-radius:7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+}
+
+.RecoverAction svg{
+    width: 20px;
+    height: 20px;
+}
+
+/* RECYCLE BUTTON */
+
+.tablaBotones svg{
+    width: 35px;
+    height: 35px;
+    background-color:rgb(20, 20, 20);
+    padding: 7px;
+    border-radius:7px;
+    transition: 0.5s !important;
+}
+
+.btn-icon.btn-icon-only{
+ transition: 1s;
+ width: 35px;
+ height: 35px;
+ padding: 0px;
+}
+
+.tablaBotones{
+   
+}
+.tablaBotones{
+  transition: 0.5s !important;
+}
+
+.tablaBotones button{
+    transition: 0.5s !important;
+}
+
+.tablaBotones .btn:disabled{
+    opacity: 0.5;
+    transition: 0.5s !important;
+}
+
+.tablaBotones .btn{
+    opacity: 1;
+}
+/* NO ANDUVO LA ANIMACIONES PARA BOTONES DE LA TABLA ADD / EDIT / DELETE / RECOVER */
+.tablaBotones svg{
+    transition: 0.5s !important;
+}
+
+.tablaBotones .btn{
+    transition: 0.5s !important;
+}
+
+.tooltip{
+    background-color:black !important;
+ border-radius:7px;
+}
+
+/* EL CHEQUEADOR DE TODA LA TABLA */
+.checkdownTable .checkdownTableContainer{
+    /* background-color:rgb(22, 22, 22) !important; */
+    border-radius: 7px;
+    border: 1px solid white;
+}
+
+.checkdownTable .checkdownTableContainer .checkdownTableArrow{
+    border-left: 1px solid white;
+}
+
+.checkdownTableMenu{
+    margin-top: -2px;
+    border-radius: 7px;
+    background-color:rgba(22, 22, 22, 0.882) !important;
+}
+
+
+/* CONTROL CANTIDAD DE ROWS DE LA TABLA */
+.ControlsPageSize{
+    background-color:rgba(22, 22, 22, 0.882) !important;
+border-radius: 7px;
+
+}
+
+
+/* ----Start--------------TABLAS-------------BOTON PARA MAS INFORMACION , PRIMERA COLUMNA----- */
+.tableToProfile{
+    background-color: #fe8465ab;
+    border-radius:7px;
+}
+
+.tableToProfile:hover{
+    background-color: #fe8465;
+}
+/* ----Ends--------------TABLAS-------------BOTON PARA MAS INFORMACION , PRIMERA COLUMNA----- */
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ------------------ADMIN PAGE------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+
+/* ----Start--------------ADMIN PAGE-------------Menu izquierdo----- */
+
+.menuIzq{
+    background-color: rgb(22, 22, 22) ;
+padding:20px;
+border-radius:10px;
+}
+
+.menuIzq a {
+    display: flex;
+    align-items: center;
+}
+
+.menuTitle{
+    margin-top:20px;
+
+
+    color: rgb(179, 179, 179);
+    border-bottom: 1px solid rgb(75, 75, 75);
+}
+/* ----Ends--------------ADMIN PAGE-------------Menu izquierdo----- */
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ------------------PROFILE PAGE------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+
+/* ----Start--------------PROFILE PAGE-------------Cards ----- */
+
+.card{
+    background-color:rgb(14, 14, 14);
+    border-radius:7px;
+}
+
+.profileMenuDetail{
+    margin-top:5px;
+}
+
+.profileMenuDetail svg{
+    margin-left: 4px;
+}
+
+/* ----Ends--------------PROFILE PAGE-------------Cards ----- */

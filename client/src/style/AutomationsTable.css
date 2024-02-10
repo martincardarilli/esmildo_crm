@@ -1,0 +1,11 @@
+.filterButton{
+  border-radius: 7px;
+  border: 1px solid white;
+  padding: 7.5px 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.filterBox{
+  margin-right: 30px;
+}

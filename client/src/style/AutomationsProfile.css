@@ -1,0 +1,82 @@
+.json-key {
+    color: #008000; /* Brown color for keys */
+  }
+  
+  .json-value {
+    color: #008000; /* Green color for strings */
+  }
+  
+  .json-number {
+    color: #0000ff; /* Blue color for numbers */
+  }
+  
+  .json-boolean {
+    color: #ff4500; /* Orange color for booleans and null */
+  }
+  
+  .json-string {
+    color: #c80000; /* Red color for strings */
+  }
+  
+  .json-bracket {
+    color: #000000; /* Black color for brackets and commas */
+  }
+  
+
+
+
+
+
+
+
+  .json-nesting-level-0 {
+    padding-left: 10px;
+    color: #7c7c7c; /* Black color for root level */
+  }
+  
+  .json-nesting-level-1 {
+    padding-left: 20px;
+    color: #bebebe; /* Brown color for first nesting */
+  }
+  
+  .json-nesting-level-2 {
+    padding-left: 30px;
+    color: #ffffff; /* Green color for second nesting */
+  }
+  
+  /* Add more as needed for deeper levels */
+  
+
+
+  .resumeBOX{
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 10px;
+    height: 700px;
+  }
+
+
+
+  /* TAGS */
+
+  .New_listener{
+    color: orange;
+    border: 1px solid orange;
+    padding: 5px 10px;
+    border-radius: 5px 10px;
+  }
+
+  .Healthy{
+    color:rgb(23, 223, 33);
+    border: 1px solid rgb(23, 223, 33);
+    padding: 5px 10px;
+    border-radius: 5px 10px;
+  }
+
+  .Attention{
+    color:rgb(223, 23, 23);
+    border: 1px solid rgb(223, 23, 23);
+    padding: 5px 10px;
+    border-radius: 5px 10px;
+  }
