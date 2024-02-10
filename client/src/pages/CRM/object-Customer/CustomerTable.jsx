@@ -79,7 +79,7 @@ export function CustomerTable() {
         },
       },
       {
-        Header: 'Name',
+        Header: 'NOMBRE',
         accessor: 'name',
         sortable: true,
         headerClassName: 'text-muted text-small text-uppercase w-20',
@@ -97,12 +97,9 @@ export function CustomerTable() {
           );
         },
       },
-       { Header: 'Address', accessor: 'address', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
-      { Header: 'Hour Fee', accessor: 'hourFee', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-5',
-      Cell: ({ cell }) => {
-        return <Badge bg="outline-primary">$ {cell.value}</Badge>;
-      }, },
-      { Header: 'Current Month Overview', accessor: 'asd', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-5' },
+       { Header: 'DIRECCIÓN', accessor: 'address', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-30' }, 
+      { Header: 'TELEFONO', accessor: 'hourFee', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      
      /* { Header: 'Customer since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
       {
         Header: 'Tag',
@@ -190,7 +187,7 @@ useEffect(() => {
 }, [customers]);
 
 
-  const title = 'Customers';
+  const title = 'Personas';
   const description = 'Separate rows with edit, delete and add.';
 
   const breadcrumbs = [

@@ -12,7 +12,8 @@ export function Navbar() {
     <nav className="bg-zinc-700 my-3 flex justify-between py-5 px-10 rounded-lg webHeader">
       <div className="headerLeft">
       <h1 className="text-2xl font-bold">
-        <Link to={isAuthenticated ? "/tasks" : "/"}><img src="/logo.png" className="logoNavBar"/></Link>
+        {/* <Link to={isAuthenticated ? "/tasks" : "/"}><img src="/logo.png" className="logoNavBar"/></Link> */}
+        ESMILDO
       </h1>
       <ul className="flex gap-x-2">
         {isAuthenticated ? (

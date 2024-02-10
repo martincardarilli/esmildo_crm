@@ -12,14 +12,15 @@ export function Navbar() {
     <nav className="bg-zinc-700 my-3 flex justify-between py-5 px-10 rounded-lg webHeader">
       <div className="headerLeft">
       <h1 className="text-2xl font-bold">
-        <Link to={isAuthenticated ? "/tasks" : "/"}><img src="/logo.png" className="logoNavBar"/></Link>
+         {/* <Link to={isAuthenticated ? "/tasks" : "/"}><img src="/logo.png" className="logoNavBar"/></Link> */}
+         MASSARI C.R.M.
       </h1>
       <ul className="flex gap-x-2">
         {isAuthenticated ? (
           <>
-
+         
             <li className="navbarOption">
-              <ButtonLink to="/metrics"> <CsLineIcons icon="activity" />Metrics</ButtonLink>
+              <ButtonLink to="/metrics"> <CsLineIcons icon="activity" />Metricas</ButtonLink>
             </li>
             {/*<li className="navbarOption">
               <ButtonLink to="/add-task"> <CsLineIcons icon="plus" /> Add Task</ButtonLink>
@@ -28,35 +29,19 @@ export function Navbar() {
               <ButtonLink to="/EditableRows"> <CsLineIcons icon="plus" />EditableRows</ButtonLink>
             </li>*/}
             <li className="navbarOption">
-              <ButtonLink to="/customers"> <CsLineIcons icon="suitcase" />Customers</ButtonLink>
+              <ButtonLink to="/mapa"> <CsLineIcons icon="web" />Mapa</ButtonLink>
             </li>
             <li className="navbarOption">
-              <ButtonLink to="/completed-tasks"> <CsLineIcons icon="check-circle" />Completed Tasks</ButtonLink>
+              <ButtonLink to="/propiedades"> <CsLineIcons icon="home-garage" />Propiedades </ButtonLink>
             </li>
            {/* <li className="navbarOption">
               <ButtonLink to="/asana"> <CsLineIcons icon="eye" />Asana (beta)</ButtonLink>
           </li> */}
             <li className="navbarOption">
-              <ButtonLink to="/asana"> <CsLineIcons icon="router" />Devices</ButtonLink>
+              <ButtonLink to="/customers"> <CsLineIcons icon="user" />Personas</ButtonLink>
             </li>
              
-            <li className="navbarOption">
-              <ButtonLink to="/bills"> <CsLineIcons icon="dollar" />Bills</ButtonLink>
-            </li>
-            <li className="navbarOption">
-              <ButtonLink to="/reports"> <CsLineIcons icon="chart-4" />Reports</ButtonLink>
-          </li> 
-            <li className="navbarOption">
-              <ButtonLink to="/team"> <CsLineIcons icon="diagram-2" />Team</ButtonLink>
-            </li>
-
-            <li className="navbarOption">
-              <ButtonLink to="/automations"> <CsLineIcons icon="spinner" />Automations</ButtonLink>
-            </li>
-
-            <li className="navbarOption">
-              <ButtonLink to="/admin"> <CsLineIcons icon="lock-on" />Admin</ButtonLink>
-            </li>
+           
      
           </>
         ) : (
