@@ -20,7 +20,7 @@ export function Navbar() {
           <>
          
             <li className="navbarOption">
-              <ButtonLink to="/metrics"> <CsLineIcons icon="activity" />Metricas</ButtonLink>
+              <ButtonLink to="/customers"> <CsLineIcons icon="activity" />Metricas</ButtonLink>
             </li>
             {/*<li className="navbarOption">
               <ButtonLink to="/add-task"> <CsLineIcons icon="plus" /> Add Task</ButtonLink>
@@ -28,17 +28,22 @@ export function Navbar() {
             <li className="navbarOption">
               <ButtonLink to="/EditableRows"> <CsLineIcons icon="plus" />EditableRows</ButtonLink>
             </li>*/}
+            
             <li className="navbarOption">
-              <ButtonLink to="/mapa"> <CsLineIcons icon="web" />Mapa</ButtonLink>
+              <ButtonLink to="/customers"> <CsLineIcons icon="home-garage" />Propiedades </ButtonLink>
             </li>
             <li className="navbarOption">
-              <ButtonLink to="/propiedades"> <CsLineIcons icon="home-garage" />Propiedades </ButtonLink>
+              <ButtonLink to="/customers"> <CsLineIcons icon="car" />Vehiculos </ButtonLink>
             </li>
            {/* <li className="navbarOption">
               <ButtonLink to="/asana"> <CsLineIcons icon="eye" />Asana (beta)</ButtonLink>
           </li> */}
             <li className="navbarOption">
               <ButtonLink to="/customers"> <CsLineIcons icon="user" />Personas</ButtonLink>
+            </li>
+
+            <li className="navbarOption">
+              <ButtonLink to="/customers"> <CsLineIcons icon="lock-on" />Admin</ButtonLink>
             </li>
              
            

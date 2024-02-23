@@ -92,7 +92,7 @@ export function CustomerTable() {
                 e.preventDefault();
               }}
             >
-              <CsLineIcons icon="suitcase" className="w-4"/>  {cell.value}  
+              <CsLineIcons icon="user" className="w-4"/>  {cell.value}  
             </a>
           );
         },

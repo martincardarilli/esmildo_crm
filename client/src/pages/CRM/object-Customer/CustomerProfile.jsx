@@ -138,29 +138,13 @@ export const CustomerProfile = () => {
                     </div>
                     */}
 
+                    <div>
+<CsLineIcons icon="car" className="me-1" />
                     <span>Details</span>
+                    </div>
+         
 
-                    <br></br>
-
-                    {customer && (
-                      <div className="text-muted flex profileMenuDetail">
-                        Name <CsLineIcons icon="user" className="me-1" />{" "}
-                        {customer.name}
-                      </div>
-                    )}
-
-                    {customer && (
-                      <div className="text-muted flex profileMenuDetail">
-                        Address <CsLineIcons icon="user" className="me-1" />{" "}
-                        {customer.address}
-                      </div>
-                    )}
-
-                    {customer && (
-                      <div className="text-muted flex profileMenuDetail">
-                        Phone <CsLineIcons icon="phone" className="me-1" /> null
-                      </div>
-                    )}
+                   
 
                     {/*
                     {account && (
@@ -221,39 +205,27 @@ export const CustomerProfile = () => {
                     eventKey="overview"
                   >
                     <CsLineIcons icon="activity" className="me-2" size="17" />
-                    <span className="align-middle">Overview</span>
+                    <span className="align-middle">Vista general</span>
                   </Nav.Link>
                   <Nav.Link
                     className="px-0 border-bottom border-separator-light cursor-pointer itemLista"
                     eventKey="projects"
                   >
-                    <CsLineIcons icon="suitcase" className="me-2" size="17" />
-                    <span className="align-middle">Tasks</span>
+                    <CsLineIcons icon="menu-dashed" className="me-2" size="17" />
+                    <span className="align-middle">Vista detallada</span>
                   </Nav.Link>
                   <Nav.Link
                     className="px-0 border-bottom border-separator-light cursor-pointer itemLista"
                     eventKey="permissions"
                   >
-                    <CsLineIcons icon="router" className="me-2" size="17" />
-                    <span className="align-middle">Devices associated</span>
+                    <CsLineIcons icon="suitcase" className="me-2" size="17" />
+                    <span className="align-middle">Documentacion</span>
                   </Nav.Link>
-                  <Nav.Link
-                    className="px-0 border-bottom border-separator-light cursor-pointer itemLista"
-                    eventKey="friends"
-                  >
-                    <CsLineIcons icon="dollar" className="me-2" size="17" />
-                    <span className="align-middle">Bills</span>
-                  </Nav.Link>
-                  <Nav.Link
-                    className="px-0 border-bottom border-separator-light cursor-pointer itemLista"
-                    eventKey="friends"
-                  >
-                    <CsLineIcons icon="chart-4" className="me-2" size="17" />
-                    <span className="align-middle">Reports</span>
-                  </Nav.Link>
+                  
+                  
                   <Nav.Link className="px-0 cursor-pointer" eventKey="history">
                     <CsLineIcons icon="eye" className="me-2" size="17" />
-                    <span className="align-middle">History of updates</span>
+                    <span className="align-middle">Historial de cambios</span>
                   </Nav.Link>
                 </Nav>
               </Card.Body>
@@ -276,7 +248,7 @@ export const CustomerProfile = () => {
                         <div className="heading mb-0 d-flex justify-content-between lh-1-25 mb-3">
                           <span>Billing</span>
                           <CsLineIcons
-                            icon="credit-card"
+                            icon="user"
                             className="text-primary"
                           />
                         </div>
