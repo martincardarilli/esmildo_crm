@@ -13,7 +13,7 @@ export function Navbar() {
       <div className="headerLeft">
       <h1 className="text-2xl font-bold">
          {/* <Link to={isAuthenticated ? "/tasks" : "/"}><img src="/logo.png" className="logoNavBar"/></Link> */}
-         MASSARI C.R.M.
+         MASSARI.group
       </h1>
       <ul className="flex gap-x-2">
         {isAuthenticated ? (

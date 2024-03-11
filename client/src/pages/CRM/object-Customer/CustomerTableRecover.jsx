@@ -66,13 +66,13 @@ useEffect(() => {
 */
 
 
-  const title = 'Erased Customers';
+  const title = 'Personas borradas';
   const description = 'Separate rows with edit, delete and add.';
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'customers', text: 'Customers' },
-    { to: 'customers/erased', text: 'Erased Customers' },
+    { to: 'customers', text: 'Personas' },
+    { to: 'customers/erased', text: 'Personas borradas' },
 
  
   ];

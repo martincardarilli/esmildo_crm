@@ -53,9 +53,9 @@ app.use("/api/clockify", clockifyRoutes);
 app.use("/api/", runRoutes);
 
     // Read the SSL certificate and key
-    const privateKey = fs.readFileSync('/home/ubuntu/crm.rize.bm.key', 'utf8');
-    const certificate = fs.readFileSync('/home/ubuntu/crm.rize.bm.pem', 'utf8');
-    const credentials = { key: privateKey, cert: certificate };
+   // const privateKey = fs.readFileSync('/home/ubuntu/crm.rize.bm.key', 'utf8');
+   // const certificate = fs.readFileSync('/home/ubuntu/crm.rize.bm.pem', 'utf8');
+   // const credentials = { key: privateKey, cert: certificate };
 
 if (process.env.NODE_ENV === "production") {
   (async () => {
@@ -71,7 +71,7 @@ if (process.env.NODE_ENV === "production") {
 
 
     // Create an HTTPS server
-    const httpsServer = https.createServer(credentials, app);
+   // const httpsServer = https.createServer(credentials, app);
 
     // Create an HTTP server
     const httpServer = http.createServer(app);
@@ -84,9 +84,9 @@ if (process.env.NODE_ENV === "production") {
       console.log(`HTTP Server running on port ${HTTP_PORT}`);
     });
 
-    httpsServer.listen(HTTPS_PORT, () => {
-      console.log(`HTTPS Server running on port ${HTTPS_PORT}`);
-    });
+    //httpsServer.listen(HTTPS_PORT, () => {
+    //  console.log(`HTTPS Server running on port ${HTTPS_PORT}`);
+    //});
 
   })();
 } else {
@@ -106,22 +106,22 @@ if (process.env.NODE_ENV === "production") {
   
   
       // Create an HTTPS server
-      const httpsServer = https.createServer(credentials, app);
+      //const httpsServer = https.createServer(credentials, app);
   
       // Create an HTTP server
       const httpServer = http.createServer(app);
   
       // Listen on both HTTP and HTTPS
       const HTTP_PORT = 80;
-      const HTTPS_PORT = 443;
+     // const HTTPS_PORT = 443;
   
       httpServer.listen(HTTP_PORT, () => {
         console.log(`HTTP Server running on port ${HTTP_PORT}`);
       });
   
-      httpsServer.listen(HTTPS_PORT, () => {
-        console.log(`HTTPS Server running on port ${HTTPS_PORT}`);
-      });
+    //  httpsServer.listen(HTTPS_PORT, () => {
+    //    console.log(`HTTPS Server running on port ${HTTPS_PORT}`);
+    //  });
   
     })();
 

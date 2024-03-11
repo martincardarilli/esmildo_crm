@@ -192,7 +192,7 @@ useEffect(() => {
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'customers', text: 'Customers' },
+    { to: 'customers', text: 'Personas' },
 
   ];
 

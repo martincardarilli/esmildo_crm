@@ -199,13 +199,13 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
     >
       <Modal.Header>
         <Modal.Title>
-          {selectedFlatRows.length === 1 ? "Edit Customer" : "Add Customer"}
+          {selectedFlatRows.length === 1 ? "editar Persona" : "agregar Persona"}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <div className="mb-3">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Nombre</Form.Label>
             <Form.Control
               type="text"
               name="name"
@@ -214,7 +214,7 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
             />
           </div>
           <div className="mb-3">
-            <Form.Label>Address</Form.Label>
+            <Form.Label>Dirección</Form.Label>
             <Form.Control
               type="text"
               name="address"
@@ -223,7 +223,7 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
             />
           </div>
           <div className="mb-3">
-            <Form.Label>Hour Fee</Form.Label>
+            <Form.Label>Telefono</Form.Label>
             <Form.Control
               type="number"
               name="hourFee"
@@ -238,10 +238,10 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
           variant="outline-primary"
           onClick={() => setIsOpenAddEditModal(false)}
         >
-          Cancel
+          Cancelar
         </Button>
         <Button variant="primary" onClick={saveCustomer}>
-          {selectedFlatRows.length === 1 ? "Update" : "Add"}
+          {selectedFlatRows.length === 1 ? "Actualizar" : "Agregar"}
         </Button>
       </Modal.Footer>
     </Modal>

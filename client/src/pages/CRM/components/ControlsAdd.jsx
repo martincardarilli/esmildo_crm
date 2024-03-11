@@ -11,7 +11,7 @@ const ControlsAdd = ({ tableInstance }) => {
   };
 
   return (
-    <OverlayTrigger placement="top" overlay={<Tooltip id="tooltip-top-add">Add</Tooltip>}>
+    <OverlayTrigger placement="top" overlay={<Tooltip id="tooltip-top-add">Agregar</Tooltip>}>
       <Button onClick={addButtonClick} variant="foreground-alternate" className="btn-icon btn-icon-only shadow add-datatable">
         <CsLineIcons icon="plus" />
       </Button>

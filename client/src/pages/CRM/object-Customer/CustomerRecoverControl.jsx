@@ -24,7 +24,7 @@ const RecoverControl = ({ tableInstance }) => {
   return (
     <OverlayTrigger
       placement="top" 
-      overlay={<Tooltip id="tooltip-top-delete">Recover</Tooltip>}
+      overlay={<Tooltip id="tooltip-top-delete">Recuperar</Tooltip>}
     >
       <Button
         onClick={onClick}
