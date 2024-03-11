@@ -25,21 +25,21 @@ const dummyData = [
 
 import { useParams } from "react-router-dom";
 
-import {  useCustomers } from "../../../context/customerContext";
+import {  usePropiedades } from "../../../context/propiedadContext";
 
 export function CustomerTableHistory() {
 
-  //const { getCustomer, customers } = useCustomers(); // Usa la función getCustomers de tu contexto
+  //const { getCustomer, propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
 
 
   const params = useParams();
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
-  const { getCustomerUpdates, customers } = useCustomers(); // Usa la función getCustomers de tu contexto
+  const { getCustomerUpdates, propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
 
   const loadCustomerUpdates = async () => {
     try {
 
-      //const customer = await getCustomer(params.id);
+      //const propiedad = await getCustomer(params.id);
 
       const response = await getCustomerUpdates(params.id); 
 
@@ -61,9 +61,9 @@ export function CustomerTableHistory() {
       setData(modifiedChanges);
 
     
-      /*console.log(response);  no hay response, revisar getCustomers, solo cambia el estado "customers */
+      /*console.log(response);  no hay response, revisar getPropiedades, solo cambia el estado "propiedades */
     } catch (error) {
-      console.error("Error al cargar update de  customer: ", error);
+      console.error("Error al cargar update de  propiedad: ", error);
     }
   };
   
@@ -81,7 +81,7 @@ export function CustomerTableHistory() {
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'interface', text: 'Customers' },
+    { to: 'interface', text: 'Propiedades' },
     //{ to: 'interface/plugins', title: `${}` },
     { to: 'interface/plugins', title: `+info` },
     { to: 'interface/plugins', title: `History of updates` },

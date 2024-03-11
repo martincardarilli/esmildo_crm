@@ -32,11 +32,11 @@ const dummyData = [
 
 ];
 
-import {  useCustomers } from "../../../context/customerContext";
+import {  usePropiedades } from "../../../context/customerContext";
 
-export function CustomerTable() {
+export function PropiedadTable() {
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
-  const { getCustomers, customers } = useCustomers(); // Usa la función getCustomers de tu contexto
+  const { getPropiedades, propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
 
   const columns = React.useMemo(() => {
     return [
@@ -100,7 +100,7 @@ export function CustomerTable() {
        { Header: 'DIRECCIÓN', accessor: 'address', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-30' }, 
       { Header: 'TELEFONO', accessor: 'hourFee', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       
-     /* { Header: 'Customer since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
+     /* { Header: 'Propiedad since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
       {
         Header: 'Tag',
         accessor: 'tag',
@@ -148,43 +148,43 @@ export function CustomerTable() {
 
 
 
-  const loadCustomers = async () => {
+  const loadPropiedades = async () => {
     try {
-      const response = await getCustomers(); 
-      /*console.log(response);  no hay response, revisar getCustomers, solo cambia el estado "customers */
+      const response = await getPropiedades(); 
+      /*console.log(response);  no hay response, revisar getPropiedades, solo cambia el estado "propiedades */
     } catch (error) {
       console.error("Error al cargar los clientes: ", error);
     }
   };
   
   useEffect(() => {
-    console.log("useEffect[] INICIAL = loadCustomers()", customers);
-    loadCustomers(); // Llama a la función al montar el componente
+    console.log("useEffect[] INICIAL = loadPropiedades()", propiedades);
+    loadPropiedades(); // Llama a la función al montar el componente
   }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar
 
 
-// Observar cambios en el estado de 'customers'
+// Observar cambios en el estado de 'propiedades'
 /*useEffect(() => {
-  console.log("useEffect[customers] = ", customers);
- // console.log("Clientes record en Tabla:", customers);
-  setData(customers);
-}, [customers]);*/
+  console.log("useEffect[propiedades] = ", propiedades);
+ // console.log("Clientes record en Tabla:", propiedades);
+  setData(propiedades);
+}, [propiedades]);*/
 
 useEffect(() => {
-  console.log("useEffect[customers] = ", customers);
+  console.log("useEffect[propiedades] = ", propiedades);
 
   // Guardar el índice de página actual antes de actualizar los datos
   setSavedPageIndex(tableInstance.state.pageIndex);
 
   // Establecer los nuevos datos
-  setData(customers);
+  setData(propiedades);
 
   // Restablecer el índice de página después de que los datos se hayan actualizado
   // Esto se hace en un setTimeout para asegurarse de que se ejecute después de que React haya procesado el ciclo de actualización
  // setTimeout(() => {
     //tableInstance.gotoPage(savedPageIndex);
 //  }, 0);
-}, [customers]);
+}, [propiedades]);
 
 
   const title = 'Personas';
@@ -192,7 +192,7 @@ useEffect(() => {
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'customers', text: 'Personas' },
+    { to: 'propiedades', text: 'Personas' },
 
   ];
 

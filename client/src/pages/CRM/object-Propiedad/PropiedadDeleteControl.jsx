@@ -5,7 +5,7 @@ import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
 //TEMPORAL??
 import { toast } from "react-toastify";
 
-import { useCustomers } from "../../../context/customerContext";
+import { usePropiedades } from "../../../context/propiedadContext";
 import { useState, useEffect } from "react";
 
 const ControlsDelete = ({ tableInstance }) => {
@@ -21,31 +21,31 @@ const ControlsDelete = ({ tableInstance }) => {
 
   const onClick2 = () => {
     console.log("test");
-    //await updateCustomer(selectedCustomer._id, selectedCustomer);
+    //await updatePropiedad(selectedPropiedad._id, selectedPropiedad);
     setData(data.filter((x, index) => selectedRowIds[index] !== true));
     console.log(data);
   };
 
-  const emptyCustomer = {
+  const emptyPropiedad = {
     id: data.length + 1,
     name: "",
     address: "",
     hourFee: "",
   };
-  const [selectedCustomer, setSelectedCustomer] = useState(emptyCustomer);
+  const [selectedPropiedad, setSelectedPropiedad] = useState(emptyPropiedad);
 
   useEffect(() => {
     if (isOpenAddEditModal && selectedFlatRows.length === 1) {
-      setSelectedCustomer(selectedFlatRows[0].original);
+      setSelectedPropiedad(selectedFlatRows[0].original);
     } else {
-      setSelectedCustomer(emptyCustomer);
+      setSelectedPropiedad(emptyPropiedad);
     }
     return () => {};
   }, [isOpenAddEditModal, selectedFlatRows]);
 
   // states
-  const { createCustomer, updateCustomer, getCustomers, deleteCustomer } =
-    useCustomers(); // Usando funciones del contexto
+  const { createPropiedad, updatePropiedad, getPropiedades, deletePropiedad } =
+    usePropiedades(); // Usando funciones del contexto
 
   const onClick = async () => {
     for (let i = 0; i < selectedFlatRows.length; i++) {
@@ -54,23 +54,23 @@ const ControlsDelete = ({ tableInstance }) => {
         selectedFlatRows[i].original._id
       );
       toast.success(`Erased ${selectedFlatRows[i].original.name}`);
-      await deleteCustomer(selectedFlatRows[i].original._id);
+      await deletePropiedad(selectedFlatRows[i].original._id);
     }
-    getCustomers();
+    getPropiedades();
 
-    //await deleteCustomer(selectedCustomer._id);
+    //await deletePropiedad(selectedPropiedad._id);
     /*
     if (selectedFlatRows.length === 1) {
-      await updateCustomer(selectedCustomer._id, selectedCustomer);
+      await updatePropiedad(selectedPropiedad._id, selectedPropiedad);
       const { index } = selectedFlatRows[0];
-      const newData = data.map((row, rowIndex) => (rowIndex === index ? selectedCustomer : row));
+      const newData = data.map((row, rowIndex) => (rowIndex === index ? selectedPropiedad : row));
       //setData(newData);
-      getCustomers();
+      getPropiedades();
     } else {
-      await createCustomer(selectedCustomer);
-      const newData = [selectedCustomer, ...data];
+      await createPropiedad(selectedPropiedad);
+      const newData = [selectedPropiedad, ...data];
       //setData(newData);
-      getCustomers();
+      getPropiedades();
     }
     setIsOpenAddEditModal(false);
 */

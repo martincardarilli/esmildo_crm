@@ -1,28 +1,28 @@
 import { Router } from "express";
 import {
-  createCustomer,
-  deleteCustomer,
-  getCustomer,
-  getCustomers,
-  getDeletedCustomers,
-  updateCustomer,
-} from "../controllers-database/customer.controller.js";
+  createPropiedad,
+  deletePropiedad,
+  getPropiedad,
+  getPropiedades,
+  getDeletedPropiedades,
+  updatePropiedad,
+} from "../controllers-database/propiedad.controller.js";
 import { auth } from "../middlewares/auth.middleware.js";
 import { validateSchema } from "../middlewares/validator.middleware.js";
-import { createCustomerSchema } from "../schemas/customer.schema.js";
+import { createPropiedadSchema } from "../schemas/propiedad.schema.js";
 
 const router = Router();
 
-router.get("/customers", auth, getCustomers);
+router.get("/propiedades", auth, getPropiedades);
 
-router.get("/customers/erased", auth, getDeletedCustomers);
+router.get("/propiedades/erased", auth, getDeletedPropiedades);
 
-router.post("/customers", auth, validateSchema(createCustomerSchema), createCustomer);
+router.post("/propiedades", auth, validateSchema(createPropiedadSchema), createPropiedad);
 
-router.get("/customers/:id", auth, getCustomer);
+router.get("/propiedades/:id", auth, getPropiedad);
 
-router.put("/customers/:id", auth, validateSchema(createCustomerSchema), updateCustomer); /* (!) NO VALIDA ESQUEMA EN UPDATE ??? */
+router.put("/propiedades/:id", auth, validateSchema(createPropiedadSchema), updatePropiedad); /* (!) NO VALIDA ESQUEMA EN UPDATE ??? */
 
-router.delete("/customers/:id", auth, deleteCustomer);
+router.delete("/propiedades/:id", auth, deletePropiedad);
 
 export default router;

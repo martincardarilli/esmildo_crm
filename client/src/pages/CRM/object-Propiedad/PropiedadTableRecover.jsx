@@ -26,19 +26,19 @@ const dummyData = [
 ];
 
 
-import {  useCustomers } from "../../../context/customerContext";
+import {  usePropiedades } from "../../../context/propiedadContext";
 
-export function CustomerTableRecover() {
+export function PropiedadTableRecover() {
 
   const [currentPage, setCurrentPage] = useState(0); // New state for current page
 
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
-  const { getDeletedCustomers, customers } = useCustomers(); // Usa la función getCustomers de tu contexto
+  const { getDeletedPropiedades, propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
 
-  const loadCustomers = async () => {
+  const loadPropiedades = async () => {
     try {
-      const response = await getDeletedCustomers(); 
-      /*console.log(response);  no hay response, revisar getCustomers, solo cambia el estado "customers */
+      const response = await getDeletedPropiedades(); 
+      /*console.log(response);  no hay response, revisar getPropiedades, solo cambia el estado "propiedades */
       console.log("DEBUG DELETED CUSTOMERS???? start");
       console.log(response);
       console.log("DEBUG DELETED CUSTOMERS???? ends");
@@ -49,19 +49,19 @@ export function CustomerTableRecover() {
   };
   
   useEffect(() => {
-   // console.log("useEffect[] INICIAL = loadCustomers()", customers);
-    loadCustomers(); // Llama a la función al montar el componente
+   // console.log("useEffect[] INICIAL = loadPropiedades()", propiedades);
+    loadPropiedades(); // Llama a la función al montar el componente
   }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar
 
 
-// Observar cambios en el estado de 'customers'
+// Observar cambios en el estado de 'propiedades'
 
 /*
 useEffect(() => {
-  console.log("useEffect[customers] = ", customers);
- // console.log("Clientes record en Tabla:", customers);
-  setData(customers);
-}, [customers]);
+  console.log("useEffect[propiedades] = ", propiedades);
+ // console.log("Clientes record en Tabla:", propiedades);
+  setData(propiedades);
+}, [propiedades]);
 
 */
 
@@ -71,8 +71,8 @@ useEffect(() => {
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'customers', text: 'Personas' },
-    { to: 'customers/erased', text: 'Personas borradas' },
+    { to: 'propiedades', text: 'Personas' },
+    { to: 'propiedades/erased', text: 'Personas borradas' },
 
  
   ];
@@ -91,7 +91,7 @@ useEffect(() => {
             <NavLink
               className="btn btn-primary btn-sm tableToProfile"
              // to={/clientprofile} // Agrega el ID a la URL
-                         to={`/customer/${_id}`} // Agrega el ID a la URL
+                         to={`/propiedad/${_id}`} // Agrega el ID a la URL
             >
               +info
             </NavLink>
@@ -123,7 +123,7 @@ useEffect(() => {
         return <Badge bg="outline-primary">$ {cell.value}</Badge>;
       }, },
       { Header: 'Current Month Overview', accessor: 'asd', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' },
-     /* { Header: 'Customer since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
+     /* { Header: 'Propiedad since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
       {
         Header: 'Tag',
         accessor: 'tag',

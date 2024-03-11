@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
-import { useCustomers } from "../../../context/customerContext";
+import { usePropiedades } from "../../../context/propiedadContext";
 
-//import { useCustomers } from "./context/customerContext";
+//import { usePropiedades } from "./context/propiedadContext";
 
 import { toast } from "react-toastify";
 
-const ModalAddEditCustomer = ({ tableInstance }) => {
+const ModalAddEditPropiedad = ({ tableInstance }) => {
   const {
     selectedFlatRows,
     data,
@@ -15,14 +15,14 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
     setIsOpenAddEditModal,
     isOpenAddEditModal,
   } = tableInstance;
-  const { createCustomer, updateCustomer, getCustomers } = useCustomers(); // Usando funciones del contexto
-  const emptyCustomer = {
+  const { createPropiedad, updatePropiedad, getPropiedades } = usePropiedades(); // Usando funciones del contexto
+  const emptyPropiedad = {
     id: data.length + 1,
     name: "",
     address: "",
     hourFee: "",
   };
-  const [selectedCustomer, setSelectedCustomer] = useState(emptyCustomer);
+  const [selectedPropiedad, setSelectedPropiedad] = useState(emptyPropiedad);
 
   useEffect(() => {
     console.log("PRE");
@@ -30,19 +30,19 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
     console.log("PRE");
 
     if (isOpenAddEditModal && selectedFlatRows.length === 1) {
-      const customerData = { ...selectedFlatRows[0].original };
+      const propiedadData = { ...selectedFlatRows[0].original };
       // Convertir todos los valores a string
-      Object.keys(customerData).forEach((key) => {
-        customerData[key] = String(customerData[key]);
+      Object.keys(propiedadData).forEach((key) => {
+        propiedadData[key] = String(propiedadData[key]);
       });
 
-      setSelectedCustomer(customerData);
+      setSelectedPropiedad(propiedadData);
     } else {
-      setSelectedCustomer(emptyCustomer);
+      setSelectedPropiedad(emptyPropiedad);
     }
 
      console.log('1833 | A quien vamos a modificar?');
-    console.log('1833x | ', selectedCustomer);
+    console.log('1833x | ', selectedPropiedad);
     console.log('1833 | encontrado');
     console.log(tableInstance);
 
@@ -50,12 +50,12 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
   }, [isOpenAddEditModal, selectedFlatRows]);
 
   useEffect(() => {
-    console.log(`1833B ~ selectedCustomer ${selectedCustomer}`);
+    console.log(`1833B ~ selectedPropiedad ${selectedPropiedad}`);
  //   console.log(selectedFlatRows[0].original);
     console.log(selectedFlatRows.length === 1);
-    console.log(selectedCustomer);
+    console.log(selectedPropiedad);
     console.log(tableInstance);
-  }, [selectedCustomer]);
+  }, [selectedPropiedad]);
 
   const handleChange = (event) => {
     console.log(`value changed ª event ${event}`);
@@ -64,9 +64,9 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
     console.log(`value ª value ${value}`);
     console.log(value);
     console.log(value ? "si" : "no");
-    // setSelectedCustomer({ ...selectedCustomer, [event.target.name]: event.target.value.trim() });
-    setSelectedCustomer({
-      ...selectedCustomer,
+    // setSelectedPropiedad({ ...selectedPropiedad, [event.target.name]: event.target.value.trim() });
+    setSelectedPropiedad({
+      ...selectedPropiedad,
       [event.target.name]: value ? value : "",
     });
   };
@@ -74,40 +74,40 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
   /* const handleChange = (event) => {
     const { name, value } = event.target;
     const updatedValue = name === 'hourFee' ? parseFloat(value) || 0 : value;
-    setSelectedCustomer({ ...selectedCustomer, [name]: updatedValue });
+    setSelectedPropiedad({ ...selectedPropiedad, [name]: updatedValue });
   };
 
-  const saveCustomerDEPRECATED = async () => {
-    console.log("Cliente seleccionado:", selectedCustomer);
+  const savePropiedadDEPRECATED = async () => {
+    console.log("Cliente seleccionado:", selectedPropiedad);
 
     if (selectedFlatRows.length === 1) {
-      await updateCustomer(selectedCustomer._id, {
-        ...selectedCustomer,
-        hourFee: parseFloat(selectedCustomer.hourFee) || 0
+      await updatePropiedad(selectedPropiedad._id, {
+        ...selectedPropiedad,
+        hourFee: parseFloat(selectedPropiedad.hourFee) || 0
       });
       const { index } = selectedFlatRows[0];
-      const newData = data.map((row, rowIndex) => (rowIndex === index ? selectedCustomer : row));
+      const newData = data.map((row, rowIndex) => (rowIndex === index ? selectedPropiedad : row));
       //setData(newData);
-      getCustomers();
+      getPropiedads();
       setIsOpenAddEditModal(false);
     } else {
-      await createCustomer({
-        ...selectedCustomer,
-        hourFee: parseFloat(selectedCustomer.hourFee) || 0
+      await createPropiedad({
+        ...selectedPropiedad,
+        hourFee: parseFloat(selectedPropiedad.hourFee) || 0
       });
-      const newData = [selectedCustomer, ...data];
+      const newData = [selectedPropiedad, ...data];
       //setData(newData);
-      getCustomers();
+      getPropiedads();
       setIsOpenAddEditModal(false);
     }
    
   };*/
 
-  const saveCustomer = async () => {
-    console.log("Cliente seleccionado:", selectedCustomer);
+  const savePropiedad = async () => {
+    console.log("Cliente seleccionado:", selectedPropiedad);
 
     // Validar campos requeridos
-    /*if (!selectedCustomer.name || !selectedCustomer.address || !selectedCustomer.hourFee) {
+    /*if (!selectedPropiedad.name || !selectedPropiedad.address || !selectedPropiedad.hourFee) {
     toast.error("All fields are required.");
     return;
   }*/
@@ -119,9 +119,9 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
       console.log(selectedFlatRows.length === 1);
 
       if (selectedFlatRows.length === 1) {
-        response = await updateCustomer(selectedCustomer._id, selectedCustomer);
+        response = await updatePropiedad(selectedPropiedad._id, selectedPropiedad);
       } else {
-        response = await createCustomer(selectedCustomer);
+        response = await createPropiedad(selectedPropiedad);
       }
 
       //console.log(response);
@@ -132,19 +132,19 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
         /*const newData =
           selectedFlatRows.length === 1
             ? data.map((row, rowIndex) =>
-                rowIndex === selectedFlatRows[0].index ? selectedCustomer : row
+                rowIndex === selectedFlatRows[0].index ? selectedPropiedad : row
               )
-            : [selectedCustomer, ...data];*/
+            : [selectedPropiedad, ...data];*/
 
         if (response.status === 200) {
-          toast.success("Updated Customer!");
+          toast.success("Updated Propiedad!");
         }
 
         if (response.status === 201) {
-          toast.success("Created Customer!");
+          toast.success("Created Propiedad!");
         }
         //setData(newData);
-        getCustomers();
+        getPropiedades();
         //console.log("setIsOpenAddEditModal(false)");
         setIsOpenAddEditModal(false);
         //toast.success("Succesfully created/updated");
@@ -209,7 +209,7 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
             <Form.Control
               type="text"
               name="name"
-              defaultValue={selectedCustomer.name}
+              defaultValue={selectedPropiedad.name}
               onInput={handleChange}
             />
           </div>
@@ -218,7 +218,7 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
             <Form.Control
               type="text"
               name="address"
-              defaultValue={selectedCustomer.address}
+              defaultValue={selectedPropiedad.address}
               onInput={handleChange}
             />
           </div>
@@ -227,7 +227,7 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
             <Form.Control
               type="number"
               name="hourFee"
-              defaultValue={selectedCustomer.hourFee}
+              defaultValue={selectedPropiedad.hourFee}
               onInput={handleChange}
             />
           </div>
@@ -240,7 +240,7 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
         >
           Cancelar
         </Button>
-        <Button variant="primary" onClick={saveCustomer}>
+        <Button variant="primary" onClick={savePropiedad}>
           {selectedFlatRows.length === 1 ? "Actualizar" : "Agregar"}
         </Button>
       </Modal.Footer>
@@ -248,4 +248,4 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
   );
 };
 
-export default ModalAddEditCustomer;
+export default ModalAddEditPropiedad;

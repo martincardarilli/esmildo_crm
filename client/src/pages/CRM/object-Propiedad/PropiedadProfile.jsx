@@ -58,7 +58,7 @@ export const PropiedadProfile = () => {
 
   const [propiedad, setData] = React.useState();
 
-  const { getPropiedad, Propiedades } = usePropiedades(); // Usa la función getCustomers de tu contexto
+  const { getPropiedad, Propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
 
   useEffect(() => {
     const loadPropiedades = async () => {
@@ -127,7 +127,7 @@ export const PropiedadProfile = () => {
         <Tab.Container id="profileStandard" defaultActiveKey="overview">
           {/* Sidebar Start */}
           <Col xl="4" xxl="3">
-            <h2 className="small-title">Customer</h2>
+            <h2 className="small-title">Propiedad</h2>
             <Card className="mb-5">
               <Card.Body>
                 <div className="d-flex align-items-center flex-column mb-4">
@@ -1929,7 +1929,7 @@ export const PropiedadProfile = () => {
                               <div className="d-flex flex-column">
                                 <div>Luna Wigglebutt</div>
                                 <div className="text-small text-muted">
-                                  Customer Engagement
+                                  Propiedad Engagement
                                 </div>
                               </div>
                               <div className="d-flex">

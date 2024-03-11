@@ -5,7 +5,7 @@ import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
 //TEMPORAL??
 import { toast } from "react-toastify";
 
-import { useCustomers } from "../../../context/customerContext";
+import { usePropiedades } from "../../../context/propiedadContext";
 import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ const RecoverControl = ({ tableInstance }) => {
 
   const onClick = async () => {
 
-   // navigate("/customers");
+   // navigate("/propiedades");
    console.log("RECUPERAR UNO POR UNO")
   };
 

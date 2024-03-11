@@ -43,8 +43,8 @@ const ButtonsCheckAll = ({ tableInstance }) => {
 
 
 
-  const saveCustomer = async () => {
-    console.log("Cliente seleccionado:", selectedCustomer);
+  const savePropiedad = async () => {
+    console.log("Cliente seleccionado:", selectedPropiedad);
   
     try {
       let response;
@@ -53,9 +53,9 @@ const ButtonsCheckAll = ({ tableInstance }) => {
       console.log(selectedFlatRows.length === 1);
   
       if (selectedFlatRows.length === 1) {
-        response = await updateCustomer(selectedCustomer._id, selectedCustomer);
+        response = await updatePropiedad(selectedPropiedad._id, selectedPropiedad);
       } else {
-        response = await createCustomer(selectedCustomer);
+        response = await createPropiedad(selectedPropiedad);
       }
 
       //console.log(response);
@@ -64,18 +64,18 @@ const ButtonsCheckAll = ({ tableInstance }) => {
   
       if (response.status === 200 || response.status === 201) {
         const newData = selectedFlatRows.length === 1
-          ? data.map((row, rowIndex) => (rowIndex === selectedFlatRows[0].index ? selectedCustomer : row))
-          : [selectedCustomer, ...data];
+          ? data.map((row, rowIndex) => (rowIndex === selectedFlatRows[0].index ? selectedPropiedad : row))
+          : [selectedPropiedad, ...data];
         
           if (response.status === 200){
-            toast.success("Updated Customer!");
+            toast.success("Updated Propiedad!");
           }
           console.log("adentro¿?")
           if (response.status === 201){
-            toast.success("Created Customer!");
+            toast.success("Created Propiedad!");
           }
         //setData(newData);
-        getCustomers();
+        getPropiedades();
         //console.log("setIsOpenAddEditModal(false)");
         setIsOpenAddEditModal(false);
         //toast.success("Succesfully created/updated");
