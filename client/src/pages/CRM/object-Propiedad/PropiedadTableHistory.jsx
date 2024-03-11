@@ -27,21 +27,21 @@ import { useParams } from "react-router-dom";
 
 import {  usePropiedades } from "../../../context/propiedadContext";
 
-export function CustomerTableHistory() {
+export function PropiedadTableHistory() {
 
-  //const { getCustomer, propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
+  //const { getPropiedad, propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
 
 
   const params = useParams();
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
-  const { getCustomerUpdates, propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
+  const { getPropiedadUpdates, propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
 
-  const loadCustomerUpdates = async () => {
+  const loadPropiedadUpdates = async () => {
     try {
 
-      //const propiedad = await getCustomer(params.id);
+      //const propiedad = await getPropiedad(params.id);
 
-      const response = await getCustomerUpdates(params.id); 
+      const response = await getPropiedadUpdates(params.id); 
 
       console.log('2203 | updates recibidos?');
       console.log(response);
@@ -68,8 +68,8 @@ export function CustomerTableHistory() {
   };
   
   useEffect(() => {
-    console.log("useEffect[] INICIAL = loadCustomerUpdates()");
-    loadCustomerUpdates(); // Llama a la función al montar el componente
+    console.log("useEffect[] INICIAL = loadPropiedadUpdates()");
+    loadPropiedadUpdates(); // Llama a la función al montar el componente
   }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar
 
 
@@ -143,7 +143,7 @@ export function CustomerTableHistory() {
        { Header: 'field', accessor: 'fieldName', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' }, 
       { Header: 'previous value', accessor: 'oldValue', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' },
       { Header: 'next value', accessor: 'newValue', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' },
-     /* { Header: 'Customer since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
+     /* { Header: 'Propiedad since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
       {
         Header: 'Tag',
         accessor: 'tag',

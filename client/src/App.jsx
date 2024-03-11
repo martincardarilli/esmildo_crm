@@ -6,6 +6,7 @@ import { ProtectedRoute } from "./routes";
 /*import { TaskProvider } from "./context/tasksContext";
 import { AsanaTaskProvider } from "./context/asanatasksContext";*/
 import { CustomerProvider } from "./context/customerContext";
+import { PropiedadProvider } from "./context/propiedadContext";
 import './style/fix.css';
 import "./style/AutomationsProfile.css";
 import "./style/AutomationsTable.css";

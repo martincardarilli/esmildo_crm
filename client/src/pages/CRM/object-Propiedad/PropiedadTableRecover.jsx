@@ -8,7 +8,7 @@ import ButtonsAddNew from '../components/ButtonsAddNew';
 import ControlsPageSize from '../components/ControlsPageSize';
 import ControlsAdd from '../components/ControlsAdd';
 import ControlsEdit from '../components/ControlsEdit';
-import ControlsDelete from './PropertiesDeleteControl';
+import ControlsDelete from './PropiedadDeleteControl';
 import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './PropiedadAddEditModal';
 import Table from '../components/Table';
@@ -17,9 +17,9 @@ import TablePagination from '../components/TablePagination';
 import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
 
 import { NavLink } from 'react-router-dom'; // Importar NavLink
-import RecoverControl from './PropertiesRecoverControlReturn';
+import RecoverControl from './PropiedadRecoverControlReturn';
 
-import RecoverAction from './PropertiesRecoverControlAction';
+import RecoverAction from './PropiedadRecoverControlAction';
 
 
 const dummyData = [

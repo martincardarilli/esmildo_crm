@@ -5,12 +5,12 @@ import mongoose from "mongoose";
 
 export const getPropiedades = async (req, res) => {
   try {
-   //  const customers = await Customer.find(); HARD DELETE 
+   //  const propiedades = await Propiedad.find(); HARD DELETE 
     const propiedades = await Propiedad.find({ isActive: true }); // SOFT DELETE
 
-    /*console.log(' encontre todos los customers?? = ');
+    /*console.log(' encontre todos los propiedades?? = ');
     console.log(' ---------------------------------- ');
-    console.log(customers);
+    console.log(propiedades);
     console.log(' ---------------------------------- ');*/
 
     res.json(propiedades);
@@ -21,12 +21,12 @@ export const getPropiedades = async (req, res) => {
 
 export const getDeletedPropiedades = async (req, res) => {
   try {
-   //  const customers = await Customer.find(); HARD DELETE 
+   //  const propiedades = await Propiedad.find(); HARD DELETE 
     const propiedades = await Propiedad.find({ isActive: false }); // SOFT DELETE
 
-    /*console.log(' encontre todos los customers?? = ');
+    /*console.log(' encontre todos los propiedades?? = ');
     console.log(' ---------------------------------- ');
-    console.log(customers);
+    console.log(propiedades);
     console.log(' ---------------------------------- ');*/
 
     res.json(propiedades);
@@ -39,11 +39,11 @@ export const createPropiedad = async (req, res) => {
   try {
     console.log('1852 | CREATE Propiedad'+ req.body);
     console.log(req.body);
-    const { name, address, hourFee } = req.body; // Ajusta los campos según el esquema de Customer
+    const { name, address, hourFee } = req.body; // Ajusta los campos según el esquema de Propiedad
     const newPropiedad = new Propiedad({
       name,
       address,
-      hourFee, // Asegúrate de que este campo exista en tu esquema de Customer
+      hourFee, // Asegúrate de que este campo exista en tu esquema de Propiedad
     });
     await newPropiedad.save();
     res.status(201).json(newPropiedad);
@@ -95,7 +95,7 @@ export const createPropiedad = async (req, res) => {
 
 export const deletePropiedad = async (req, res) => {
   try {
-    //const deletedCustomer = await Customer.findByIdAndDelete(req.params.id); HARD DELETE
+    //const deletedPropiedad = await Propiedad.findByIdAndDelete(req.params.id); HARD DELETE
     const deletedPropiedad = await Propiedad.updateOne({ _id: req.params.id}, { isActive: false }); // Soft delete
    // Bill.updateOne({ _id: billId }, { isActive: false }).then(...); // Soft delete
 
@@ -114,10 +114,10 @@ export const updatePropiedadDEPRECATED = async (req, res) => {
   try {
     console.log('1852 | UPDATE Propiedad |'+ req.body);
     console.log(req.body);
-    const { name, address, hourFee } = req.body; // Ajusta los campos según el esquema de Customer
+    const { name, address, hourFee } = req.body; // Ajusta los campos según el esquema de Propiedad
     const propiedadUpdated = await Propiedad.findOneAndUpdate(
       { _id: req.params.id },
-      { name, address, hourFee }, // Asegúrate de que estos campos existan en tu esquema de Customer
+      { name, address, hourFee }, // Asegúrate de que estos campos existan en tu esquema de Propiedad
       { new: true }
     );
     return res.json(propiedadUpdated);

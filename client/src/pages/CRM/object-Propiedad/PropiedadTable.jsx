@@ -3,12 +3,12 @@ import { Badge, Col, Form, Row } from 'react-bootstrap';
 import { useTable, useGlobalFilter, useSortBy, usePagination, useRowSelect, useRowState } from 'react-table';
 import HtmlHead from '../components/html-head/HtmlHead';
 import BreadcrumbList from '../components/breadcrumb-list/BreadcrumbList';
-import ButtonsCheckAll from './PropertiesButtonsCheckAll';
+import ButtonsCheckAll from './PropiedadButtonsCheckAll';
 import ButtonsAddNew from '../components/ButtonsAddNew';
 import ControlsPageSize from '../components/ControlsPageSize';
 import ControlsAdd from '../components/ControlsAdd';
 import ControlsEdit from '../components/ControlsEdit';
-import ControlsDelete from './PropertiesDeleteControl';
+import ControlsDelete from './PropiedadDeleteControl';
 import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './PropiedadAddEditModal';
 import Table from '../components/Table';
@@ -17,7 +17,7 @@ import TablePagination from '../components/TablePagination';
 import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
 
 import { NavLink } from 'react-router-dom'; // Importar NavLink
-import RecoverControl from './PropertiesRecoverControl';
+import RecoverControl from './PropiedadRecoverControl';
 
 /*
 const dummyData = [
@@ -32,7 +32,7 @@ const dummyData = [
 
 ];
 
-import {  usePropiedades } from "../../../context/customerContext";
+import {  usePropiedades } from "../../../context/propiedadContext";
 
 export function PropiedadTable() {
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
@@ -52,7 +52,7 @@ export function PropiedadTable() {
             <NavLink
               className="btn btn-primary btn-sm tableToProfile"
              // to={`/clientprofile`} // Agrega el ID a la URL
-                         to={`/customer/${_id}`} // Agrega el ID a la URL
+                         to={`/propiedad/${_id}`} // Agrega el ID a la URL
             >
               +info
             </NavLink>

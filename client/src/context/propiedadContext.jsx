@@ -6,7 +6,7 @@ import {
   getDeletedPropiedadesRequest,
   getPropiedadRequest,
   updatePropiedadRequest,
-} from "../api/Propiedades.js"; // Asegúrate de tener estas funciones implementadas
+} from "../api/propiedades.js"; // Asegúrate de tener estas funciones implementadas
 
 import * as historyController from '../api/history.js';
 
@@ -79,9 +79,9 @@ export function PropiedadProvider({ children }) {
         setPropiedades([
           ...propiedades,
           response.data,
-        ]); /* wtf? VER CUSTOMER.CONTROLLER.JS */
+        ]); /* wtf? VER Propiedad.CONTROLLER.JS */
         //toast.success("Cliente creado con éxito!");
-        //toast.success("Customer created!");
+        //toast.success("Propiedad created!");
       }
 
       return response; // Devuelve la respuesta de axios
@@ -127,12 +127,12 @@ export function PropiedadProvider({ children }) {
   const updatePropiedad = async (id, propiedad) => {
     try {
       //console.log(id);
-      //console.log('1834 | updateCustomer() > backend |' ,customer);
+      //console.log('1834 | updatePropiedad() > backend |' ,propiedad);
       /*
-      let customerFix = {
-        name: customer.name,
-        address: customer.address,
-        hourFee: customer.hourFee
+      let propiedadFix = {
+        name: propiedad.name,
+        address: propiedad.address,
+        hourFee: propiedad.hourFee
       };
       */
      
@@ -143,7 +143,7 @@ export function PropiedadProvider({ children }) {
         setPropiedades(
           propiedades.map((item) => (item._id === id ? response.data : item))
         );
-        //toast.success("Customer updated!");
+        //toast.success("Propiedad updated!");
         return response; 
       }
     } catch (error) {

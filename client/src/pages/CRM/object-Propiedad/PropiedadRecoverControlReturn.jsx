@@ -5,7 +5,7 @@ import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
 //TEMPORAL??
 import { toast } from "react-toastify";
 
-import { usePropiedades } from "../../../context/customerContext";
+import { usePropiedades } from "../../../context/propiedadContext";
 import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
