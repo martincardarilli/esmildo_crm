@@ -49,6 +49,10 @@ import { CustomerTable } from "./pages/CRM/object-Customer/CustomerTable";
 import { CustomerTableRecover } from "./pages/CRM/object-Customer/CustomerTableRecover";
 import { CustomerProfile } from "./pages/CRM/object-Customer/CustomerProfile";
 
+import { PropiedadTable } from "./pages/CRM/object-Propiedad/PropiedadTable";
+import { PropiedadTableRecover } from "./pages/CRM/object-Propiedad/PropiedadTableRecover";
+import { PropiedadProfile } from "./pages/CRM/object-Propiedad/PropiedadProfile";
+
 import { BillTable } from "./pages/CRM/object-Bill/BillTable";
 import { BillProfile } from "./pages/CRM/object-Bill/BillProfile";
 
@@ -89,6 +93,11 @@ function App() {
                      <Route path="/customers" element={<CustomerTable />} />
                      <Route path="/customers/erased" element={<CustomerTableRecover />} />
                      <Route path="/customer/:id" element={<CustomerProfile />} />
+
+                      {/* Propiedad */}
+                      <Route path="/propiedades" element={<PropiedadTable />} />
+                     <Route path="/propiedades/erased" element={<PropiedadTableRecover />} />
+                     <Route path="/prodpiedad/:id" element={<PropiedadProfile />} />
 
                       {/* Bills */}
                       <Route path="/bills" element={<BillTable />} />

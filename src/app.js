@@ -5,11 +5,11 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/auth.routes.js";
 import taksRoutes from "./routes/tasks.routes.js"; // native
-import asanaRoutes from "./routes/asana.routes.js"; // external
+//import asanaRoutes from "./routes/asana.routes.js"; // external
 //import asanaTasksRoutes from "./routes/asanatask.routes.js"; // completed tasks
 import customerRoutes from "./routes/customer.routes.js";
 import historyRoutes from "./routes/history.routes.js";
-import clockifyRoutes from "./routes/clockify.routes.js";
+//import clockifyRoutes from "./routes/clockify.routes.js";
 import runRoutes from "./routes/run.routes.js";
 
 import http from "http";
@@ -44,12 +44,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api", taksRoutes);
 
 // added
-app.use("/api/asana", asanaRoutes);
+//app.use("/api/asana", asanaRoutes);
 app.use("/api/", customerRoutes);
 app.use("/api/", historyRoutes);
 //app.use("/api/", asanaTasksRoutes);// asanatask.routes.js no está incluido
 // se crean internamente
-app.use("/api/clockify", clockifyRoutes);
+//app.use("/api/clockify", clockifyRoutes);
 app.use("/api/", runRoutes);
 
     // Read the SSL certificate and key
