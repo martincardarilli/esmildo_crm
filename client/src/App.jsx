@@ -5,8 +5,7 @@ import { AuthProvider } from "./context/authContext";
 import { ProtectedRoute } from "./routes";
 /*import { TaskProvider } from "./context/tasksContext";
 import { AsanaTaskProvider } from "./context/asanatasksContext";*/
-import { CustomerProvider } from "./context/customerContext";
-import { PropiedadProvider } from "./context/propiedadContext";
+
 import './style/fix.css';
 import "./style/AutomationsProfile.css";
 import "./style/AutomationsTable.css";
@@ -32,8 +31,12 @@ import RegisterPage from "./pages/RegisterPage";
 import { TaskFormPage } from "./pages/TaskFormPage";
 import { LoginPage } from "./pages/LoginPage";
 import { TasksPage } from "./pages/TasksPage";
+
+
+
 import { TaskProvider } from "./context/tasksContext";
-import { RunProvider } from "./context/runContext";
+
+
 
 
 import { EditableTable } from "./pages/CRM/.drafts/EditableTable";
@@ -49,26 +52,30 @@ import { AsanaTaskProvider } from "./context/asanatasksContext";
 import { CustomerTable } from "./pages/CRM/object-Customer/CustomerTable";
 import { CustomerTableRecover } from "./pages/CRM/object-Customer/CustomerTableRecover";
 import { CustomerProfile } from "./pages/CRM/object-Customer/CustomerProfile";
+import { CustomerProvider } from "./context/customerContext";
 
 import { PropiedadTable } from "./pages/CRM/object-Propiedad/PropiedadTable";
 import { PropiedadTableRecover } from "./pages/CRM/object-Propiedad/PropiedadTableRecover";
 import { PropiedadProfile } from "./pages/CRM/object-Propiedad/PropiedadProfile";
+import { PropiedadProvider } from "./context/propiedadContext";
 
 import { BillTable } from "./pages/CRM/object-Bill/BillTable";
 import { BillProfile } from "./pages/CRM/object-Bill/BillProfile";
 
 import { AutomationsTable } from "./pages/CRM/object-Automations/AutomationsTable";
 import { AutomationsProfile } from "./pages/CRM/object-Automations/AutomationsProfile";
+import { RunProvider } from "./context/runContext";
 
 function App() {
   return (
     <AuthProvider>
-      <TaskProvider>
+        <TaskProvider>
         <AsanaTaskProvider>
-          <CustomerProvider>
-          <RunProvider>
-
-            <BrowserRouter>
+        <CustomerProvider>
+        <RunProvider>
+        <PropiedadProvider>
+            
+          <BrowserRouter>
               <main className="container content-container mx-auto px-10 md:px-0">
                 <Navbar />
                 <Suspense fallback={<div>Loading...</div>}>
@@ -98,7 +105,7 @@ function App() {
                       {/* Propiedad */}
                       <Route path="/propiedades" element={<PropiedadTable />} />
                      <Route path="/propiedades/erased" element={<PropiedadTableRecover />} />
-                     <Route path="/prodpiedad/:id" element={<PropiedadProfile />} />
+                     <Route path="/propiedad/:id" element={<PropiedadProfile />} />
 
                       {/* Bills */}
                       <Route path="/bills" element={<BillTable />} />
@@ -121,10 +128,11 @@ function App() {
               </main>
             </BrowserRouter>
 
-          </RunProvider>
-          </CustomerProvider>
+        </PropiedadProvider>
+        </RunProvider>
+        </CustomerProvider>
         </AsanaTaskProvider>
-      </TaskProvider>
+        </TaskProvider>
     </AuthProvider>
   );
 }

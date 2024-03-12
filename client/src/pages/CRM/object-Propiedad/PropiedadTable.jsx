@@ -35,8 +35,77 @@ const dummyData = [
 import {  usePropiedades } from "../../../context/propiedadContext";
 
 export function PropiedadTable() {
-  const [data, setData] = React.useState(dummyData); // Inicialmente vacío
+  const [data, setData] = React.useState(dummyData); // Tabla Inicialmente vacío
   const { getPropiedades, propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
+
+  
+  //const [data, setData] = React.useState(dummyData);
+  const [isOpenAddEditModal, setIsOpenAddEditModal] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(0); // New state for current page
+  const [pageSize, setPageSize] = useState(10); // Initial page size
+
+  const [savedPageIndex, setSavedPageIndex] = useState(0);
+
+
+ 
+  //console.log(tableInstance);
+
+
+  const title = 'Propiedades';
+  const description = 'Separate rows with edit, delete and add.';
+
+  const breadcrumbs = [
+    { to: '', text: 'Home' },
+    { to: 'propiedades', text: 'Personas' },
+
+  ];
+
+
+  const loadPropiedades = async () => {
+    try {
+      const response = await getPropiedades(); 
+      /*console.log(response);  no hay response, revisar getPropiedades, solo cambia el estado "propiedades */
+    } catch (error) {
+      console.error("Error al cargar las propiedades: ", error);
+    }
+  };
+  
+
+  /* SOLO SE EJECUTA UNA VEZ */
+  useEffect(() => {
+    console.log("useEffect[] INICIAL = loadPropiedades()", propiedades);
+
+    loadPropiedades(); // Llama a la función al montar el componente
+    
+  }, []); // El array vacío asegura que este efecto se ejecute solo una vez: al montar el componente
+
+
+/* SE EJECUTA CADA VEZ QUE EL ESTADO "propiedades" DEL PROVIDER CAMBIA */
+
+useEffect(() => {
+  console.log("useEffect[propiedades] = ", propiedades);
+
+  // Guardar el índice de página actual antes de actualizar los datos
+  setSavedPageIndex(tableInstance.state.pageIndex);
+
+  // Establecer los nuevos datos
+  setData(propiedades);
+
+  // Restablecer el índice de página después de que los datos se hayan actualizado
+  // Esto se hace en un setTimeout para asegurarse de que se ejecute después de que React haya procesado el ciclo de actualización
+ // setTimeout(() => {
+    //tableInstance.gotoPage(savedPageIndex);
+//  }, 0);
+}, [propiedades]);
+
+
+
+
+
+
+
+
 
   const columns = React.useMemo(() => {
     return [
@@ -126,15 +195,6 @@ export function PropiedadTable() {
 
 
 
-  //const [data, setData] = React.useState(dummyData);
-  const [isOpenAddEditModal, setIsOpenAddEditModal] = useState(false);
-
-  const [currentPage, setCurrentPage] = useState(0); // New state for current page
-  const [pageSize, setPageSize] = useState(10); // Initial page size
-
-  const [savedPageIndex, setSavedPageIndex] = useState(0);
-
-
   const tableInstance = useTable(
     { columns, data, setData, isOpenAddEditModal, setIsOpenAddEditModal, initialState: { pageIndex: savedPageIndex, pageSize } },
     useGlobalFilter,
@@ -144,57 +204,8 @@ export function PropiedadTable() {
     useRowState
   );
 
-  //console.log(tableInstance);
 
 
-
-  const loadPropiedades = async () => {
-    try {
-      const response = await getPropiedades(); 
-      /*console.log(response);  no hay response, revisar getPropiedades, solo cambia el estado "propiedades */
-    } catch (error) {
-      console.error("Error al cargar los clientes: ", error);
-    }
-  };
-  
-  useEffect(() => {
-    console.log("useEffect[] INICIAL = loadPropiedades()", propiedades);
-    loadPropiedades(); // Llama a la función al montar el componente
-  }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar
-
-
-// Observar cambios en el estado de 'propiedades'
-/*useEffect(() => {
-  console.log("useEffect[propiedades] = ", propiedades);
- // console.log("Clientes record en Tabla:", propiedades);
-  setData(propiedades);
-}, [propiedades]);*/
-
-useEffect(() => {
-  console.log("useEffect[propiedades] = ", propiedades);
-
-  // Guardar el índice de página actual antes de actualizar los datos
-  setSavedPageIndex(tableInstance.state.pageIndex);
-
-  // Establecer los nuevos datos
-  setData(propiedades);
-
-  // Restablecer el índice de página después de que los datos se hayan actualizado
-  // Esto se hace en un setTimeout para asegurarse de que se ejecute después de que React haya procesado el ciclo de actualización
- // setTimeout(() => {
-    //tableInstance.gotoPage(savedPageIndex);
-//  }, 0);
-}, [propiedades]);
-
-
-  const title = 'Personas';
-  const description = 'Separate rows with edit, delete and add.';
-
-  const breadcrumbs = [
-    { to: '', text: 'Home' },
-    { to: 'propiedades', text: 'Personas' },
-
-  ];
 
 
 

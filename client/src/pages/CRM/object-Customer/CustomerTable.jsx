@@ -38,6 +38,63 @@ export function CustomerTable() {
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
   const { getCustomers, customers } = useCustomers(); // Usa la función getCustomers de tu contexto
 
+    //const [data, setData] = React.useState(dummyData);
+    const [isOpenAddEditModal, setIsOpenAddEditModal] = useState(false);
+
+    const [currentPage, setCurrentPage] = useState(0); // New state for current page
+    const [pageSize, setPageSize] = useState(10); // Initial page size
+  
+    const [savedPageIndex, setSavedPageIndex] = useState(0);
+  
+  
+
+  
+    //console.log(tableInstance);
+
+
+    const title = 'Personas';
+    const description = 'Separate rows with edit, delete and add.';
+  
+    const breadcrumbs = [
+      { to: '', text: 'Home' },
+      { to: 'customers', text: 'Personas' },
+  
+    ];
+
+
+  const loadCustomers = async () => {
+    try {
+      const response = await getCustomers(); 
+      /*console.log(response);  no hay response, revisar getCustomers, solo cambia el estado "customers */
+    } catch (error) {
+      console.error("Error al cargar los clientes: ", error);
+    }
+  };
+  
+  useEffect(() => {
+    console.log("useEffect[] INICIAL = loadCustomers()", customers);
+    loadCustomers(); // Llama a la función al montar el componente
+  }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar
+
+
+
+
+useEffect(() => {
+  console.log("useEffect[customers] = ", customers);
+
+  // Guardar el índice de página actual antes de actualizar los datos
+  setSavedPageIndex(tableInstance.state.pageIndex);
+
+  // Establecer los nuevos datos en la tabla
+  setData(customers);
+
+}, [customers]);
+
+
+
+
+
+
   const columns = React.useMemo(() => {
     return [
       {
@@ -126,15 +183,6 @@ export function CustomerTable() {
 
 
 
-  //const [data, setData] = React.useState(dummyData);
-  const [isOpenAddEditModal, setIsOpenAddEditModal] = useState(false);
-
-  const [currentPage, setCurrentPage] = useState(0); // New state for current page
-  const [pageSize, setPageSize] = useState(10); // Initial page size
-
-  const [savedPageIndex, setSavedPageIndex] = useState(0);
-
-
   const tableInstance = useTable(
     { columns, data, setData, isOpenAddEditModal, setIsOpenAddEditModal, initialState: { pageIndex: savedPageIndex, pageSize } },
     useGlobalFilter,
@@ -143,58 +191,6 @@ export function CustomerTable() {
     useRowSelect,
     useRowState
   );
-
-  //console.log(tableInstance);
-
-
-
-  const loadCustomers = async () => {
-    try {
-      const response = await getCustomers(); 
-      /*console.log(response);  no hay response, revisar getCustomers, solo cambia el estado "customers */
-    } catch (error) {
-      console.error("Error al cargar los clientes: ", error);
-    }
-  };
-  
-  useEffect(() => {
-    console.log("useEffect[] INICIAL = loadCustomers()", customers);
-    loadCustomers(); // Llama a la función al montar el componente
-  }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar
-
-
-// Observar cambios en el estado de 'customers'
-/*useEffect(() => {
-  console.log("useEffect[customers] = ", customers);
- // console.log("Clientes record en Tabla:", customers);
-  setData(customers);
-}, [customers]);*/
-
-useEffect(() => {
-  console.log("useEffect[customers] = ", customers);
-
-  // Guardar el índice de página actual antes de actualizar los datos
-  setSavedPageIndex(tableInstance.state.pageIndex);
-
-  // Establecer los nuevos datos
-  setData(customers);
-
-  // Restablecer el índice de página después de que los datos se hayan actualizado
-  // Esto se hace en un setTimeout para asegurarse de que se ejecute después de que React haya procesado el ciclo de actualización
- // setTimeout(() => {
-    //tableInstance.gotoPage(savedPageIndex);
-//  }, 0);
-}, [customers]);
-
-
-  const title = 'Personas';
-  const description = 'Separate rows with edit, delete and add.';
-
-  const breadcrumbs = [
-    { to: '', text: 'Home' },
-    { to: 'customers', text: 'Personas' },
-
-  ];
 
 
 

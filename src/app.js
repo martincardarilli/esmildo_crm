@@ -11,6 +11,7 @@ import customerRoutes from "./routes/customer.routes.js";
 import historyRoutes from "./routes/history.routes.js";
 //import clockifyRoutes from "./routes/clockify.routes.js";
 import runRoutes from "./routes/run.routes.js";
+import propiedadesRoutes from "./routes/propiedad.routes.js";
 
 import http from "http";
 import https from "https";
@@ -51,6 +52,7 @@ app.use("/api/", historyRoutes);
 // se crean internamente
 //app.use("/api/clockify", clockifyRoutes);
 app.use("/api/", runRoutes);
+app.use("/api/", propiedadesRoutes);
 
     // Read the SSL certificate and key
    // const privateKey = fs.readFileSync('/home/ubuntu/crm.rize.bm.key', 'utf8');

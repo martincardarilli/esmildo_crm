@@ -30,7 +30,7 @@ export function Navbar() {
             </li>*/}
             
             <li className="navbarOption">
-              <ButtonLink to="/customers"> <CsLineIcons icon="home-garage" />Propiedades </ButtonLink>
+              <ButtonLink to="/propiedades"> <CsLineIcons icon="home-garage" />Propiedades </ButtonLink>
             </li>
             <li className="navbarOption">
               <ButtonLink to="/customers"> <CsLineIcons icon="car" />Vehiculos </ButtonLink>
