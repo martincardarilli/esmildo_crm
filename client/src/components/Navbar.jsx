@@ -33,7 +33,7 @@ export function Navbar() {
               <ButtonLink to="/propiedades"> <CsLineIcons icon="home-garage" />Propiedades </ButtonLink>
             </li>
             <li className="navbarOption">
-              <ButtonLink to="/customers"> <CsLineIcons icon="car" />Vehiculos </ButtonLink>
+              <ButtonLink to="/vehiculos"> <CsLineIcons icon="car" />Vehiculos </ButtonLink>
             </li>
            {/* <li className="navbarOption">
               <ButtonLink to="/asana"> <CsLineIcons icon="eye" />Asana (beta)</ButtonLink>

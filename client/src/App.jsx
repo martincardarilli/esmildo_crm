@@ -115,8 +115,8 @@ function App() {
 
                          {/* Vehiculo */}
                       <Route path="/vehiculos" element={<VehiculoTable />} />
-                     <Route path="/vehiculos/erased" element={<VehiculosTableRecover />} />
-                     <Route path="/vehiculos/:id" element={<VehiculosProfile />} />
+                     <Route path="/vehiculos/erased" element={<VehiculoTableRecover />} />
+                     <Route path="/vehiculos/:id" element={<VehiculoProfile />} />
 
                       {/* Bills */}
                       <Route path="/bills" element={<BillTable />} />

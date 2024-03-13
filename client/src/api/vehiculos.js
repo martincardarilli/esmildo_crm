@@ -6,8 +6,7 @@ export const getDeletedVehiculosRequest = async () => axios.get("/vehiculos/eras
 
 export const createVehiculoRequest = async (vehiculo) => axios.post("/vehiculos", vehiculo);
 
-export const updateVehiculoRequest = async (id, vehiculo) =>
-  axios.put(`/vehiculos/${id}`, vehiculo);
+export const updateVehiculoRequest = async (id, vehiculo) => axios.put(`/vehiculos/${id}`, vehiculo);
 
 export const deleteVehiculoRequest = async (id) => axios.delete(`/vehiculos/${id}`);
 

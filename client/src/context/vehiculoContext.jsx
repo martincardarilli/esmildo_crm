@@ -1,27 +1,27 @@
 import { createContext, useContext, useState } from "react";
 import {
-  createPropiedadRequest,
-  deletePropiedadRequest,
+  createVehiculoRequest,
+  deleteVehiculoRequest,
   getVehiculosRequest,
   getDeletedVehiculosRequest,
-  getPropiedadRequest,
-  updatePropiedadRequest,
+  getVehiculoRequest,
+  updateVehiculoRequest,
 } from "../api/vehiculos.js"; // Asegúrate de tener estas funciones implementadas
 
 import * as historyController from '../api/history.js';
 
 //import { toast } from "react-toastify";
 
-const PropiedadContext = createContext();
+const VehiculoContext = createContext();
 
 export const useVehiculos = () => {
-  const context = useContext(PropiedadContext);
+  const context = useContext(VehiculoContext);
   if (!context)
-    throw new Error("useVehiculos must be used within a PropiedadProvider");
+    throw new Error("useVehiculos must be used within a VehiculoProvider");
   return context;
 };
 
-export function PropiedadProvider({ children }) {
+export function VehiculoProvider({ children }) {
   const [vehiculos, setVehiculos] = useState([]);
 
   const getVehiculos = async () => {
@@ -46,9 +46,9 @@ export function PropiedadProvider({ children }) {
 
   };
 
-  const deletePropiedad = async (id) => {
+  const deleteVehiculo = async (id) => {
     try {
-      const res = await deletePropiedadRequest(id);
+      const res = await deleteVehiculoRequest(id);
       if (res.status === 204)
         setVehiculos(vehiculos.filter((vehiculo) => vehiculo._id !== id));
     } catch (error) {
@@ -56,7 +56,7 @@ export function PropiedadProvider({ children }) {
     }
   };
 
-  const createPropiedad = async (vehiculo) => {
+  const createVehiculo = async (vehiculo) => {
     try {
       console.log(vehiculo);
       /* {id: 5, name: '123', address: '123', hourFee: '123'} */
@@ -71,7 +71,7 @@ export function PropiedadProvider({ children }) {
         hourFee: vehiculo.hourFee,
       };
 
-      const response = await createPropiedadRequest(vehiculoFix);
+      const response = await createVehiculoRequest(vehiculoFix);
 
       //console.log(response);
 
@@ -79,9 +79,9 @@ export function PropiedadProvider({ children }) {
         setVehiculos([
           ...vehiculos,
           response.data,
-        ]); /* wtf? VER Propiedad.CONTROLLER.JS */
+        ]); /* wtf? VER Vehiculo.CONTROLLER.JS */
         //toast.success("Cliente creado con éxito!");
-        //toast.success("Propiedad created!");
+        //toast.success("Vehiculo created!");
       }
 
       return response; // Devuelve la respuesta de axios
@@ -100,18 +100,18 @@ export function PropiedadProvider({ children }) {
     }
   };
 
-  const getPropiedad = async (id) => {
+  const getVehiculo = async (id) => {
     try {
-      const res = await getPropiedadRequest(id);
+      const res = await getVehiculoRequest(id);
       return res.data;
     } catch (error) {
       console.error(error);
     }
   };
 
-  const getPropiedadUpdates = async (id) => {
+  const getVehiculoUpdates = async (id) => {
     try {
-      //const res = await getPropiedadRequest(id);
+      //const res = await getVehiculoRequest(id);
       console.log('2207 B vehiculoContext starting | ');
    
       const res = await historyController.getChangesByDocument(id);
@@ -124,10 +124,10 @@ export function PropiedadProvider({ children }) {
     }
   };
 
-  const updatePropiedad = async (id, vehiculo) => {
+  const updateVehiculo = async (id, vehiculo) => {
     try {
       //console.log(id);
-      //console.log('1834 | updatePropiedad() > backend |' ,vehiculo);
+      //console.log('1834 | updateVehiculo() > backend |' ,vehiculo);
       /*
       let vehiculoFix = {
         name: vehiculo.name,
@@ -137,13 +137,13 @@ export function PropiedadProvider({ children }) {
       */
      
      // console.log("try to update");
-      const response = await updatePropiedadRequest(id, vehiculo);
+      const response = await updateVehiculoRequest(id, vehiculo);
       console.log(response);
       if (response.status === 200) {
         setVehiculos(
           vehiculos.map((item) => (item._id === id ? response.data : item))
         );
-        //toast.success("Propiedad updated!");
+        //toast.success("Vehiculo updated!");
         return response; 
       }
     } catch (error) {
@@ -153,19 +153,19 @@ export function PropiedadProvider({ children }) {
   };
 
   return (
-    <PropiedadContext.Provider
+    <VehiculoContext.Provider
       value={{
         vehiculos,
         getVehiculos,
         getDeletedVehiculos,
-        deletePropiedad,
-        createPropiedad,
-        getPropiedad,
-        updatePropiedad,
-        getPropiedadUpdates,
+        deleteVehiculo,
+        createVehiculo,
+        getVehiculo,
+        updateVehiculo,
+        getVehiculoUpdates,
       }}
     >
       {children}
-    </PropiedadContext.Provider>
+    </VehiculoContext.Provider>
   );
 }
