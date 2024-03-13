@@ -166,15 +166,15 @@ useEffect(() => {
           );
         },
       },
-       { Header: 'DIRECCIÓN', accessor: 'address', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-30' }, 
-      { Header: 'TELEFONO', accessor: 'hourFee', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+       { Header: 'PROPIEDAD', accessor: 'propiedad', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
+      { Header: 'SUPERFICIE', accessor: 'superficie', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'PROPIETARIO', accessor: 'propietario', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       
      /* { Header: 'Propiedad since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
       {
-        Header: 'Tag',
-        accessor: 'tag',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-10',
+        Header: 'Tag', accessor: 'tag', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {
           return <Badge bg="outline-primary">{cell.value}</Badge>;
         },
