@@ -9,6 +9,7 @@ import asanaRoutes from "./routes/asana.routes.js"; // external
 //import asanaTasksRoutes from "./routes/asanatask.routes.js"; // completed tasks
 import customerRoutes from "./routes/customer.routes.js";
 import propiedadRoutes from "./routes/propiedad.routes.js";
+import vehiculoRoutes from "./routes/vehiculo.routes.js";
 import historyRoutes from "./routes/history.routes.js";
 import clockifyRoutes from "./routes/clockify.routes.js";
 
@@ -47,6 +48,7 @@ app.use("/api", taksRoutes);
 app.use("/api/asana", asanaRoutes);
 app.use("/api/", customerRoutes);
 app.use("/api/", propiedadRoutes);
+app.use("/api/", vehiculoRoutes);
 app.use("/api/", historyRoutes);
 //app.use("/api/", asanaTasksRoutes);// asanatask.routes.js no está incluido
 // se crean internamente

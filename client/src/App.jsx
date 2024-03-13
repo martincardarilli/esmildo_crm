@@ -59,6 +59,11 @@ import { PropiedadTableRecover } from "./pages/CRM/object-Propiedad/PropiedadTab
 import { PropiedadProfile } from "./pages/CRM/object-Propiedad/PropiedadProfile";
 import { PropiedadProvider } from "./context/propiedadContext";
 
+import { VehiculoTable } from "./pages/CRM/object-Vehiculo/VehiculoTable";
+import { VehiculoTableRecover } from "./pages/CRM/object-Vehiculo/VehiculoTableRecover";
+import { VehiculoProfile } from "./pages/CRM/object-Vehiculo/VehiculoProfile";
+import { VehiculoProvider } from "./context/vehiculoContext";
+
 import { BillTable } from "./pages/CRM/object-Bill/BillTable";
 import { BillProfile } from "./pages/CRM/object-Bill/BillProfile";
 
@@ -74,6 +79,7 @@ function App() {
         <CustomerProvider>
         <RunProvider>
         <PropiedadProvider>
+        <VehiculoProvider>
             
           <BrowserRouter>
               <main className="container content-container mx-auto px-10 md:px-0">
@@ -107,6 +113,11 @@ function App() {
                      <Route path="/propiedades/erased" element={<PropiedadTableRecover />} />
                      <Route path="/propiedad/:id" element={<PropiedadProfile />} />
 
+                         {/* Vehiculo */}
+                      <Route path="/vehiculos" element={<VehiculoTable />} />
+                     <Route path="/vehiculos/erased" element={<VehiculosTableRecover />} />
+                     <Route path="/vehiculos/:id" element={<VehiculosProfile />} />
+
                       {/* Bills */}
                       <Route path="/bills" element={<BillTable />} />
                      <Route path="/bill/:id" element={<BillProfile />} />
@@ -127,7 +138,7 @@ function App() {
                 <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
               </main>
             </BrowserRouter>
-
+            </VehiculoProvider>
         </PropiedadProvider>
         </RunProvider>
         </CustomerProvider>
