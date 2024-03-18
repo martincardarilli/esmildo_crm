@@ -199,38 +199,141 @@ const ModalAddEditVehiculo = ({ tableInstance }) => {
     >
       <Modal.Header>
         <Modal.Title>
-          {selectedFlatRows.length === 1 ? "editar Persona" : "agregar Persona"}
+          {selectedFlatRows.length === 1 ? "Editar Vehiculo" : "Agregar Vehiculo"}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <div className="mb-3">
-            <Form.Label>Nombre</Form.Label>
+            <Form.Label>Fabricante</Form.Label>
             <Form.Control
               type="text"
-              name="name"
-              defaultValue={selectedVehiculo.name}
+              name="fabricante"
+              defaultValue={selectedVehiculo.fabricante}
               onInput={handleChange}
             />
           </div>
           <div className="mb-3">
-            <Form.Label>Dirección</Form.Label>
+            <Form.Label>Modelo</Form.Label>
             <Form.Control
               type="text"
-              name="address"
-              defaultValue={selectedVehiculo.address}
+              name="modelo"
+              defaultValue={selectedVehiculo.modelo}
               onInput={handleChange}
             />
           </div>
           <div className="mb-3">
-            <Form.Label>Telefono</Form.Label>
+            <Form.Label>Año</Form.Label>
             <Form.Control
               type="number"
-              name="hourFee"
-              defaultValue={selectedVehiculo.hourFee}
+              name="año"
+              defaultValue={selectedVehiculo.año}
               onInput={handleChange}
             />
           </div>
+          <div className="mb-3">
+            <Form.Label>Patente</Form.Label>
+            <Form.Control
+              type="text"
+              name="patente"
+              defaultValue={selectedVehiculo.patente}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Kilometros</Form.Label>
+            <Form.Control
+              type="text"
+              name="km"
+              defaultValue={selectedVehiculo.km}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Valor</Form.Label>
+            <Form.Control
+              type="number"
+              name="valor"
+              defaultValue={selectedVehiculo.valor}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Estado</Form.Label>
+            <Form.Control
+              type="text"
+              name="estado"
+              defaultValue={selectedVehiculo.estado}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Color</Form.Label>
+            <Form.Control
+              type="text"
+              name="color"
+              defaultValue={selectedVehiculo.color}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Puertas</Form.Label>
+            <Form.Control
+              type="text"
+              name="puertas"
+              defaultValue={selectedVehiculo.puertas}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Traccion</Form.Label>
+            <Form.Control
+              type="text"
+              name="traccion"
+              defaultValue={selectedVehiculo.traccion}
+              onInput={handleChange}
+            />
+          </div>
+
+          <div className="mb-3">
+            <Form.Label>Motor</Form.Label>
+            <Form.Control
+              type="text"
+              name="motor"
+              defaultValue={selectedVehiculo.motor}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>AC</Form.Label>
+            <Form.Control
+              type="text"
+              name="ac"
+              defaultValue={selectedVehiculo.ac}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>DH</Form.Label>
+            <Form.Control
+              type="text"
+              name="dh"
+              defaultValue={selectedVehiculo.dh}
+              onInput={handleChange}
+            />
+          </div>
+          
+          <div className="mb-3">
+            <Form.Label>Propietario</Form.Label>
+            <Form.Control
+              type="text"
+              name="propietario"
+              defaultValue={selectedVehiculo.propietario}
+              onInput={handleChange}
+            />
+          </div>
+
+
         </Form>
       </Modal.Body>
       <Modal.Footer>

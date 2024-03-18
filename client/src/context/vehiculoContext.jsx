@@ -66,9 +66,21 @@ export function VehiculoProvider({ children }) {
       O SER DINAMICO */
 
       let vehiculoFix = {
-        name: vehiculo.name,
-        address: vehiculo.address,
-        hourFee: vehiculo.hourFee,
+        fabricante: vehiculo.fabricante,
+        modelo: vehiculo.modelo,
+        año: vehiculo.año,
+        patente: vehiculo.patente,
+        km: vehiculo.km,
+        valor: vehiculo.valor,
+        estado: vehiculo.estado,
+        color: vehiculo.color,
+        puertas: vehiculo.puertas,
+        traccion: vehiculo.traccion,
+        motor: vehiculo.motor,
+        ac: vehiculo.ac,
+        dh: vehiculo.dh,
+        propietario: vehiculo.propietario,
+
       };
 
       const response = await createVehiculoRequest(vehiculoFix);

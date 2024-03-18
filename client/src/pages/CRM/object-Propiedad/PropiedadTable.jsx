@@ -148,8 +148,8 @@ useEffect(() => {
         },
       },
       {
-        Header: 'NOMBRE',
-        accessor: 'name',
+        Header: 'PROPIEDAD',
+        accessor: 'propiedad',
         sortable: true,
         headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {
@@ -161,15 +161,15 @@ useEffect(() => {
                 e.preventDefault();
               }}
             >
-              <CsLineIcons icon="user" className="w-4"/>  {cell.value}  
+              <CsLineIcons icon="home-garage" className="w-4"/>  {cell.value}  
             </a>
           );
         },
       },
-       { Header: 'PROPIEDAD', accessor: 'propiedad', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
+       { Header: 'TIPO', accessor: 'tipo', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
       { Header: 'SUPERFICIE', accessor: 'superficie', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-      { Header: 'PROPIETARIO', accessor: 'propietario', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'Dueño', accessor: 'dueño', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       
      /* { Header: 'Propiedad since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */

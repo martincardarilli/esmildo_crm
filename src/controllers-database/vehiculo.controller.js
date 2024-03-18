@@ -39,11 +39,23 @@ export const createVehiculo = async (req, res) => {
   try {
     console.log('1852 | CREATE Vehiculo'+ req.body);
     console.log(req.body);
-    const { name, address, hourFee } = req.body; // Ajusta los campos según el esquema de Vehiculo
+    const { fabricante, modelo, año, patente, km, valor, estado, color, puertas, traccion, motor, ac, dh, propietario } = req.body; // Ajusta los campos según el esquema de Vehiculo
     const newVehiculo = new Vehiculo({
-      name,
-      address,
-      hourFee, // Asegúrate de que este campo exista en tu esquema de Vehiculo
+      fabricante,
+      modelo,
+      año,
+      patente,
+      km,
+      valor,
+      estado,
+      color,
+      puertas,
+      traccion,
+      motor,
+      ac,
+      dh,
+      propietario,
+     // Asegúrate de que este campo exista en tu esquema de Vehiculo
     });
     await newVehiculo.save();
     res.status(201).json(newVehiculo);
@@ -114,10 +126,10 @@ export const updateVehiculoDEPRECATED = async (req, res) => {
   try {
     console.log('1852 | UPDATE Vehiculo |'+ req.body);
     console.log(req.body);
-    const { name, address, hourFee } = req.body; // Ajusta los campos según el esquema de Vehiculo
+    const { fabricante, modelo, año, patente, km, valor, estado, color, puertas, traccion, motor, ac, dh, propietario } = req.body; // Ajusta los campos según el esquema de Vehiculo
     const vehiculoUpdated = await Vehiculo.findOneAndUpdate(
       { _id: req.params.id },
-      { name, address, hourFee }, // Asegúrate de que estos campos existan en tu esquema de Vehiculo
+      { fabricante, modelo, año, patente, km, valor, estado, color, puertas, traccion, motor, ac, dh, propietario }, // Asegúrate de que estos campos existan en tu esquema de Vehiculo
       { new: true }
     );
     return res.json(vehiculoUpdated);

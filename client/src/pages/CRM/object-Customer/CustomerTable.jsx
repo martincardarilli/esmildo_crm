@@ -136,8 +136,8 @@ useEffect(() => {
         },
       },
       {
-        Header: 'NOMBRE',
-        accessor: 'name',
+        Header: 'NOMBRE Y APELLIDO',
+        accessor: 'nombreApellido',
         sortable: true,
         headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {
@@ -154,9 +154,11 @@ useEffect(() => {
           );
         },
       },
-       { Header: 'DIRECCIÓN', accessor: 'address', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
-      { Header: 'TELEFONO', accessor: 'phonenumber', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+       { Header: 'DIRECCIÓN', accessor: 'direccion', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
+      { Header: 'TELEFONO', accessor: 'telefono', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'EMAIL', accessor: 'email', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'DNI', accessor: 'dni', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'CUIT/CUIL', accessor: 'cuitCuil', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       
      /* { Header: 'Customer since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
       {Header: 'Tag', accessor: 'tag', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',

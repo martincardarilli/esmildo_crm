@@ -2,22 +2,60 @@ import mongoose from "mongoose";
 
 const vehiculoSchema = new mongoose.Schema(
   {
-    name: {
+    fabricante: {
       type: String,
-      required: true,
-      trim: true,
+
     },
-    address: {
+    modelo: {
       type: String,
-      required: true,
-      trim: true
+
     },
-    hourFee: {
+    año: {
       type: Number,
-      required: true
+
     },
-    tag: {
+    patente: {
       type: String,
+    },
+    km: {
+      type: Number,
+
+    },
+    valor: {
+      type: Number,
+
+    },
+    estado: {
+      type: String,
+
+    },
+    color: {
+      type: String,
+
+    },
+    puertas: {
+      type: Number,
+
+    },
+    traccion: {
+      type: String,
+
+    },
+    motor: {
+      type: String,
+
+    },
+    ac: {
+      type: String,
+
+    },
+    dh: {
+      type: String,
+
+    },
+    propietario: {
+      type: String,
+
     },
     isActive: {
       type: Boolean,

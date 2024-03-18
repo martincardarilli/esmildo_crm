@@ -199,17 +199,17 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
     >
       <Modal.Header>
         <Modal.Title>
-          {selectedFlatRows.length === 1 ? "editar Persona" : "agregar Persona"}
+          {selectedFlatRows.length === 1 ? "Editar Persona" : "Agregar Persona"}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <div className="mb-3">
-            <Form.Label>Nombre</Form.Label>
+            <Form.Label>Nombre y Apellido</Form.Label>
             <Form.Control
               type="text"
-              name="name"
-              defaultValue={selectedCustomer.name}
+              name="nombreApellido"
+              defaultValue={selectedCustomer.nombreApellido}
               onInput={handleChange}
             />
           </div>
@@ -217,8 +217,8 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
             <Form.Label>Dirección</Form.Label>
             <Form.Control
               type="text"
-              name="address"
-              defaultValue={selectedCustomer.address}
+              name="direccion"
+              defaultValue={selectedCustomer.direccion}
               onInput={handleChange}
             />
           </div>
@@ -226,8 +226,35 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
             <Form.Label>Telefono</Form.Label>
             <Form.Control
               type="number"
-              name="hourFee"
-              defaultValue={selectedCustomer.hourFee}
+              name="telefono"
+              defaultValue={selectedCustomer.telefono}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="string"
+              name="email"
+              defaultValue={selectedCustomer.email}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Dni</Form.Label>
+            <Form.Control
+              type="number"
+              name="dni"
+              defaultValue={selectedCustomer.dni}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Cuit/Cuil</Form.Label>
+            <Form.Control
+              type="number"
+              name="cuitCuil"
+              defaultValue={selectedCustomer.cuitCuil}
               onInput={handleChange}
             />
           </div>

@@ -148,10 +148,7 @@ useEffect(() => {
         },
       },
       {
-        Header: 'NOMBRE',
-        accessor: 'name',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-20',
+        Header: 'MODELO', accessor: 'modelo', sortable: true,  headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {
           return (
             <a
@@ -161,14 +158,14 @@ useEffect(() => {
                 e.preventDefault();
               }}
             >
-              <CsLineIcons icon="user" className="w-4"/>  {cell.value}  
+              <CsLineIcons icon="car" className="w-4"/>  {cell.value}  
             </a>
           );
         },
       },
-      { Header: 'MARCA Y MODELO', accessor: 'marcamodelo', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'FABRICANTE', accessor: 'fabricante', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'AÑO', accessor: 'año', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-      { Header: 'KILOMETRAJE', accessor: 'kilometraje', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'KM', accessor: 'km', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'PROPIETARIO', accessor: 'propietario', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },  

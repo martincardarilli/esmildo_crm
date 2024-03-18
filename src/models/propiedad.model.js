@@ -2,19 +2,23 @@ import mongoose from "mongoose";
 
 const propiedadSchema = new mongoose.Schema(
   {
-    name: {
+    propiedad: {
       type: String,
-      required: true,
-      trim: true,
     },
-    address: {
+    tipo: {
       type: String,
-      required: true,
-      trim: true
     },
-    hourFee: {
+    superficie: {
       type: Number,
-      required: true
+    },
+    valor: {
+      type: Number,
+    },
+    estado: {
+      type: String,
+    },
+    dueño: {
+      type: String,
     },
     tag: {
       type: String,

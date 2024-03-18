@@ -2,21 +2,23 @@ import mongoose from "mongoose";
 
 const customerSchema = new mongoose.Schema(
   {
-    name: {
+    nombreApellido: {
       type: String,
-      required: true,
-      trim: true,
     },
-    address: {
+    direccion: {
       type: String,
-      required: true,
-      trim: true
     },
-    hourFee: {
+    email: {
       type: Number,
-      required: true
+
     },
-    tag: {
+    telefono: {
+      type: String,
+    },
+    dni: {
+      type: String,
+    },
+    cuitCuil: {
       type: String,
     },
     isActive: {

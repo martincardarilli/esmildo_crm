@@ -66,9 +66,12 @@ export function PropiedadProvider({ children }) {
       O SER DINAMICO */
 
       let propiedadFix = {
-        name: propiedad.name,
-        address: propiedad.address,
-        hourFee: propiedad.hourFee,
+        propiedad: propiedad.propiedad,
+        tipo: propiedad.tipo,
+        superficie: propiedad.superficie,
+        valor: propiedad.valor,
+        estado: propiedad.estado,
+        dueño: propiedad.dueño,
       };
 
       const response = await createPropiedadRequest(propiedadFix);

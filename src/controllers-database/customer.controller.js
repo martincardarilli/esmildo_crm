@@ -39,11 +39,14 @@ export const createCustomer = async (req, res) => {
   try {
     console.log('1852 | CREATE CUSTOMER'+ req.body);
     console.log(req.body);
-    const { name, address, hourFee } = req.body; // Ajusta los campos según el esquema de Customer
+    const { nombreApellido, direccion, telefono, email, dni, cuitCuil } = req.body; // Ajusta los campos según el esquema de Customer
     const newCustomer = new Customer({
-      name,
-      address,
-      hourFee, // Asegúrate de que este campo exista en tu esquema de Customer
+      nombreApellido, 
+      direccion, 
+      telefono, 
+      email, 
+      dni, 
+      cuitCuil // Asegúrate de que este campo exista en tu esquema de Customer
     });
     await newCustomer.save();
     res.status(201).json(newCustomer);
@@ -114,10 +117,10 @@ export const updateCustomerDEPRECATED = async (req, res) => {
   try {
     console.log('1852 | UPDATE CUSTOMER |'+ req.body);
     console.log(req.body);
-    const { name, address, hourFee } = req.body; // Ajusta los campos según el esquema de Customer
+    const { nombreApellido, direccion, telefono, email, dni, cuitCuil } = req.body; // Ajusta los campos según el esquema de Customer
     const customerUpdated = await Customer.findOneAndUpdate(
       { _id: req.params.id },
-      { name, address, hourFee }, // Asegúrate de que estos campos existan en tu esquema de Customer
+      { nombreApellido, direccion, telefono, email, dni, cuitCuil }, // Asegúrate de que estos campos existan en tu esquema de Customer
       { new: true }
     );
     return res.json(customerUpdated);

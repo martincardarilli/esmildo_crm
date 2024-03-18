@@ -66,9 +66,12 @@ export function CustomerProvider({ children }) {
       O SER DINAMICO */
 
       let customerFix = {
-        name: customer.name,
-        address: customer.address,
-        hourFee: customer.hourFee,
+        nombreApellido: customer.nombreApellido,
+        direccion: customer.direccion,
+        email: customer.email,
+        telefono: customer.telefono,
+        dni: customer.dni,
+        cuitCuil: customer.cuitCuil,
       };
 
       const response = await createCustomerRequest(customerFix);

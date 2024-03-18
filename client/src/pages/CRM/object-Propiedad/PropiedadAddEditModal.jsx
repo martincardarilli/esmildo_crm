@@ -199,35 +199,62 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
     >
       <Modal.Header>
         <Modal.Title>
-          {selectedFlatRows.length === 1 ? "editar Persona" : "agregar Persona"}
+          {selectedFlatRows.length === 1 ? "Editar Propiedad" : "Agregar Propiedad"}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <div className="mb-3">
-            <Form.Label>Nombre</Form.Label>
+            <Form.Label>Propiedad</Form.Label>
             <Form.Control
               type="text"
-              name="name"
-              defaultValue={selectedPropiedad.name}
+              name="propiedad"
+              defaultValue={selectedPropiedad.propiedad}
               onInput={handleChange}
             />
           </div>
           <div className="mb-3">
-            <Form.Label>Dirección</Form.Label>
+            <Form.Label>Tipo</Form.Label>
             <Form.Control
               type="text"
-              name="address"
-              defaultValue={selectedPropiedad.address}
+              name="tipo"
+              defaultValue={selectedPropiedad.tipo}
               onInput={handleChange}
             />
           </div>
           <div className="mb-3">
-            <Form.Label>Telefono</Form.Label>
+            <Form.Label>Superficie</Form.Label>
+            <Form.Control
+              type="text"
+              name="superficie"
+              defaultValue={selectedPropiedad.superficie}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Valor</Form.Label>
+            <Form.Control
+              type="text"
+              name="valor"
+              defaultValue={selectedPropiedad.valor}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Estado</Form.Label>
+            <Form.Control
+              type="text"
+              name="estado"
+              defaultValue={selectedPropiedad.estado}
+              onInput={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <Form.Label>Dueño</Form.Label>
             <Form.Control
               type="number"
-              name="hourFee"
-              defaultValue={selectedPropiedad.hourFee}
+              name="dueño"
+              defaultValue={selectedPropiedad.dueño}
               onInput={handleChange}
             />
           </div>
