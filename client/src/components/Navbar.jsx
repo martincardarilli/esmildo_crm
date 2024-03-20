@@ -13,7 +13,7 @@ export function Navbar() {
       <div className="headerLeft">
       <h1 className="text-2xl font-bold">
          {/* <Link to={isAuthenticated ? "/tasks" : "/"}><img src="/logo.png" className="logoNavBar"/></Link> */}
-         MASSARI.group
+         MASS.group
       </h1>
       <ul className="flex gap-x-2">
         {isAuthenticated ? (
@@ -43,7 +43,7 @@ export function Navbar() {
             </li>
 
             <li className="navbarOption">
-              <ButtonLink to="/customers"> <CsLineIcons icon="lock-on" />Admin</ButtonLink>
+              <ButtonLink to="/admin"> <CsLineIcons icon="lock-on" />Admin</ButtonLink>
             </li>
              
            

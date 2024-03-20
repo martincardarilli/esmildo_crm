@@ -76,15 +76,15 @@ export function CustomerTableHistory() {
 
 
 
-  const title = 'History of updates';
+  const title = 'Historial de cambios';
   const description = 'Separate rows with edit, delete and add.';
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'interface', text: 'Customers' },
+    { to: 'interface', text: 'Personas' },
     //{ to: 'interface/plugins', title: `${}` },
     { to: 'interface/plugins', title: `+info` },
-    { to: 'interface/plugins', title: `History of updates` },
+    { to: 'interface/plugins', title: `Historial de cambios` },
 
   ];
 
@@ -106,7 +106,7 @@ export function CustomerTableHistory() {
   const columns = React.useMemo(() => {
     return [
       
-      { Header: 'DATE', accessor: 'updatedAt', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-40', 
+      { Header: 'FECHA', accessor: 'updatedAt', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-40', 
       Cell: ({ cell }) => {
         return (
           <p
@@ -122,7 +122,7 @@ export function CustomerTableHistory() {
       },
     },
       {
-        Header: 'changed By',
+        Header: 'CAMBIADO POR',
         accessor: 'changedBy',
         sortable: true,
         headerClassName: 'text-muted text-small text-uppercase w-20',
@@ -140,9 +140,9 @@ export function CustomerTableHistory() {
           );
         },
       },
-       { Header: 'field', accessor: 'fieldName', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' }, 
-      { Header: 'previous value', accessor: 'oldValue', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' },
-      { Header: 'next value', accessor: 'newValue', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' },
+       { Header: 'CAMPO', accessor: 'fieldName', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' }, 
+      { Header: 'VALOR ANTERIOR', accessor: 'oldValue', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' },
+      { Header: 'NUEVO VALOR', accessor: 'newValue', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' },
      /* { Header: 'Customer since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
       {
         Header: 'Tag',

@@ -6,7 +6,9 @@ import mongoose from "mongoose";
 export const getPropiedades = async (req, res) => {
   try {
    //  const propiedades = await Propiedad.find(); HARD DELETE 
-    const propiedades = await Propiedad.find({ isActive: true }); // SOFT DELETE
+   // const propiedades = await Propiedad.find({ isActive: true }); // SOFT DELETE
+   // const propiedades = await Propiedad.find({ isActive: true }).populate('propietario', 'nombreApellido'); // SOFT DELETE
+    const propiedades = await Propiedad.find({ isActive: true }).populate('propietario'); // SOFT DELETE
 
     /*console.log(' encontre todos los propiedades?? = ');
     console.log(' ---------------------------------- ');
@@ -37,16 +39,28 @@ export const getDeletedPropiedades = async (req, res) => {
 
 export const createPropiedad = async (req, res) => {
   try {
-    console.log('1852 | CREATE Propiedad'+ req.body);
+
+    console.log("--------starts--------------- req.body --------------------")
     console.log(req.body);
-    const { propiedad, tipo, superficie, valor, estado, dueño } = req.body; // Ajusta los campos según el esquema de Propiedad
+    console.log("--------starts--------------- req.body --------------------")
+
+
+    const { propiedad, tipo, superficie, valor, estado, propietario } = req.body; // Ajusta los campos según el esquema de Propiedad
+
+    console.log("propietario???");
+    console.log(propietario);
+
     const newPropiedad = new Propiedad({
       propiedad, 
       tipo, 
       superficie, 
       valor, 
       estado, 
-      dueño // Asegúrate de que este campo exista en tu esquema de Propiedad
+
+// este no funcionaa
+      propietario: new mongoose.Types.ObjectId(propietario),
+
+
     });
     await newPropiedad.save();
     res.status(201).json(newPropiedad);
@@ -136,7 +150,7 @@ export const updatePropiedad = async (req, res) => {
   try {
     console.log('1852 | UPDATE Propiedad |', req.body);
     
-    console.log('2035 | FULL USER | starts', req);
+   // console.log('2035 | FULL USER | starts', req);
     console.log(req.user);
 
     const { id } = req.params;

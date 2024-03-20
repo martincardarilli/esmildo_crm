@@ -1,0 +1,71 @@
+.form-control{
+  border-radius:7px;
+  height: 40px;
+}
+
+.campoRelacional{
+        /*  color:green !important; */
+          position:relative;
+        margin-top:40px;
+}
+
+.campoRelacional svg{
+          position:absolute;
+          top: 15px !important;
+          left: 10px
+}
+
+.campoRelacional .form-control, .campoRelacional label{
+          padding-left:40px;
+}
+
+.campoRelacional .form-control{
+          border-radius:7px;
+}
+
+.campoRelacional span{
+  position: absolute;
+  left: 40px;
+  top: 55px;
+}
+
+.react-autosuggest__suggestions-container{
+  background-color:#0c0c0ce8;
+  margin-top:-5px;
+  border-left:1px solid white !important;
+  border-right:1px solid white !important;
+  border-bottom:1px solid white !important;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+
+}
+
+.react-autosuggest__suggestions-container {
+  max-height: 150px; /* Ajusta esto según necesites */
+  overflow-y: auto;
+}
+
+/* This styles the track (the part that the thumb moves along) */
+.react-autosuggest__suggestions-container::-webkit-scrollbar-track {
+  background: #f1f1f1; /* or any color you want */
+  border-radius: 10px; /* if you want rounded corners */
+}
+
+/* This styles the thumb (the part that you drag) */
+.react-autosuggest__suggestions-container::-webkit-scrollbar-thumb {
+  background: #888; /* or any color you want */
+  border-radius: 10px; /* if you want rounded corners */
+}
+
+/* This styles the thumb on hover */
+.react-autosuggest__suggestions-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* or any color you want */
+}
+
+/* This sets the width of the scrollbar */
+.react-autosuggest__suggestions-container::-webkit-scrollbar {
+  width: 10px; /* or the size you want */
+}
+
+
+

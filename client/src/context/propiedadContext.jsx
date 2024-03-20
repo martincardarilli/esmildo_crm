@@ -58,7 +58,9 @@ export function PropiedadProvider({ children }) {
 
   const createPropiedad = async (propiedad) => {
     try {
+      console.log("-----------------propiedad SIN FIX---------------");
       console.log(propiedad);
+      console.log("-----------------propiedad SIN FIX---------------");
       /* {id: 5, name: '123', address: '123', hourFee: '123'} */
 
       /* ESTO NECESITA ACTUALIZARSE CADA VEZ QUE SE AGREGA UN CAMPO NUEVO,
@@ -72,6 +74,7 @@ export function PropiedadProvider({ children }) {
         valor: propiedad.valor,
         estado: propiedad.estado,
         dueño: propiedad.dueño,
+        propietario: propiedad.propietario
       };
 
       const response = await createPropiedadRequest(propiedadFix);

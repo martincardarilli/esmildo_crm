@@ -57,7 +57,7 @@ export function VehiculoTable() {
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'vehiculos', text: 'Personas' },
+    { to: 'vehiculos', text: 'Vehiculos' },
 
   ];
 

@@ -7,6 +7,11 @@ import { usePropiedades } from "../../../context/propiedadContext";
 
 import { toast } from "react-toastify";
 
+import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
+import AutocompleteFloatingLabel from './AutocompleteFloatingLabel';
+
+import BreadcrumbList from '../components/breadcrumb-list/BreadcrumbList';
+
 const ModalAddEditPropiedad = ({ tableInstance }) => {
   const {
     selectedFlatRows,
@@ -21,6 +26,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
     name: "",
     address: "",
     hourFee: "",
+    propietario: "",
   };
   const [selectedPropiedad, setSelectedPropiedad] = useState(emptyPropiedad);
 
@@ -41,34 +47,55 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
       setSelectedPropiedad(emptyPropiedad);
     }
 
-     console.log('1833 | A quien vamos a modificar?');
+    console.log('1833 | A quien vamos a modificar?');
     console.log('1833x | ', selectedPropiedad);
     console.log('1833 | encontrado');
     console.log(tableInstance);
 
-    return () => {};
+    return () => { };
   }, [isOpenAddEditModal, selectedFlatRows]);
 
   useEffect(() => {
     console.log(`1833B ~ selectedPropiedad ${selectedPropiedad}`);
- //   console.log(selectedFlatRows[0].original);
+    //   console.log(selectedFlatRows[0].original);
     console.log(selectedFlatRows.length === 1);
     console.log(selectedPropiedad);
     console.log(tableInstance);
   }, [selectedPropiedad]);
 
   const handleChange = (event) => {
-    console.log(`value changed ª event ${event}`);
+    console.log(`Event: `, event);
+  
+    // Check if the event is coming from an input element with a value property
+    if (event.target && typeof event.target.value === 'string') {
+      const value = event.target.value.trim();
+      console.log(`Value: ${value}`);
+  
+      // Update the state with the new value
+      setSelectedPropiedad({
+        ...selectedPropiedad,
+        [event.target.name]: value
+      });
+    } else {
+      console.log('Trying to handle non-input event...');
 
-    const value = event.target.value.trim();
-    console.log(`value ª value ${value}`);
-    console.log(value);
-    console.log(value ? "si" : "no");
-    // setSelectedPropiedad({ ...selectedPropiedad, [event.target.name]: event.target.value.trim() });
-    setSelectedPropiedad({
-      ...selectedPropiedad,
-      [event.target.name]: value ? value : "",
-    });
+      // Try to find the input inside the `.campoRelacional` div and extract its value
+   
+       
+
+       // NO ES DINAMICO
+
+       // NO ES DINAMICO
+
+       // NO ES DINAMICO
+
+       // Solucion = Preguntar si vino de suggestion click
+        setSelectedPropiedad({
+          ...selectedPropiedad,
+          propietario: event // !!!!!!!!!!!!!!!! se pasa el ID directamente
+        });
+      
+    }
   };
 
   /* const handleChange = (event) => {
@@ -104,7 +131,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
   };*/
 
   const savePropiedad = async () => {
-    console.log("Cliente seleccionado:", selectedPropiedad);
+    console.log("Propiedad seleccionado:", selectedPropiedad);
 
     // Validar campos requeridos
     /*if (!selectedPropiedad.name || !selectedPropiedad.address || !selectedPropiedad.hourFee) {
@@ -121,6 +148,9 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
       if (selectedFlatRows.length === 1) {
         response = await updatePropiedad(selectedPropiedad._id, selectedPropiedad);
       } else {
+        console.log("---------------------------------enviando---------------------");
+        console.log(selectedPropiedad);
+        console.log("---------------------------------enviando---------------------");
         response = await createPropiedad(selectedPropiedad);
       }
 
@@ -153,15 +183,15 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
       toast.error(`Code ${error.code}; ${error.message}`);
       console.error("error");
       console.error(error);
-    
-      
+
+
       const errorMessages =
         error.response && error.response.data && error.response.data.message
           ? error.response.data.message
           : `Error ${error.response}`;
-         
 
-          console.error("errorMessages");
+
+      console.error("errorMessages");
       console.error(errorMessages);
 
       console.error("error.response");
@@ -187,7 +217,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
 
       // Mostrar el mensaje formateado
       //toast.error(`Error: ${formattedErrorMessage}`);
-      
+
     }
   };
 
@@ -249,15 +279,33 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
               onInput={handleChange}
             />
           </div>
-          <div className="mb-3">
-            <Form.Label>Dueño</Form.Label>
-            <Form.Control
-              type="number"
-              name="dueño"
-              defaultValue={selectedPropiedad.dueño}
-              onInput={handleChange}
-            />
+
+
+
+
+
+
+
+
+
+         {/* <div class="campoRelacional">
+
+            <CsLineIcons icon="user" />
+            <AutocompleteFloatingLabel label="Propietario" name="dueño" handleChange={handleChange} />
+
+  </div> */}
+
+
+          <div class="campoRelacional">
+
+            <CsLineIcons icon="user" />
+            <AutocompleteFloatingLabel label="Propietario" name="propietario" handleChange={handleChange}/>
+
           </div>
+
+
+
+
         </Form>
       </Modal.Body>
       <Modal.Footer>

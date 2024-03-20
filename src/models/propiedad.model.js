@@ -20,6 +20,10 @@ const propiedadSchema = new mongoose.Schema(
     dueño: {
       type: String,
     },
+    propietario:{
+      type: mongoose.Types.ObjectId,
+      ref: "Customer",
+    },
     tag: {
       type: String,
     },

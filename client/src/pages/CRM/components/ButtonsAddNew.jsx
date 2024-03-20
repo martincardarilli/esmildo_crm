@@ -11,7 +11,7 @@ const ButtonsAddNew = ({ tableInstance }) => {
   };
   return (
     <Button variant="outline-primary" className="btn-icon btn-icon-start w-100 w-md-auto add-datatable addButton" onClick={addButtonClick}>
-      <CsLineIcons icon="plus" /> <span>Agregar Persona</span>
+      <CsLineIcons icon="plus" /> <span>Agregar</span>
     </Button>
   );
 };

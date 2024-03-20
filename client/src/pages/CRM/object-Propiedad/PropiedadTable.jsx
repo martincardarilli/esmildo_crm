@@ -57,7 +57,7 @@ export function PropiedadTable() {
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'propiedades', text: 'Personas' },
+    { to: 'propiedades', text: 'Propiedades' },
 
   ];
 
@@ -170,6 +170,7 @@ useEffect(() => {
       { Header: 'SUPERFICIE', accessor: 'superficie', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'Dueño', accessor: 'dueño', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'Propietario', accessor: 'propietario.nombreApellido', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       
      /* { Header: 'Propiedad since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
