@@ -235,7 +235,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
       <Modal.Body>
         <Form>
           <div className="mb-3">
-            <Form.Label>Propiedad</Form.Label>
+            <Form.Label>* Inmueble</Form.Label>
             <Form.Control
               type="text"
               name="propiedad"
@@ -262,7 +262,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
             />
           </div>
           <div className="mb-3">
-            <Form.Label>Valor</Form.Label>
+            <Form.Label>* Valor</Form.Label>
             <Form.Control
               type="text"
               name="valor"
@@ -299,7 +299,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
           <div class="campoRelacional">
 
             <CsLineIcons icon="user" />
-            <AutocompleteFloatingLabel label="Propietario" name="propietario" handleChange={handleChange}/>
+            <AutocompleteFloatingLabel label="Dueño" name="propietario" handleChange={handleChange}/>
 
           </div>
 
