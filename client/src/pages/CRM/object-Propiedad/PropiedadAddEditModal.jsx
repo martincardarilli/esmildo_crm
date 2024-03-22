@@ -273,8 +273,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
             <SelectBasic
              name="estado"
              defaultValue={selectedPropiedad.estado}
-             onChange={handleChange}
-              onInput={handleChange}
+             handleChange={handleChange}
             />
           </div>
          {/* <div class="campoRelacional">

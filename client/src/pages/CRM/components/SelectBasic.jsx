@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-const SelectBasic = ({handleChange, name}) => {
+const SelectBasic = ({ comoQuerramos, name }) => {
   const [value, setValue] = useState();
 
   const options = [
@@ -11,7 +11,7 @@ const SelectBasic = ({handleChange, name}) => {
 
   ];
 
-  const handleChangeInternal = (event, handleChange) => {
+  const handleChangeInternal = (event) => {
     console.log("LOHSE");
     console.log(event);
 
