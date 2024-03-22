@@ -131,10 +131,10 @@ export const updatePropiedadDEPRECATED = async (req, res) => {
   try {
     console.log('1852 | UPDATE Propiedad |'+ req.body);
     console.log(req.body);
-    const { propiedad, tipo, superficie, valor, estado, dueño } = req.body; // Ajusta los campos según el esquema de Propiedad
+    const { propiedad, tipo, superficie, valor, estado, propietario } = req.body; // Ajusta los campos según el esquema de Propiedad
     const propiedadUpdated = await Propiedad.findOneAndUpdate(
       { _id: req.params.id },
-      { propiedad, tipo, superficie, valor, estado, dueño }, // Asegúrate de que estos campos existan en tu esquema de Propiedad
+      { propiedad, tipo, superficie, valor, estado, propietario }, // Asegúrate de que estos campos existan en tu esquema de Propiedad
       { new: true }
     );
     return res.json(propiedadUpdated);
