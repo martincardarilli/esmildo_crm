@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-
+import SelectBasic from '../components/SelectBasic';
 import { usePropiedades } from "../../../context/propiedadContext";
 
 //import { usePropiedades } from "./context/propiedadContext";
@@ -23,12 +23,6 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
   const { createPropiedad, updatePropiedad, getPropiedades } = usePropiedades(); // Usando funciones del contexto
   const emptyPropiedad = {
     id: data.length + 1,
-    propiedad:"", 
-    tipo:"", 
-    superficie:"", 
-    valor:"", 
-    estado:"", 
-    propietario: "",
   };
   const [selectedPropiedad, setSelectedPropiedad] = useState(emptyPropiedad);
   
@@ -94,8 +88,8 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
        // Solucion = Preguntar si vino de suggestion click
         setSelectedPropiedad({
           ...selectedPropiedad,
-          propietario: event // !!!!!!!!!!!!!!!! se pasa el ID directamente
-        });
+          propietario: event, // !!!!!!!!!!!!!!!! se pasa el ID directamente
+           });
       
     }
   };
@@ -274,22 +268,13 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
           </div>
           <div className="mb-3">
             <Form.Label>Estado</Form.Label>
-            <Form.Control
-              type="text"
-              name="estado"
-              defaultValue={selectedPropiedad.estado}
+            <SelectBasic
+             name="estado"
+             defaultValue={selectedPropiedad.estado}
+             onChange={handleChange}
               onInput={handleChange}
             />
           </div>
-
-
-
-
-
-
-
-
-
          {/* <div class="campoRelacional">
 
             <CsLineIcons icon="user" />
