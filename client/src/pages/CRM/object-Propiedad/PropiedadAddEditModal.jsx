@@ -23,19 +23,13 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
   const { createPropiedad, updatePropiedad, getPropiedades } = usePropiedades(); // Usando funciones del contexto
   const emptyPropiedad = {
     id: data.length + 1,
-    propiedad:"", 
-    tipo:"", 
-    superficie:"", 
-    valor:"", 
-    estado:"", 
-    propietario: "",
   };
   const [selectedPropiedad, setSelectedPropiedad] = useState(emptyPropiedad);
   
   useEffect(() => {
-    console.log("PRE");
-    console.log(selectedFlatRows);
-    console.log("PRE");
+  //  console.log("PRE");
+  //  console.log(selectedFlatRows);
+  //  console.log("PRE");
 
     if (isOpenAddEditModal && selectedFlatRows.length === 1) {
       const propiedadData = { ...selectedFlatRows[0].original };
@@ -49,10 +43,10 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
       setSelectedPropiedad(emptyPropiedad);
     }
 
-    console.log('1833 | A quien vamos a modificar?');
-    console.log('1833x | ', selectedPropiedad);
-    console.log('1833 | encontrado');
-    console.log(tableInstance);
+  //  console.log('1833 | A quien vamos a modificar?');
+   // console.log('1833x | ', selectedPropiedad);
+   // console.log('1833 | encontrado');
+   // console.log(tableInstance);
 
     return () => { };
   }, [isOpenAddEditModal, selectedFlatRows]);
@@ -66,10 +60,17 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
   }, [selectedPropiedad]);
 
   const handleChange = (event) => {
+    console.log('HANDLECHANGE PADRE')
     console.log(`Event: `, event);
+
+   
   
     // Check if the event is coming from an input element with a value property
     if (event.target && typeof event.target.value === 'string') {
+          // EVENTO DE ESCRIBIR
+          // EVENTO DE ESCRIBIR
+             // EVENTO DE ESCRIBIR
+
       const value = event.target.value.trim();
       console.log(`Value: ${value}`);
   
@@ -78,23 +79,18 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
         ...selectedPropiedad,
         [event.target.name]: value
       });
-    } else {
-      console.log('Trying to handle non-input event...');
 
+    } else {
+         // EVENTO DE CLICK
+            // EVENTO DE CLICK
+               // EVENTO DE CLICK
+      console.log('Trying to handle non-input event...');
       // Try to find the input inside the `.campoRelacional` div and extract its value
    
-       
-
-       // NO ES DINAMICO
-
-       // NO ES DINAMICO
-
-       // NO ES DINAMICO
-
        // Solucion = Preguntar si vino de suggestion click
         setSelectedPropiedad({
           ...selectedPropiedad,
-          propietario: event // !!!!!!!!!!!!!!!! se pasa el ID directamente
+          [event.accessor]: event.valor // !!!!!!!!!!!!!!!! se pasa el ID directamente
         });
       
     }
@@ -301,6 +297,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
           <div class="campoRelacional">
 
             <CsLineIcons icon="user" />
+
             <AutocompleteFloatingLabel label="Dueño" name="propietario" handleChange={handleChange}/>
 
           </div>

@@ -65,14 +65,7 @@ const AutocompleteFloatingLabel = ({ label, name, handleChange }) => {
                     return data.filter((product) => regex.test(product.nombreApellido));
           };
 
-          const changeInput = (event, { newValue }) => {
-                    console.log("VALUE ==" + newValue);
-                    console.log(event);
-                    setValueState(newValue);
-                    // This function needs to also handle the update for nameState if required.
-                    // For now, I will assume it just needs to propagate changes upwards via handleChange.
-                   // handleChange(event); // Make sure to call this to update the parent component's state.
-                  };
+        
 
           const onSuggestionsFetchRequested = ({ value: val }) => {
                     setSuggestions(getSuggestions(val));
@@ -99,6 +92,7 @@ const AutocompleteFloatingLabel = ({ label, name, handleChange }) => {
           // Nuevo
           const onSuggestionSelected = (event, { suggestion, suggestionValue }) => {
                     console.log("CLICKEASTE GATO " + suggestionValue);
+
                     setValueState(suggestion._id); // Assuming you want to show nombreApellido in the input
                     setNameState(`${suggestion.nombreApellido} (${suggestion.dni})`); // Update the name state if needed
 
@@ -107,8 +101,20 @@ const AutocompleteFloatingLabel = ({ label, name, handleChange }) => {
                     // !!!!!!!!!!!!!!!! se pasa el ID directamente
                     // !!!!!!!!!!!!!!!! se pasa el ID directamente
                     // !!!!!!!!!!!!!!!! se pasa el ID directamente
-                    handleChange(suggestion._id); // If you need to update parent state, send up the necessary event or value
+                    let eventFake = {
+                        accessor: "propietario", // ES LA VARIABLE DEL PROPS
+                        valor: suggestion._id
+                    }
+                    handleChange(eventFake); // If you need to update parent state, send up the necessary event or value
                   };
+
+
+        const changeInput = (event, { newValue }) => {
+                        console.log("VALUE ==" + newValue);
+                        console.log(event);
+                        setValueState(newValue); // Esto maneja el tipeo de busqueda
+                       
+        };
 
           if (!data) {
                     return <></>;
