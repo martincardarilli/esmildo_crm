@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-const SelectBasic = ({ comoQuerramos, name }) => {
+const SelectBasic = ({ handleChange, name }) => {
   const [value, setValue] = useState();
 
   const options = [
@@ -16,7 +16,7 @@ const SelectBasic = ({ comoQuerramos, name }) => {
     console.log(event);
 
     let eventFake = {
-      accessor: "estado", // AHORA SI NAME
+      accessor: "estado", // name
       valor: event.value
   }
     handleChange(eventFake);
