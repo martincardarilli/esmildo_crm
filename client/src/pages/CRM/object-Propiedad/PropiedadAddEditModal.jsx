@@ -23,13 +23,15 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
   const { createPropiedad, updatePropiedad, getPropiedades } = usePropiedades(); // Usando funciones del contexto
   const emptyPropiedad = {
     id: data.length + 1,
-    name: "",
-    address: "",
-    hourFee: "",
+    propiedad:"", 
+    tipo:"", 
+    superficie:"", 
+    valor:"", 
+    estado:"", 
     propietario: "",
   };
   const [selectedPropiedad, setSelectedPropiedad] = useState(emptyPropiedad);
-
+  
   useEffect(() => {
     console.log("PRE");
     console.log(selectedFlatRows);
@@ -255,7 +257,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
           <div className="mb-3">
             <Form.Label>Superficie</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               name="superficie"
               defaultValue={selectedPropiedad.superficie}
               onInput={handleChange}
@@ -264,7 +266,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
           <div className="mb-3">
             <Form.Label>* Valor</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               name="valor"
               defaultValue={selectedPropiedad.valor}
               onInput={handleChange}
