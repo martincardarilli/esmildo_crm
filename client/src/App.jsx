@@ -9,7 +9,7 @@ import { AsanaTaskProvider } from "./context/asanatasksContext";*/
 import './style/fix.css';
 import "./style/AutomationsProfile.css";
 import "./style/AutomationsTable.css";
-import "./style/AutocompleteFloatingLabel.css";
+import "./style/AddEditModal.css";
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

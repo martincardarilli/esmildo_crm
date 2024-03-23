@@ -61,7 +61,7 @@ export const PropiedadProfile = () => {
   const { getPropiedad, Propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
 
   useEffect(() => {
-    const loadPropiedades = async () => {
+    const loadPropiedad = async () => {
       if (params.id) {
         console.log("data requested in ClientProfile.jsx");
         const propiedad = await getPropiedad(params.id);

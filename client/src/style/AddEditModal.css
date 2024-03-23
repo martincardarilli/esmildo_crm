@@ -1,7 +1,21 @@
+/* --------- start ------------------------ otros Input field AddEditModal */
+
 .form-control{
   border-radius:7px;
   height: 40px;
 }
+
+.requerido{
+color: red !important;
+}
+
+/* --------- end ------------------------ otros Input field AddEditModal */
+
+
+
+
+
+/* --------- start ------------------------ Autosuggest (Campo Relacional) */
 
 .campoRelacional{
         /*  color:green !important; */
@@ -66,6 +80,25 @@
 .react-autosuggest__suggestions-container::-webkit-scrollbar {
   width: 10px; /* or the size you want */
 }
+
+/* --------- end ------------------------ Autosuggest (Campo Relacional) */
+
+
+
+
+
+
+
+/* --------- start ------------------------ Dropdown List Select Field */
+.react-select__control{
+  border-radius:7px !important;
+}
+
+.react-select__value-container{
+  padding: 5px 12px !important;
+}
+/* --------- end ------------------------ Dropdown List Select Field */
+
 
 
 
