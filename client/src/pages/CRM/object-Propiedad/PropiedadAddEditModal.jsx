@@ -8,7 +8,7 @@ import { usePropiedades } from "../../../context/propiedadContext";
 import { toast } from "react-toastify";
 
 import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
-import AutocompleteFloatingLabel from './AutocompleteFloatingLabel';
+import AutocompleteFloatingLabel from '../components/AutocompleteFloatingLabel';
 
 import BreadcrumbList from '../components/breadcrumb-list/BreadcrumbList';
 

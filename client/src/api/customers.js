@@ -6,8 +6,7 @@ export const getDeletedCustomersRequest = async () => axios.get("/customers/eras
 
 export const createCustomerRequest = async (customer) => axios.post("/customers", customer);
 
-export const updateCustomerRequest = async (id, customer) =>
-  axios.put(`/customers/${id}`, customer);
+export const updateCustomerRequest = async (id, customer) => axios.put(`/customers/${id}`, customer);
 
 export const deleteCustomerRequest = async (id) => axios.delete(`/customers/${id}`);
 

@@ -1,36 +1,25 @@
-import React, { useEffect } from "react";
-import {
-  Button,
-  Row,
-  Col,
-  Card,
-  Dropdown,
-  Nav,
-  Form,
-  OverlayTrigger,
-  Tooltip,
-  Tab,
-} from "react-bootstrap";
-import { NavLink, useParams } from "react-router-dom";
-import { LAYOUT } from "../components/constants.jsx";
-import HtmlHead from "../components/html-head/HtmlHead.jsx";
-import BreadcrumbList from "../components/breadcrumb-list/BreadcrumbList.jsx";
-import CsLineIcons from "../components/cs-line-icons/CsLineIcons.jsx";
+import React, { useEffect } from 'react';
+import { Button, Row, Col, Card, Dropdown, Nav, Form, OverlayTrigger, Tooltip, Tab } from 'react-bootstrap';
+import { NavLink, useParams } from 'react-router-dom';
+import { LAYOUT } from '../components/constants.jsx';
+import HtmlHead from '../components/html-head/HtmlHead.jsx';
+import BreadcrumbList from '../components/breadcrumb-list/BreadcrumbList.jsx';
+import CsLineIcons from '../components/cs-line-icons/CsLineIcons.jsx';
 //import useCustomLayout from 'hooks/useCustomLayout';
-import Clamp from "../components/clamp/index.jsx";
-import ProfileChart from "../components/ProfileChart.jsx";
+import Clamp from '../components/clamp/index.jsx';
+import ProfileChart from '../components/ProfileChart.jsx';
 //import ChartStreamingLine from '../../interface/plugins/chart/ChartStreamingLine';
 //import './ProfileStandard.css'; // Ruta al archivo CSS
 
 //import { API_ENDPOINTS } from '../../../config';
 
-import { PropiedadTableHistory } from "./PropiedadTableHistory.jsx";
+import { PropiedadTableHistory } from './PropiedadTableHistory.jsx';
 
-import { usePropiedades } from "../../../context/propiedadContext.jsx";
+import { usePropiedades } from '../../../context/propiedadContext.jsx';
 
 export const PropiedadProfile = () => {
-  const title = "Profile Standard";
-  const description = "Profile Standard";
+  const title = 'Profile Standard';
+  const description = 'Profile Standard';
 
   const breadcrumbs = [];
 
@@ -56,16 +45,16 @@ export const PropiedadProfile = () => {
   const params = useParams();
   console.log(params);
 
-  const [propiedad, setData] = React.useState();
+  const [propiedad, setData] = React.useState({});
 
   const { getPropiedad, Propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
-
+  console.log(params);
   useEffect(() => {
     const loadPropiedad = async () => {
       if (params.id) {
-        console.log("data requested in ClientProfile.jsx");
+        console.log('data requested in ClientProfile.jsx');
         const propiedad = await getPropiedad(params.id);
-        console.log("data received at ClientProfile.jsx");
+        console.log('data received at ClientProfile.jsx');
         console.log(propiedad);
         setData(propiedad);
         /*setValue("title", task.title);
@@ -78,12 +67,12 @@ export const PropiedadProfile = () => {
       }
     };
     loadPropiedad();
-  }, []);
-
+  }, []);  console.log("ACAPIDEPROPIEDAD");
+  console.log(propiedad);
   function formatDate(dateString) {
     const date = new Date(dateString);
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return date.toLocaleDateString("en-US", options);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
   }
 
   return (
@@ -111,10 +100,7 @@ export const PropiedadProfile = () => {
 
           {/* Top Buttons Start */}
           <Col md="5" className="d-flex align-items-start justify-content-end">
-            <Button
-              variant="outline-primary"
-              className="btn-icon btn-icon-start btn-icon w-100 w-md-auto ms-1"
-            >
+            <Button variant="outline-primary" className="btn-icon btn-icon-start btn-icon w-100 w-md-auto ms-1">
               <CsLineIcons icon="edit-square" /> <span>Edit</span>
             </Button>
           </Col>
@@ -137,14 +123,13 @@ export const PropiedadProfile = () => {
                       <img src="/img/profile/profile-1.webp" className="img-fluid rounded-xl" alt="thumb" />
                     </div>
                     */}
-
+                      <div>
+                      <CsLineIcons icon="home-garage" className="me-1" />
+                      </div>
                     <div>
-<CsLineIcons icon="car" className="me-1" />
-                    <span>Details</span>
-                    </div>
-         
 
-                   
+                      <span>Details</span>
+                    </div>
 
                     {/*
                     {account && (
@@ -200,29 +185,19 @@ export const PropiedadProfile = () => {
                   </div>
                 </div>
                 <Nav className="flex-column menuIzq" activeKey="overview">
-                  <Nav.Link
-                    className="px-0 border-bottom border-separator-light cursor-pointer itemLista"
-                    eventKey="overview"
-                  >
+                  <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="overview">
                     <CsLineIcons icon="activity" className="me-2" size="17" />
                     <span className="align-middle">Vista general</span>
                   </Nav.Link>
-                  <Nav.Link
-                    className="px-0 border-bottom border-separator-light cursor-pointer itemLista"
-                    eventKey="projects"
-                  >
+                  <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="projects">
                     <CsLineIcons icon="menu-dashed" className="me-2" size="17" />
                     <span className="align-middle">Vista detallada</span>
                   </Nav.Link>
-                  <Nav.Link
-                    className="px-0 border-bottom border-separator-light cursor-pointer itemLista"
-                    eventKey="permissions"
-                  >
+                  <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="permissions">
                     <CsLineIcons icon="suitcase" className="me-2" size="17" />
                     <span className="align-middle">Documentacion</span>
                   </Nav.Link>
-                  
-                  
+
                   <Nav.Link className="px-0 cursor-pointer" eventKey="history">
                     <CsLineIcons icon="eye" className="me-2" size="17" />
                     <span className="align-middle">Historial de cambios</span>
@@ -240,20 +215,17 @@ export const PropiedadProfile = () => {
                 {/* Overview Tab Start */}
 
                 {/* Stats Start */}
-                <h2 className="small-title">Service plan</h2>
+                <h2 className="small-title">Datos Propiedad</h2>
                 <Row className="g-2 mb-5">
                   <Col sm="6" lg="3">
                     <Card className="hover-border-primary">
                       <Card.Body>
                         <div className="heading mb-0 d-flex justify-content-between lh-1-25 mb-3">
-                          <span>Billing</span>
-                          <CsLineIcons
-                            icon="user"
-                            className="text-primary"
-                          />
+                          <span>Estado</span>
+                          <CsLineIcons icon="user" className="text-primary" />
                         </div>
                         <div className="text-small text-muted mb-1">STATUS</div>
-                        <div className="cta-1 text-primary">On time</div>
+                        <div className="cta-1 text-primary">{propiedad.estado}</div>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -262,13 +234,11 @@ export const PropiedadProfile = () => {
                     <Card className="hover-border-primary">
                       <Card.Body>
                         <div className="heading mb-0 d-flex justify-content-between lh-1-25 mb-3">
-                          <span>Plan type</span>
+                          <span>Propiedad tipo </span>
                           <CsLineIcons icon="book" className="text-primary" />
                         </div>
-                        <div className="text-small text-muted mb-1">
-                          CATEGORY
-                        </div>
-                        <div className="cta-1 text-primary">Residential</div>
+                        <div className="text-small text-muted mb-1">CATEGORY</div>
+                        <div className="cta-1 text-primary">{propiedad.propiedad}</div>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -277,16 +247,11 @@ export const PropiedadProfile = () => {
                     <Card className="hover-border-primary">
                       <Card.Body>
                         <div className="heading mb-0 d-flex justify-content-between lh-1-25 mb-3">
-                          <span>Speed</span>
-                          <CsLineIcons
-                            icon="dashboard-1"
-                            className="text-primary"
-                          />
+                          <span>Superficie</span>
+                          <CsLineIcons icon="dashboard-1" className="text-primary" />
                         </div>
-                        <div className="text-small text-muted mb-1">
-                          DOWNLOAD X UPLOAD
-                        </div>
-                        <div className="cta-1 text-primary">50 x 10 Mbps</div>
+                        <div className="text-small text-muted mb-1">DOWNLOAD X UPLOAD</div>
+                        <div className="cta-1 text-primary">{propiedad.superficie}</div>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -295,13 +260,11 @@ export const PropiedadProfile = () => {
                     <Card className="hover-border-primary">
                       <Card.Body>
                         <div className="heading mb-0 d-flex justify-content-between lh-1-25 mb-3">
-                          <span>Cost</span>
+                          <span>Interes</span>
                           <CsLineIcons icon="dollar" className="text-primary" />
                         </div>
-                        <div className="text-small text-muted mb-1">
-                          MONTHLY
-                        </div>
-                        <div className="cta-1 text-primary">$ 100</div>
+                        <div className="text-small text-muted mb-1">MONTHLY</div>
+                        <div className="cta-1 text-primary">{propiedad.tipo}</div>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -309,17 +272,17 @@ export const PropiedadProfile = () => {
                 {/* Stats End */}
 
                 {/* Stats Start */}
-                <h2 className="small-title">Network status</h2>
+                <h2 className="small-title">Contacto a la propiedad</h2>
                 <Row className="g-2 mb-5">
                   <Col sm="6" lg="3">
                     <Card className="hover-border-primary">
                       <Card.Body>
                         <div className="heading mb-0 d-flex justify-content-between lh-1-25 mb-3">
-                          <span>Status</span>
+                          <span>Dueño</span>
                           <CsLineIcons icon="router" className="text-primary" />
                         </div>
                         <div className="text-small text-muted mb-1">ROUTER</div>
-                        <div className="cta-1 text-primary">Online</div>
+                        <div className="cta-1 text-primary">{propiedad.propietario}</div>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -327,13 +290,11 @@ export const PropiedadProfile = () => {
                     <Card className="hover-border-primary">
                       <Card.Body>
                         <div className="heading mb-0 d-flex justify-content-between lh-1-25 mb-3">
-                          <span>Devices online</span>
+                          <span>Email dueño</span>
                           <CsLineIcons icon="wifi" className="text-primary" />
                         </div>
-                        <div className="text-small text-muted mb-1">
-                          NETWORK USERS
-                        </div>
-                        <div className="cta-1 text-primary">7</div>
+                        <div className="text-small text-muted mb-1">NETWORK USERS</div>
+                        <div className="cta-1 text-primary">Email</div>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -341,14 +302,11 @@ export const PropiedadProfile = () => {
                     <Card className="hover-border-primary">
                       <Card.Body>
                         <div className="heading mb-0 d-flex justify-content-between lh-1-25 mb-3">
-                          <span>Latency</span>
-                          <CsLineIcons
-                            icon="antenna"
-                            className="text-primary"
-                          />
+                          <span>Telefono dueño</span>
+                          <CsLineIcons icon="antenna" className="text-primary" />
                         </div>
                         <div className="text-small text-muted mb-1">DELAY</div>
-                        <div className="cta-1 text-primary">24 ms</div>
+                        <div className="cta-1 text-primary"> Telefono</div>
                       </Card.Body>
                     </Card>
                   </Col>
@@ -357,21 +315,24 @@ export const PropiedadProfile = () => {
                       <Card.Body>
                         <div className="heading mb-0 d-flex justify-content-between lh-1-25 mb-3">
                           <span>Uptime</span>
-                          <CsLineIcons
-                            icon="activity"
-                            className="text-primary"
-                          />
+                          <CsLineIcons icon="activity" className="text-primary" />
                         </div>
-                        <div className="text-small text-muted mb-1">
-                          Time Connection
-                        </div>
+                        <div className="text-small text-muted mb-1">Time Connection</div>
                         <div className="cta-1 text-primary">524</div>
                       </Card.Body>
                     </Card>
                   </Col>
                 </Row>
-
                 {/* Stats End */}
+
+
+
+
+
+
+
+
+
                 {/*  ROUTERS/ DEVICE Start */}
                 {/*  ACA HAY QUE METERLE UN FOR EACH */}
                 <h2 className="small-title">Devices</h2>
@@ -380,10 +341,7 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             Router casio
                           </Clamp>
@@ -393,112 +351,52 @@ export const PropiedadProfile = () => {
                           <div className="devicecol">
                             <h2 className="small-title">Device</h2>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="diagram-2"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Configuration: Router
-                              </span>
+                              <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Configuration: Router</span>
                             </div>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="trend-up"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                MAC Address: 38:72:df:fa:af:99
-                              </span>
+                              <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">MAC Address: 38:72:df:fa:af:99</span>
                             </div>
                             <div>
-                              <CsLineIcons
-                                icon="check-square"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Firmware version: 2.0.1.520
-                              </span>
+                              <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Firmware version: 2.0.1.520</span>
                             </div>
                             <div>
-                              <CsLineIcons
-                                icon="check-square"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Unum Agent Version: 2.0.1.520
-                              </span>
+                              <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Unum Agent Version: 2.0.1.520</span>
                             </div>
                           </div>
 
                           <div className="devicecol">
                             <h2 className="small-title">Connections</h2>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="diagram-2"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Internal IPv4 address: 192.168.1.2
-                              </span>
+                              <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Internal IPv4 address: 192.168.1.2</span>
                             </div>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="trend-up"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                External IPv4 address: 192.168.1.5
-                              </span>
+                              <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">External IPv4 address: 192.168.1.5</span>
                             </div>
                           </div>
 
                           <div className="devicecol">
                             <h2 className="small-title">Radios</h2>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="diagram-2"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Configuration: Router
-                              </span>
+                              <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Configuration: Router</span>
                             </div>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="trend-up"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                MAC Address: 38:72:df:fa:af:99
-                              </span>
+                              <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">MAC Address: 38:72:df:fa:af:99</span>
                             </div>
                             <div>
-                              <CsLineIcons
-                                icon="check-square"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Firmware version: 2.0.1.520
-                              </span>
+                              <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Firmware version: 2.0.1.520</span>
                             </div>
                             <div>
-                              <CsLineIcons
-                                icon="check-square"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Unum Agent Version: 2.0.1.520
-                              </span>
+                              <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Unum Agent Version: 2.0.1.520</span>
                             </div>
                           </div>
                         </div>
@@ -509,10 +407,7 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             Router casio
                           </Clamp>
@@ -522,112 +417,52 @@ export const PropiedadProfile = () => {
                           <div className="devicecol">
                             <h2 className="small-title">Device</h2>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="diagram-2"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Configuration: Router
-                              </span>
+                              <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Configuration: Router</span>
                             </div>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="trend-up"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                MAC Address: 38:72:df:fa:af:99
-                              </span>
+                              <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">MAC Address: 38:72:df:fa:af:99</span>
                             </div>
                             <div>
-                              <CsLineIcons
-                                icon="check-square"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Firmware version: 2.0.1.520
-                              </span>
+                              <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Firmware version: 2.0.1.520</span>
                             </div>
                             <div>
-                              <CsLineIcons
-                                icon="check-square"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Unum Agent Version: 2.0.1.520
-                              </span>
+                              <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Unum Agent Version: 2.0.1.520</span>
                             </div>
                           </div>
 
                           <div className="devicecol">
                             <h2 className="small-title">Connections</h2>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="diagram-2"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Internal IPv4 address: 192.168.1.2
-                              </span>
+                              <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Internal IPv4 address: 192.168.1.2</span>
                             </div>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="trend-up"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                External IPv4 address: 192.168.1.5
-                              </span>
+                              <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">External IPv4 address: 192.168.1.5</span>
                             </div>
                           </div>
 
                           <div className="devicecol">
                             <h2 className="small-title">Radios</h2>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="diagram-2"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Configuration: Router
-                              </span>
+                              <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Configuration: Router</span>
                             </div>
                             <div className="mb-2">
-                              <CsLineIcons
-                                icon="trend-up"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                MAC Address: 38:72:df:fa:af:99
-                              </span>
+                              <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">MAC Address: 38:72:df:fa:af:99</span>
                             </div>
                             <div>
-                              <CsLineIcons
-                                icon="check-square"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Firmware version: 2.0.1.520
-                              </span>
+                              <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Firmware version: 2.0.1.520</span>
                             </div>
                             <div>
-                              <CsLineIcons
-                                icon="check-square"
-                                className="text-muted me-2"
-                                size="17"
-                              />
-                              <span className="align-middle text-alternate">
-                                Unum Agent Version: 2.0.1.520
-                              </span>
+                              <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                              <span className="align-middle text-alternate">Unum Agent Version: 2.0.1.520</span>
                             </div>
                           </div>
                         </div>
@@ -652,10 +487,7 @@ export const PropiedadProfile = () => {
                 <Card className="mb-5">
                   <Card.Body>
                     <Row className="g-0">
-                      <Col
-                        xs="auto"
-                        className="sw-1 d-flex flex-column justify-content-center align-items-center position-relative me-4"
-                      >
+                      <Col xs="auto" className="sw-1 d-flex flex-column justify-content-center align-items-center position-relative me-4">
                         <div className="w-100 d-flex sh-1" />
                         <div className="rounded-xl shadow d-flex flex-shrink-0 justify-content-center align-items-center">
                           <div className="bg-gradient-light sw-1 sh-1 rounded-xl position-relative" />
@@ -668,25 +500,15 @@ export const PropiedadProfile = () => {
                         <div className="h-100">
                           <div className="d-flex flex-column justify-content-start">
                             <div className="d-flex flex-column">
-                              <Button
-                                variant="link"
-                                className="p-0 pt-1 heading text-start btimeline"
-                              >
-                                <CsLineIcons
-                                  icon="server"
-                                  className="text-primary align-top timeline"
-                                />
+                              <Button variant="link" className="p-0 pt-1 heading text-start btimeline">
+                                <CsLineIcons icon="server" className="text-primary align-top timeline" />
                                 Conexión establecida con el servidor principal.
                               </Button>
-                              <div className="text-alternate">
-                                16:24, 21 Dic 2023
-                              </div>
+                              <div className="text-alternate">16:24, 21 Dic 2023</div>
                               <div className="text-muted mt-1">
-                                Acción: El router establece una conexión segura
-                                con el servidor principal.
+                                Acción: El router establece una conexión segura con el servidor principal.
                                 <br />
-                                Resultado: El router está listo para enrutar el
-                                tráfico de red.
+                                Resultado: El router está listo para enrutar el tráfico de red.
                               </div>
                             </div>
                           </div>
@@ -694,10 +516,7 @@ export const PropiedadProfile = () => {
                       </Col>
                     </Row>
                     <Row className="g-0">
-                      <Col
-                        xs="auto"
-                        className="sw-1 d-flex flex-column justify-content-center align-items-center position-relative me-4"
-                      >
+                      <Col xs="auto" className="sw-1 d-flex flex-column justify-content-center align-items-center position-relative me-4">
                         <div className="w-100 d-flex sh-1 position-relative justify-content-center">
                           <div className="line-w-1 bg-separator h-100 position-absolute" />
                         </div>
@@ -712,25 +531,14 @@ export const PropiedadProfile = () => {
                         <div className="h-100">
                           <div className="d-flex flex-column justify-content-start">
                             <div className="d-flex flex-column">
-                              <Button
-                                variant="link"
-                                className="p-0 pt-1 heading text-start btimeline"
-                              >
-                                <CsLineIcons
-                                  icon="router"
-                                  className="text-primary align-top timeline"
-                                />
+                              <Button variant="link" className="p-0 pt-1 heading text-start btimeline">
+                                <CsLineIcons icon="router" className="text-primary align-top timeline" />
                                 Actualización del firmware del router.
                               </Button>
-                              <div className="text-alternate">
-                                03:20, 14 Dic 2023
-                              </div>
+                              <div className="text-alternate">03:20, 14 Dic 2023</div>
                               <div className="text-muted mt-1">
-                                Acción: El router descarga e instala una nueva
-                                versión del firmware. <br />
-                                Resultado: El router se reinicia con la nueva
-                                versión del firmware, mejorando la seguridad y
-                                el rendimiento.
+                                Acción: El router descarga e instala una nueva versión del firmware. <br />
+                                Resultado: El router se reinicia con la nueva versión del firmware, mejorando la seguridad y el rendimiento.
                               </div>
                             </div>
                           </div>
@@ -738,10 +546,7 @@ export const PropiedadProfile = () => {
                       </Col>
                     </Row>
                     <Row className="g-0">
-                      <Col
-                        xs="auto"
-                        className="sw-1 d-flex flex-column justify-content-center align-items-center position-relative me-4"
-                      >
+                      <Col xs="auto" className="sw-1 d-flex flex-column justify-content-center align-items-center position-relative me-4">
                         <div className="w-100 d-flex sh-1 position-relative justify-content-center">
                           <div className="line-w-1 bg-separator h-100 position-absolute" />
                         </div>
@@ -756,27 +561,15 @@ export const PropiedadProfile = () => {
                         <div className="h-100">
                           <div className="d-flex flex-column justify-content-start">
                             <div className="d-flex flex-column">
-                              <Button
-                                variant="link"
-                                className="p-0 pt-1 heading text-start btimeline"
-                              >
-                                <CsLineIcons
-                                  icon="router"
-                                  className="text-primary align-top timeline"
-                                />
+                              <Button variant="link" className="p-0 pt-1 heading text-start btimeline">
+                                <CsLineIcons icon="router" className="text-primary align-top timeline" />
                                 Cambio en la configuración de red.
                               </Button>
-                              <div className="text-alternate">
-                                20:41, 03 Dic 2023
-                              </div>
+                              <div className="text-alternate">20:41, 03 Dic 2023</div>
                               <div className="text-muted mt-1">
-                                Acción: El administrador del sistema modifica la
-                                configuración del enrutador para agregar una
-                                nueva subred.
+                                Acción: El administrador del sistema modifica la configuración del enrutador para agregar una nueva subred.
                                 <br />
-                                Resultado: El router comienza a enrutar el
-                                tráfico hacia la nueva subred según la
-                                nueva configuración.
+                                Resultado: El router comienza a enrutar el tráfico hacia la nueva subred según la nueva configuración.
                               </div>
                             </div>
                           </div>
@@ -784,10 +577,7 @@ export const PropiedadProfile = () => {
                       </Col>
                     </Row>
                     <Row className="g-0">
-                      <Col
-                        xs="auto"
-                        className="sw-1 d-flex flex-column justify-content-center align-items-center position-relative me-4"
-                      >
+                      <Col xs="auto" className="sw-1 d-flex flex-column justify-content-center align-items-center position-relative me-4">
                         <div className="w-100 d-flex sh-1 position-relative justify-content-center">
                           <div className="line-w-1 bg-separator h-100 position-absolute" />
                         </div>
@@ -802,26 +592,14 @@ export const PropiedadProfile = () => {
                         <div className="h-100">
                           <div className="d-flex flex-column justify-content-start">
                             <div className="d-flex flex-column">
-                              <Button
-                                variant="link"
-                                className="p-0 pt-1 heading text-start btimeline"
-                              >
-                                <CsLineIcons
-                                  icon="close-circle"
-                                  className="text-primary align-top timeline"
-                                />
+                              <Button variant="link" className="p-0 pt-1 heading text-start btimeline">
+                                <CsLineIcons icon="close-circle" className="text-primary align-top timeline" />
                                 Desconexión de un dispositivo inalámbrico.
                               </Button>
-                              <div className="text-alternate">
-                                22:12, 15 Nov 2023
-                              </div>
+                              <div className="text-alternate">22:12, 15 Nov 2023</div>
                               <div className="text-muted mt-1">
-                                Acción: El router identifica la pérdida de
-                                conexión de un dispositivo previamente
-                                conectado. <br />
-                                Resultado: El dispositivo ya no puede acceder a
-                                la red y se registra la desconexión en el
-                                registro del router.
+                                Acción: El router identifica la pérdida de conexión de un dispositivo previamente conectado. <br />
+                                Resultado: El dispositivo ya no puede acceder a la red y se registra la desconexión en el registro del router.
                               </div>
                             </div>
                           </div>
@@ -829,10 +607,7 @@ export const PropiedadProfile = () => {
                       </Col>
                     </Row>
                     <Row className="g-0">
-                      <Col
-                        xs="auto"
-                        className="sw-1 d-flex flex-column justify-content-center align-items-center position-relative me-4"
-                      >
+                      <Col xs="auto" className="sw-1 d-flex flex-column justify-content-center align-items-center position-relative me-4">
                         <div className="w-100 d-flex sh-1 position-relative justify-content-center">
                           <div className="line-w-1 bg-separator h-100 position-absolute" />
                         </div>
@@ -845,26 +620,15 @@ export const PropiedadProfile = () => {
                         <div className="h-100">
                           <div className="d-flex flex-column justify-content-start">
                             <div className="d-flex flex-column">
-                              <Button
-                                variant="link"
-                                className="p-0 pt-1 heading text-start btimeline"
-                              >
-                                <CsLineIcons
-                                  icon="close-circle"
-                                  className="text-primary align-top timeline"
-                                />
+                              <Button variant="link" className="p-0 pt-1 heading text-start btimeline">
+                                <CsLineIcons icon="close-circle" className="text-primary align-top timeline" />
                                 Intento de conexión fallido.
                               </Button>
-                              <div className="text-alternate">
-                                02:58, 08 Ago 2023
-                              </div>
+                              <div className="text-alternate">02:58, 08 Ago 2023</div>
                               <div className="text-muted mt-1">
-                                Acción: Un dispositivo intenta conectarse a la
-                                red Wi-Fi utilizando una contraseña incorrecta.
+                                Acción: Un dispositivo intenta conectarse a la red Wi-Fi utilizando una contraseña incorrecta.
                                 <br />
-                                Resultado: El router rechaza la conexión y
-                                registra el intento fallido en el registro de
-                                eventos.
+                                Resultado: El router rechaza la conexión y registra el intento fallido en el registro de eventos.
                               </div>
                             </div>
                           </div>
@@ -888,19 +652,14 @@ export const PropiedadProfile = () => {
                       <Col xs="auto">
                         <div className="sw-2 d-inline-block d-flex justify-content-start align-items-center h-100">
                           <div className="sh-3">
-                            <CsLineIcons
-                              icon="circle"
-                              className="text-primary align-top"
-                            />
+                            <CsLineIcons icon="circle" className="text-primary align-top" />
                           </div>
                         </div>
                       </Col>
                       <Col>
                         <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-0 h-100 justify-content-center">
                           <div className="d-flex flex-column">
-                            <div className="text-alternate mt-n1 lh-1-25">
-                              New user registiration
-                            </div>
+                            <div className="text-alternate mt-n1 lh-1-25">New user registiration</div>
                           </div>
                         </div>
                       </Col>
@@ -914,19 +673,14 @@ export const PropiedadProfile = () => {
                       <Col xs="auto">
                         <div className="sw-2 d-inline-block d-flex justify-content-start align-items-center h-100">
                           <div className="sh-3">
-                            <CsLineIcons
-                              icon="square"
-                              className="text-secondary align-top"
-                            />
+                            <CsLineIcons icon="square" className="text-secondary align-top" />
                           </div>
                         </div>
                       </Col>
                       <Col>
                         <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-0 h-100 justify-content-center">
                           <div className="d-flex flex-column">
-                            <div className="text-alternate mt-n1 lh-1-25">
-                              Product out of stock: Breadstick
-                            </div>
+                            <div className="text-alternate mt-n1 lh-1-25">Product out of stock: Breadstick</div>
                           </div>
                         </div>
                       </Col>
@@ -940,19 +694,14 @@ export const PropiedadProfile = () => {
                       <Col xs="auto">
                         <div className="sw-2 d-inline-block d-flex justify-content-start align-items-center h-100">
                           <div className="sh-3">
-                            <CsLineIcons
-                              icon="triangle"
-                              className="text-tertiary align-top"
-                            />
+                            <CsLineIcons icon="triangle" className="text-tertiary align-top" />
                           </div>
                         </div>
                       </Col>
                       <Col>
                         <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-0 h-100 justify-content-center">
                           <div className="d-flex flex-column">
-                            <div className="text-alternate mt-n1 lh-1-25">
-                              Category page returned an error
-                            </div>
+                            <div className="text-alternate mt-n1 lh-1-25">Category page returned an error</div>
                           </div>
                         </div>
                       </Col>
@@ -966,19 +715,14 @@ export const PropiedadProfile = () => {
                       <Col xs="auto">
                         <div className="sw-2 d-inline-block d-flex justify-content-start align-items-center h-100">
                           <div className="sh-3">
-                            <CsLineIcons
-                              icon="circle"
-                              className="text-primary align-top"
-                            />
+                            <CsLineIcons icon="circle" className="text-primary align-top" />
                           </div>
                         </div>
                       </Col>
                       <Col>
                         <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-0 h-100 justify-content-center">
                           <div className="d-flex flex-column">
-                            <div className="text-alternate mt-n1 lh-1-25">
-                              14 products added
-                            </div>
+                            <div className="text-alternate mt-n1 lh-1-25">14 products added</div>
                           </div>
                         </div>
                       </Col>
@@ -992,19 +736,14 @@ export const PropiedadProfile = () => {
                       <Col xs="auto">
                         <div className="sw-2 d-inline-block d-flex justify-content-start align-items-center h-100">
                           <div className="sh-3">
-                            <CsLineIcons
-                              icon="circle"
-                              className="text-primary align-top"
-                            />
+                            <CsLineIcons icon="circle" className="text-primary align-top" />
                           </div>
                         </div>
                       </Col>
                       <Col>
                         <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-0 h-100 justify-content-center">
                           <div className="d-flex flex-column">
-                            <div className="text-alternate mt-n1 lh-1-25">
-                              New sale: Steirer Brot
-                            </div>
+                            <div className="text-alternate mt-n1 lh-1-25">New sale: Steirer Brot</div>
                           </div>
                         </div>
                       </Col>
@@ -1018,19 +757,14 @@ export const PropiedadProfile = () => {
                       <Col xs="auto">
                         <div className="sw-2 d-inline-block d-flex justify-content-start align-items-center h-100">
                           <div className="sh-3">
-                            <CsLineIcons
-                              icon="hexagon"
-                              className="text-quaternary align-top"
-                            />
+                            <CsLineIcons icon="hexagon" className="text-quaternary align-top" />
                           </div>
                         </div>
                       </Col>
                       <Col>
                         <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-0 h-100 justify-content-center">
                           <div className="d-flex flex-column">
-                            <div className="text-alternate mt-n1 lh-1-25">
-                              New sale: Steirer Brot
-                            </div>
+                            <div className="text-alternate mt-n1 lh-1-25">New sale: Steirer Brot</div>
                           </div>
                         </div>
                       </Col>
@@ -1057,19 +791,9 @@ export const PropiedadProfile = () => {
                     </div>
                   </Col>
                   <Col xs="auto" className="text-end mb-1">
-                    <OverlayTrigger
-                      placement="top"
-                      delay={{ show: 1000, hide: 0 }}
-                      overlay={<Tooltip>Result Count</Tooltip>}
-                    >
-                      <Dropdown
-                        align={{ xs: "end" }}
-                        className="d-inline-block ms-1"
-                      >
-                        <Dropdown.Toggle
-                          variant="foreground-alternate"
-                          className="shadow sw-13"
-                        >
+                    <OverlayTrigger placement="top" delay={{ show: 1000, hide: 0 }} overlay={<Tooltip>Result Count</Tooltip>}>
+                      <Dropdown align={{ xs: 'end' }} className="d-inline-block ms-1">
+                        <Dropdown.Toggle variant="foreground-alternate" className="shadow sw-13">
                           All
                         </Dropdown.Toggle>
                         <Dropdown.Menu
@@ -1077,7 +801,7 @@ export const PropiedadProfile = () => {
                           popperConfig={{
                             modifiers: [
                               {
-                                name: "computeStyles",
+                                name: 'computeStyles',
                                 options: {
                                   gpuAcceleration: false,
                                 },
@@ -1086,12 +810,8 @@ export const PropiedadProfile = () => {
                           }}
                         >
                           <Dropdown.Item href="#/action-1">All</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">
-                            Active
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">
-                            Inactive
-                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-2">Active</Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">Inactive</Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                     </OverlayTrigger>
@@ -1104,43 +824,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             Basic Introduction to Bread Making
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 4
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 4</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="trend-up"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Active
-                          </span>
+                          <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Active</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="check-square"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Completed
-                          </span>
+                          <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Completed</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1148,43 +847,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             4 Facts About Old Baking Techniques
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 3
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 3</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="trend-up"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Active
-                          </span>
+                          <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Active</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="clock"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Pending
-                          </span>
+                          <CsLineIcons icon="clock" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Pending</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1192,43 +870,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             Apple Cake Recipe for Starters
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 8
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 8</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="lock-on"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Locked
-                          </span>
+                          <CsLineIcons icon="lock-on" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Locked</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="sync-horizontal"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Continuing
-                          </span>
+                          <CsLineIcons icon="sync-horizontal" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Continuing</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1236,43 +893,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             A Complete Guide to Mix Dough for the Molds
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 12
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 12</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="trend-up"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Active
-                          </span>
+                          <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Active</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="check-square"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Completed
-                          </span>
+                          <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Completed</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1280,43 +916,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             14 Facts About Sugar Products
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 2
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 2</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="trend-down"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Inactive
-                          </span>
+                          <CsLineIcons icon="trend-down" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Inactive</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="box"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Archived
-                          </span>
+                          <CsLineIcons icon="box" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Archived</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1324,43 +939,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             Easy and Efficient Tricks for Baking Crispy Breads
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 2
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 2</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="trend-up"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Active
-                          </span>
+                          <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Active</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="clock"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Pending
-                          </span>
+                          <CsLineIcons icon="clock" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Pending</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1368,43 +962,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             Apple Cake Recipe for Starters
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 6
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 6</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="trend-down"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Inactive
-                          </span>
+                          <CsLineIcons icon="trend-down" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Inactive</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="box"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Archived
-                          </span>
+                          <CsLineIcons icon="box" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Archived</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1412,43 +985,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             Simple Guide to Mix Dough
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 22
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 22</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="lock-on"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Locked
-                          </span>
+                          <CsLineIcons icon="lock-on" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Locked</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="check-square"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Completed
-                          </span>
+                          <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Completed</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1456,43 +1008,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             10 Secrets Every Southern Baker Knows
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 3
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 3</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="trend-up"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Active
-                          </span>
+                          <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Active</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="sync-horizontal"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Continuing
-                          </span>
+                          <CsLineIcons icon="sync-horizontal" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Continuing</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1500,43 +1031,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             Recipes for Sweet and Healty Treats
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 1
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 1</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="trend-down"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Inactive
-                          </span>
+                          <CsLineIcons icon="trend-down" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Inactive</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="clock"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Pending
-                          </span>
+                          <CsLineIcons icon="clock" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Pending</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1544,43 +1054,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             Better Ways to Mix Dough for the Molds
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 20
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 20</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="trend-up"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Active
-                          </span>
+                          <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Active</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="clock"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Pending
-                          </span>
+                          <CsLineIcons icon="clock" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Pending</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1588,43 +1077,22 @@ export const PropiedadProfile = () => {
                   <Col>
                     <Card className="h-100">
                       <Card.Body>
-                        <NavLink
-                          to="#"
-                          className="stretched-link heading sh-5 d-inline-block h5"
-                        >
+                        <NavLink to="#" className="stretched-link heading sh-5 d-inline-block h5">
                           <Clamp tag="span" clamp="2">
                             Introduction to Baking Cakes
                           </Clamp>
                         </NavLink>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="diagram-2"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Contributors: 13
-                          </span>
+                          <CsLineIcons icon="diagram-2" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Contributors: 13</span>
                         </div>
                         <div className="mb-2">
-                          <CsLineIcons
-                            icon="trend-up"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Active
-                          </span>
+                          <CsLineIcons icon="trend-up" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Active</span>
                         </div>
                         <div>
-                          <CsLineIcons
-                            icon="check-square"
-                            className="text-muted me-2"
-                            size="17"
-                          />
-                          <span className="align-middle text-alternate">
-                            Completed
-                          </span>
+                          <CsLineIcons icon="check-square" className="text-muted me-2" size="17" />
+                          <span className="align-middle text-alternate">Completed</span>
                         </div>
                       </Card.Body>
                     </Card>
@@ -1640,18 +1108,13 @@ export const PropiedadProfile = () => {
                   <Card className="mb-2">
                     <Card.Body className="py-4">
                       <label className="form-check custom-icon mb-0 checked-opacity-75">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          defaultChecked
-                        />
+                        <input type="checkbox" className="form-check-input" defaultChecked />
                         <span className="form-check-label">
                           <span className="content">
                             <span className="heading mb-1 lh-1-25">Create</span>
                             <span className="d-block text-small text-muted">
-                              Chocolate cake biscuit donut cotton candy soufflé
-                              cake macaroon. Halvah chocolate cotton candy sweet
-                              roll jelly-o candy danish dragée.
+                              Chocolate cake biscuit donut cotton candy soufflé cake macaroon. Halvah chocolate cotton candy sweet roll jelly-o candy danish
+                              dragée.
                             </span>
                           </span>
                         </span>
@@ -1664,13 +1127,8 @@ export const PropiedadProfile = () => {
                         <input type="checkbox" className="form-check-input" />
                         <span className="form-check-label">
                           <span className="content">
-                            <span className="heading mb-1 lh-1-25">
-                              Publish
-                            </span>
-                            <span className="d-block text-small text-muted">
-                              Jelly beans wafer candy caramels fruitcake
-                              macaroon sweet roll.
-                            </span>
+                            <span className="heading mb-1 lh-1-25">Publish</span>
+                            <span className="d-block text-small text-muted">Jelly beans wafer candy caramels fruitcake macaroon sweet roll.</span>
                           </span>
                         </span>
                       </label>
@@ -1683,10 +1141,7 @@ export const PropiedadProfile = () => {
                         <span className="form-check-label">
                           <span className="content">
                             <span className="heading mb-1 lh-1-25">Edit</span>
-                            <span className="d-block text-small text-muted">
-                              Jelly cake jelly sesame snaps jelly beans jelly
-                              beans.
-                            </span>
+                            <span className="d-block text-small text-muted">Jelly cake jelly sesame snaps jelly beans jelly beans.</span>
                           </span>
                         </span>
                       </label>
@@ -1695,17 +1150,11 @@ export const PropiedadProfile = () => {
                   <Card className="mb-2">
                     <Card.Body className="py-4">
                       <label className="form-check custom-icon mb-0 checked-opacity-75">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          defaultChecked
-                        />
+                        <input type="checkbox" className="form-check-input" defaultChecked />
                         <span className="form-check-label">
                           <span className="content">
                             <span className="heading mb-1 lh-1-25">Delete</span>
-                            <span className="d-block text-small text-muted">
-                              Danish oat cake pudding.
-                            </span>
+                            <span className="d-block text-small text-muted">Danish oat cake pudding.</span>
                           </span>
                         </span>
                       </label>
@@ -1714,20 +1163,11 @@ export const PropiedadProfile = () => {
                   <Card className="mb-2">
                     <Card.Body className="py-4">
                       <label className="form-check custom-icon mb-0 checked-opacity-75">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          defaultChecked
-                        />
+                        <input type="checkbox" className="form-check-input" defaultChecked />
                         <span className="form-check-label">
                           <span className="content">
-                            <span className="heading mb-1 lh-1-25">
-                              Add User
-                            </span>
-                            <span className="d-block text-small text-muted">
-                              Soufflé chocolate cake chupa chups danish brownie
-                              pudding fruitcake.
-                            </span>
+                            <span className="heading mb-1 lh-1-25">Add User</span>
+                            <span className="d-block text-small text-muted">Soufflé chocolate cake chupa chups danish brownie pudding fruitcake.</span>
                           </span>
                         </span>
                       </label>
@@ -1739,13 +1179,8 @@ export const PropiedadProfile = () => {
                         <input type="checkbox" className="form-check-input" />
                         <span className="form-check-label">
                           <span className="content">
-                            <span className="heading mb-1 lh-1-25">
-                              Edit User
-                            </span>
-                            <span className="d-block text-small text-muted">
-                              Biscuit powder brownie powder sesame snaps jelly-o
-                              dragée cake.
-                            </span>
+                            <span className="heading mb-1 lh-1-25">Edit User</span>
+                            <span className="d-block text-small text-muted">Biscuit powder brownie powder sesame snaps jelly-o dragée cake.</span>
                           </span>
                         </span>
                       </label>
@@ -1757,13 +1192,9 @@ export const PropiedadProfile = () => {
                         <input type="checkbox" className="form-check-input" />
                         <span className="form-check-label">
                           <span className="content">
-                            <span className="heading mb-1 lh-1-25">
-                              Delete User
-                            </span>
+                            <span className="heading mb-1 lh-1-25">Delete User</span>
                             <span className="d-block text-small text-muted">
-                              Liquorice jelly powder fruitcake oat cake. Gummies
-                              tiramisu cake jelly-o bonbon. Marshmallow
-                              liquorice croissant.
+                              Liquorice jelly powder fruitcake oat cake. Gummies tiramisu cake jelly-o bonbon. Marshmallow liquorice croissant.
                             </span>
                           </span>
                         </span>
@@ -1782,26 +1213,16 @@ export const PropiedadProfile = () => {
                       <Card.Body>
                         <Row className="g-0 sh-6">
                           <Col xs="auto">
-                            <img
-                              src="/img/profile/profile-1.webp"
-                              className="card-img rounded-xl sh-6 sw-6"
-                              alt="thumb"
-                            />
+                            <img src="/img/profile/profile-1.webp" className="card-img rounded-xl sh-6 sw-6" alt="thumb" />
                           </Col>
                           <Col>
                             <div className="d-flex flex-row ps-4 h-100 align-items-center justify-content-between">
                               <div className="d-flex flex-column">
                                 <div>Blaine Cottrell</div>
-                                <div className="text-small text-muted">
-                                  Project Manager
-                                </div>
+                                <div className="text-small text-muted">Project Manager</div>
                               </div>
                               <div className="d-flex">
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  className="ms-1"
-                                >
+                                <Button variant="outline-primary" size="sm" className="ms-1">
                                   Follow
                                 </Button>
                               </div>
@@ -1816,26 +1237,16 @@ export const PropiedadProfile = () => {
                       <Card.Body>
                         <Row className="g-0 sh-6">
                           <Col xs="auto">
-                            <img
-                              src="/img/profile/profile-2.webp"
-                              className="card-img rounded-xl sh-6 sw-6"
-                              alt="thumb"
-                            />
+                            <img src="/img/profile/profile-2.webp" className="card-img rounded-xl sh-6 sw-6" alt="thumb" />
                           </Col>
                           <Col>
                             <div className="d-flex flex-row ps-4 h-100 align-items-center justify-content-between">
                               <div className="d-flex flex-column">
                                 <div>Cherish Kerr</div>
-                                <div className="text-small text-muted">
-                                  Development Lead
-                                </div>
+                                <div className="text-small text-muted">Development Lead</div>
                               </div>
                               <div className="d-flex">
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  className="ms-1"
-                                >
+                                <Button variant="outline-primary" size="sm" className="ms-1">
                                   Follow
                                 </Button>
                               </div>
@@ -1850,26 +1261,16 @@ export const PropiedadProfile = () => {
                       <Card.Body>
                         <Row className="g-0 sh-6">
                           <Col xs="auto">
-                            <img
-                              src="/img/profile/profile-3.webp"
-                              className="card-img rounded-xl sh-6 sw-6"
-                              alt="thumb"
-                            />
+                            <img src="/img/profile/profile-3.webp" className="card-img rounded-xl sh-6 sw-6" alt="thumb" />
                           </Col>
                           <Col>
                             <div className="d-flex flex-row ps-4 h-100 align-items-center justify-content-between">
                               <div className="d-flex flex-column">
                                 <div>Kirby Peters</div>
-                                <div className="text-small text-muted">
-                                  Accounting
-                                </div>
+                                <div className="text-small text-muted">Accounting</div>
                               </div>
                               <div className="d-flex">
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  className="ms-1"
-                                >
+                                <Button variant="outline-primary" size="sm" className="ms-1">
                                   Follow
                                 </Button>
                               </div>
@@ -1884,26 +1285,16 @@ export const PropiedadProfile = () => {
                       <Card.Body>
                         <Row className="g-0 sh-6">
                           <Col xs="auto">
-                            <img
-                              src="/img/profile/profile-4.webp"
-                              className="card-img rounded-xl sh-6 sw-6"
-                              alt="thumb"
-                            />
+                            <img src="/img/profile/profile-4.webp" className="card-img rounded-xl sh-6 sw-6" alt="thumb" />
                           </Col>
                           <Col>
                             <div className="d-flex flex-row ps-4 h-100 align-items-center justify-content-between">
                               <div className="d-flex flex-column">
                                 <div>Olli Hawkins</div>
-                                <div className="text-small text-muted">
-                                  Client Relations Lead
-                                </div>
+                                <div className="text-small text-muted">Client Relations Lead</div>
                               </div>
                               <div className="d-flex">
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  className="ms-1"
-                                >
+                                <Button variant="outline-primary" size="sm" className="ms-1">
                                   Follow
                                 </Button>
                               </div>
@@ -1918,26 +1309,16 @@ export const PropiedadProfile = () => {
                       <Card.Body>
                         <Row className="g-0 sh-6">
                           <Col xs="auto">
-                            <img
-                              src="/img/profile/profile-5.webp"
-                              className="card-img rounded-xl sh-6 sw-6"
-                              alt="thumb"
-                            />
+                            <img src="/img/profile/profile-5.webp" className="card-img rounded-xl sh-6 sw-6" alt="thumb" />
                           </Col>
                           <Col>
                             <div className="d-flex flex-row ps-4 h-100 align-items-center justify-content-between">
                               <div className="d-flex flex-column">
                                 <div>Luna Wigglebutt</div>
-                                <div className="text-small text-muted">
-                                  Propiedad Engagement
-                                </div>
+                                <div className="text-small text-muted">Propiedad Engagement</div>
                               </div>
                               <div className="d-flex">
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  className="ms-1"
-                                >
+                                <Button variant="outline-primary" size="sm" className="ms-1">
                                   Follow
                                 </Button>
                               </div>
@@ -1952,26 +1333,16 @@ export const PropiedadProfile = () => {
                       <Card.Body>
                         <Row className="g-0 sh-6">
                           <Col xs="auto">
-                            <img
-                              src="/img/profile/profile-6.webp"
-                              className="card-img rounded-xl sh-6 sw-6"
-                              alt="thumb"
-                            />
+                            <img src="/img/profile/profile-6.webp" className="card-img rounded-xl sh-6 sw-6" alt="thumb" />
                           </Col>
                           <Col>
                             <div className="d-flex flex-row ps-4 h-100 align-items-center justify-content-between">
                               <div className="d-flex flex-column">
                                 <div>Kerr Jackson</div>
-                                <div className="text-small text-muted">
-                                  Frontend Developer
-                                </div>
+                                <div className="text-small text-muted">Frontend Developer</div>
                               </div>
                               <div className="d-flex">
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  className="ms-1"
-                                >
+                                <Button variant="outline-primary" size="sm" className="ms-1">
                                   Follow
                                 </Button>
                               </div>
@@ -1986,26 +1357,16 @@ export const PropiedadProfile = () => {
                       <Card.Body>
                         <Row className="g-0 sh-6">
                           <Col xs="auto">
-                            <img
-                              src="/img/profile/profile-7.webp"
-                              className="card-img rounded-xl sh-6 sw-6"
-                              alt="thumb"
-                            />
+                            <img src="/img/profile/profile-7.webp" className="card-img rounded-xl sh-6 sw-6" alt="thumb" />
                           </Col>
                           <Col>
                             <div className="d-flex flex-row ps-4 h-100 align-items-center justify-content-between">
                               <div className="d-flex flex-column">
                                 <div>Kathryn Mengel</div>
-                                <div className="text-small text-muted">
-                                  Team Leader
-                                </div>
+                                <div className="text-small text-muted">Team Leader</div>
                               </div>
                               <div className="d-flex">
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  className="ms-1"
-                                >
+                                <Button variant="outline-primary" size="sm" className="ms-1">
                                   Follow
                                 </Button>
                               </div>
@@ -2020,26 +1381,16 @@ export const PropiedadProfile = () => {
                       <Card.Body>
                         <Row className="g-0 sh-6">
                           <Col xs="auto">
-                            <img
-                              src="/img/profile/profile-8.webp"
-                              className="card-img rounded-xl sh-6 sw-6"
-                              alt="thumb"
-                            />
+                            <img src="/img/profile/profile-8.webp" className="card-img rounded-xl sh-6 sw-6" alt="thumb" />
                           </Col>
                           <Col>
                             <div className="d-flex flex-row ps-4 h-100 align-items-center justify-content-between">
                               <div className="d-flex flex-column">
                                 <div>Joisse Kaycee</div>
-                                <div className="text-small text-muted">
-                                  Copywriter
-                                </div>
+                                <div className="text-small text-muted">Copywriter</div>
                               </div>
                               <div className="d-flex">
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  className="ms-1"
-                                >
+                                <Button variant="outline-primary" size="sm" className="ms-1">
                                   Follow
                                 </Button>
                               </div>
@@ -2054,26 +1405,16 @@ export const PropiedadProfile = () => {
                       <Card.Body>
                         <Row className="g-0 sh-6">
                           <Col xs="auto">
-                            <img
-                              src="/img/profile/profile-9.webp"
-                              className="card-img rounded-xl sh-6 sw-6"
-                              alt="thumb"
-                            />
+                            <img src="/img/profile/profile-9.webp" className="card-img rounded-xl sh-6 sw-6" alt="thumb" />
                           </Col>
                           <Col>
                             <div className="d-flex flex-row ps-4 h-100 align-items-center justify-content-between">
                               <div className="d-flex flex-column">
                                 <div>Zayn Hartley</div>
-                                <div className="text-small text-muted">
-                                  Visual Effect Designer
-                                </div>
+                                <div className="text-small text-muted">Visual Effect Designer</div>
                               </div>
                               <div className="d-flex">
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  className="ms-1"
-                                >
+                                <Button variant="outline-primary" size="sm" className="ms-1">
                                   Follow
                                 </Button>
                               </div>
@@ -2099,20 +1440,15 @@ export const PropiedadProfile = () => {
                     <div className="mb-5">
                       <p className="text-small text-muted mb-2">ME</p>
                       <p>
-                        Jujubes brownie marshmallow apple pie donut ice cream
-                        jelly-o jelly-o gummi bears. Tootsie roll chocolate bar
-                        dragée bonbon cheesecake icing. Danish wafer donut
-                        cookie caramels gummies topping.
+                        Jujubes brownie marshmallow apple pie donut ice cream jelly-o jelly-o gummi bears. Tootsie roll chocolate bar dragée bonbon cheesecake
+                        icing. Danish wafer donut cookie caramels gummies topping.
                       </p>
                     </div>
                     <div className="mb-5">
                       <p className="text-small text-muted mb-2">INTERESTS</p>
                       <p>
-                        Chocolate cake biscuit donut cotton candy soufflé cake
-                        macaroon. Halvah chocolate cotton candy sweet roll
-                        jelly-o candy danish dragée. Apple pie cotton candy
-                        tiramisu biscuit cake muffin tootsie roll bear claw
-                        cake. Cupcake cake fruitcake.
+                        Chocolate cake biscuit donut cotton candy soufflé cake macaroon. Halvah chocolate cotton candy sweet roll jelly-o candy danish dragée.
+                        Apple pie cotton candy tiramisu biscuit cake muffin tootsie roll bear claw cake. Cupcake cake fruitcake.
                       </p>
                     </div>
                     <div className="mb-5">
@@ -2123,9 +1459,7 @@ export const PropiedadProfile = () => {
                       </NavLink>
                       <NavLink to="#" className="d-block body-link mb-1">
                         <CsLineIcons icon="email" className="me-2" size="17" />
-                        <span className="align-middle">
-                          contact@blainecottrell.com
-                        </span>
+                        <span className="align-middle">contact@blainecottrell.com</span>
                       </NavLink>
                     </div>
                   </Card.Body>

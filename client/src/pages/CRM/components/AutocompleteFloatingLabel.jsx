@@ -12,6 +12,8 @@ const dummyData = [
 ];
 
 import { useCustomers } from "../../../context/customerContext";
+import { useVehiculos } from "../../../context/vehiculoContext";
+import { usePropiedades } from "../../../context/propiedadContext";
 
 const AutocompleteFloatingLabel = ({ label, name, handleChange }) => {
           // OJO que arroja todo el frontend 

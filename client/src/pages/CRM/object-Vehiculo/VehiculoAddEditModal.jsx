@@ -4,6 +4,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { useVehiculos } from "../../../context/vehiculoContext";
 
 //import { useVehiculos } from "./context/vehiculoContext";
+import AutocompleteFloatingLabel from '../components/AutocompleteFloatingLabel';
 
 import { toast } from "react-toastify";
 
@@ -58,18 +59,42 @@ const ModalAddEditVehiculo = ({ tableInstance }) => {
   }, [selectedVehiculo]);
 
   const handleChange = (event) => {
-    console.log(`value changed ª event ${event}`);
+    console.log('HANDLECHANGE PADRE')
+    console.log(`Event: `, event);
 
-    const value = event.target.value.trim();
-    console.log(`value ª value ${value}`);
-    console.log(value);
-    console.log(value ? "si" : "no");
-    // setSelectedVehiculo({ ...selectedVehiculo, [event.target.name]: event.target.value.trim() });
+   
+  
+    // Check if the event is coming from an input element with a value property
+    if (event.target && typeof event.target.value === 'string') {
+          // EVENTO DE ESCRIBIR
+          // EVENTO DE ESCRIBIR
+             // EVENTO DE ESCRIBIR
+
+      const value = event.target.value.trim();
+      console.log(`Value: ${value}`);
+  
+      // Update the state with the new value
     setSelectedVehiculo({
       ...selectedVehiculo,
-      [event.target.name]: value ? value : "",
+      [event.target.name]: value 
     });
-  };
+  } else {
+    // EVENTO DE CLICK
+       // EVENTO DE CLICK
+          // EVENTO DE CLICK
+ console.log('Trying to handle non-input event...');
+ // Try to find the input inside the `.campoRelacional` div and extract its value
+
+  // Solucion = Preguntar si vino de suggestion click
+  setSelectedVehiculo({
+    ...selectedVehiculo,
+    [event.accessor]: event.valor // !!!!!!!!!!!!!!!! se pasa el ID directamente
+  });
+
+}
+};
+
+
 
   /* const handleChange = (event) => {
     const { name, value } = event.target;
@@ -322,17 +347,13 @@ const ModalAddEditVehiculo = ({ tableInstance }) => {
               onInput={handleChange}
             />
           </div>
-          
-          <div className="mb-3">
-            <Form.Label>Propietario</Form.Label>
-            <Form.Control
-              type="text"
-              name="propietario"
-              defaultValue={selectedVehiculo.propietario}
-              onInput={handleChange}
-            />
-          </div>
+        
 
+          <div class="campoRelacional">
+          <Form.Label>Propietario</Form.Label>
+            <AutocompleteFloatingLabel label="Dueño (Persona)" name="propietario" handleChange={handleChange}/>
+
+          </div>
 
         </Form>
       </Modal.Body>
