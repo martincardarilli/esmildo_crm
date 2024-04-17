@@ -99,36 +99,32 @@ useEffect(() => {
         },
       },
       {
-        Header: 'Name',
-        accessor: 'name',
+        Header: 'NOMBRE Y APELLIDO',
+        accessor: 'nombreApellido',
         sortable: true,
         headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {
           return (
             <a
-              className="list-item-heading body"
+              className="flex gap-2"
               href="#!"
               onClick={(e) => {
                 e.preventDefault();
               }}
             >
-              {cell.value}
+              <CsLineIcons icon="user" className="w-4"/>  {cell.value}  
             </a>
           );
         },
       },
-       { Header: 'Address', accessor: 'address', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
-      { Header: 'Hour Fee', accessor: 'hourFee', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10',
-      Cell: ({ cell }) => {
-        return <Badge bg="outline-primary">$ {cell.value}</Badge>;
-      }, },
-      { Header: 'Current Month Overview', accessor: 'asd', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' },
+       { Header: 'DIRECCIÓN', accessor: 'direccion', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
+      { Header: 'TELEFONO', accessor: 'telefono', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'EMAIL', accessor: 'email', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'DNI', accessor: 'dni', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'CUIT/CUIL', accessor: 'cuitCuil', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      
      /* { Header: 'Customer since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
-      {
-        Header: 'Tag',
-        accessor: 'tag',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-10',
+      {Header: 'Tag', accessor: 'tag', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {
           return <Badge bg="outline-primary">{cell.value}</Badge>;
         },

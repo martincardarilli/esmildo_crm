@@ -6,7 +6,8 @@ import mongoose from "mongoose";
 export const getVehiculos = async (req, res) => {
   try {
    //  const vehiculos = await Vehiculo.find(); HARD DELETE 
-    const vehiculos = await Vehiculo.find({ isActive: true }); // SOFT DELETE
+   const vehiculos = await Vehiculo.find({ isActive: true }).populate('propietario');
+
 
     /*console.log(' encontre todos los vehiculos?? = ');
     console.log(' ---------------------------------- ');
@@ -54,7 +55,7 @@ export const createVehiculo = async (req, res) => {
       motor,
       ac,
       dh,
-      propietario,
+      propietario: new mongoose.Types.ObjectId(propietario),
      // Asegúrate de que este campo exista en tu esquema de Vehiculo
     });
     await newVehiculo.save();

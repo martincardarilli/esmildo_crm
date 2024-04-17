@@ -66,13 +66,13 @@ useEffect(() => {
 */
 
 
-  const title = 'Personas borradas';
+  const title = 'Propiedades borradas';
   const description = 'Separate rows with edit, delete and add.';
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'propiedades', text: 'Personas' },
-    { to: 'propiedades/erased', text: 'Personas borradas' },
+    { to: 'propiedades', text: 'Propiedades' },
+    { to: 'propiedades/erased', text: 'Propiedades borradas' },
 
  
   ];
@@ -98,42 +98,39 @@ useEffect(() => {
           );
         },
       },
-      {
-        Header: 'Name',
-        accessor: 'name',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-20',
-        Cell: ({ cell }) => {
-          return (
-            <a
-              className="list-item-heading body"
-              href="#!"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
-              {cell.value}
-            </a>
-          );
+        {
+          Header: 'PROPIEDAD',
+          accessor: 'propiedad',
+          sortable: true,
+          headerClassName: 'text-muted text-small text-uppercase w-20',
+          Cell: ({ cell }) => {
+            return (
+              <a
+                className="flex gap-2"
+                href="#!"
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                <CsLineIcons icon="home-garage" className="w-4"/>  {cell.value}  
+              </a>
+            );
+          },
         },
-      },
-       { Header: 'Address', accessor: 'address', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
-      { Header: 'Hour Fee', accessor: 'hourFee', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10',
-      Cell: ({ cell }) => {
-        return <Badge bg="outline-primary">$ {cell.value}</Badge>;
-      }, },
-      { Header: 'Current Month Overview', accessor: 'asd', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' },
-     /* { Header: 'Propiedad since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
-      {
-        Header: 'Tag',
-        accessor: 'tag',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-10',
-        Cell: ({ cell }) => {
-          return <Badge bg="outline-primary">{cell.value}</Badge>;
+         { Header: 'TIPO', accessor: 'tipo', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
+        { Header: 'SUPERFICIE', accessor: 'superficie', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+        { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+        { Header: 'Propietario', accessor: 'propietario.nombreApellido', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+        { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+        
+       /* { Header: 'Propiedad since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
+        {
+          Header: 'Tag', accessor: 'tag', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
+          Cell: ({ cell }) => {
+            return <Badge bg="outline-primary">{cell.value}</Badge>;
+          },
         },
-      },
-      {
+        {
         Header: '',
         id: 'action',
         headerClassName: 'empty w-10',

@@ -54,8 +54,8 @@ const vehiculoSchema = new mongoose.Schema(
 
     },
     propietario: {
-      type: String,
-
+      type: mongoose.Types.ObjectId,
+      ref: "Customer",
     },
     isActive: {
       type: Boolean,

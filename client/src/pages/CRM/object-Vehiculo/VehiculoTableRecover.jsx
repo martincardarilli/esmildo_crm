@@ -66,13 +66,13 @@ useEffect(() => {
 */
 
 
-  const title = 'Personas borradas';
+  const title = 'Vehiculos borrados';
   const description = 'Separate rows with edit, delete and add.';
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: 'vehiculos', text: 'Personas' },
-    { to: 'vehiculos/erased', text: 'Personas borradas' },
+    { to: 'vehiculos', text: 'Vehiculos' },
+    { to: 'vehiculos/erased', text: 'Vehiculos borrados' },
 
  
   ];
@@ -99,36 +99,29 @@ useEffect(() => {
         },
       },
       {
-        Header: 'Name',
-        accessor: 'name',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-20',
+        Header: 'MODELO', accessor: 'modelo', sortable: true,  headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {
           return (
             <a
-              className="list-item-heading body"
+              className="flex gap-2"
               href="#!"
               onClick={(e) => {
                 e.preventDefault();
               }}
             >
-              {cell.value}
+              <CsLineIcons icon="car" className="w-4"/>  {cell.value}  
             </a>
           );
         },
       },
-       { Header: 'Address', accessor: 'address', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
-      { Header: 'Hour Fee', accessor: 'hourFee', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10',
-      Cell: ({ cell }) => {
-        return <Badge bg="outline-primary">$ {cell.value}</Badge>;
-      }, },
-      { Header: 'Current Month Overview', accessor: 'asd', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-10' },
+      { Header: 'FABRICANTE', accessor: 'fabricante', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'AÑO', accessor: 'año', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'KM', accessor: 'km', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'PROPIETARIO', accessor: 'propietario.nombreApellido', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },  
      /* { Header: 'Vehiculo since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
-      {
-        Header: 'Tag',
-        accessor: 'tag',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-10',
+      {Header: 'Tag', accessor: 'tag', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {
           return <Badge bg="outline-primary">{cell.value}</Badge>;
         },
