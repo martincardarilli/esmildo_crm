@@ -19,8 +19,9 @@ import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
 import { NavLink } from 'react-router-dom'; // Importar NavLink
 import RecoverControl from './CustomerRecoverControlReturn';
 
-import RecoverAction from './CustomerRecoverControlAction';
+import RecoverAction from './CustomerRecoverControlAction'; //single recovery
 
+import RecoverButton from './CustomerRecoverButton';
 
 const dummyData = [
 ];
@@ -56,14 +57,15 @@ export function CustomerTableRecover() {
 
 // Observar cambios en el estado de 'customers'
 
-/*
+
 useEffect(() => {
   console.log("useEffect[customers] = ", customers);
  // console.log("Clientes record en Tabla:", customers);
-  setData(customers);
+  //setData(customers);
+  loadCustomers();
 }, [customers]);
 
-*/
+
 
 
   const title = 'Personas borradas';
@@ -192,7 +194,7 @@ useEffect(() => {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                  {/* <ControlsAdd tableInstance={tableInstance} /> <ControlsEdit tableInstance={tableInstance} /> <ControlsDelete tableInstance={tableInstance} /> */} <RecoverControl/> 
+                         <RecoverControl/> <RecoverButton tableInstance={tableInstance} />
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />
