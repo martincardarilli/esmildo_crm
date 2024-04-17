@@ -48,13 +48,17 @@ const ControlsDelete = ({ tableInstance }) => {
     useCustomers(); // Usando funciones del contexto
 
   const onClick = async () => {
+    let response;
+
     for (let i = 0; i < selectedFlatRows.length; i++) {
       console.log(
         "Delete Cliente2 seleccionado: selectedFlatRows",
         selectedFlatRows[i].original._id
       );
       toast.success(`Erased ${selectedFlatRows[i].original.name}`);
-      await deleteCustomer(selectedFlatRows[i].original._id);
+    //  await deleteCustomer(selectedFlatRows[i].original._id);
+       response = await updateCustomer(selectedFlatRows[i].original._id, {isActive: false} );
+        console.log("acaaaaaaa")
     }
     getCustomers();
 

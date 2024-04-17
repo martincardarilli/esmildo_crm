@@ -22,25 +22,9 @@ const customerSchema = new mongoose.Schema(
     },
     telefono: {
       type: String,
-      required: [true, 'El teléfono es requerido'],
-      validate: [
-        {
-          validator: function(v) {
-            return validator.isMobilePhone(v, 'es-AR', { strictMode: false });
-          },
-          message: props => `${props.value} no es un número de teléfono válido para Argentina`
-        },
-        {
-          validator: function(v) {
-            // Eliminar caracteres comunes como espacios, guiones y paréntesis
-            const digits = v.replace(/\D/g, '');
-            // Verificar si la longitud es de 10 dígitos
-            return digits.length === 10;
-          },
-          message: props => `El teléfono debe tener exactamente 10 dígitos, sin incluir prefijos o códigos internacionales`
-        }
-      ]
+      required: [true, 'El teléfono es requerido']
     },
+
     dni: {
       type: String,
       required: [true, 'El DNI es requerido'],

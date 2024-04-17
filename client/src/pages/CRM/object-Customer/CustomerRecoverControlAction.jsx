@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 const RecoverControl = ({ tableInstance }) => {
 
 
+
   const navigate = useNavigate();
 
   const onClick = async () => {

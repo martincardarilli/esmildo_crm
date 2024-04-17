@@ -21,8 +21,9 @@ const RecoverControl = ({ tableInstance }) => {
   };
 
 
+
   return (
-    <OverlayTrigger
+  <OverlayTrigger
       placement="top" 
       overlay={<Tooltip id="tooltip-top-delete">Volver</Tooltip>}
     >
@@ -33,7 +34,12 @@ const RecoverControl = ({ tableInstance }) => {
       >
         <CsLineIcons icon="arrow-left" />
       </Button>
+      
     </OverlayTrigger>
+
+    
   );
 };
+
+
 export default RecoverControl;
