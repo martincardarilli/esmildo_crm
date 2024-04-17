@@ -8,7 +8,7 @@ import ButtonsAddNew from '../components/ButtonsAddNew';
 import ControlsPageSize from '../components/ControlsPageSize';
 import ControlsAdd from '../components/ControlsAdd';
 import ControlsEdit from '../components/ControlsEdit';
-import ControlsDelete from './CustomerDeleteControl';
+import ControlHardDelete from './CustomerHardDeleteControl';
 import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './CustomerAddEditModal';
 import Table from '../components/Table';
@@ -194,7 +194,7 @@ useEffect(() => {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                         <RecoverControl/> <RecoverButton tableInstance={tableInstance} />
+                         <RecoverControl/><ControlHardDelete tableInstance={tableInstance}/><RecoverButton tableInstance={tableInstance} /> 
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />

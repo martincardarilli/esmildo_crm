@@ -98,8 +98,8 @@ export const createCustomer = async (req, res) => {
 
 export const deleteCustomer = async (req, res) => {
   try {
-    //const deletedCustomer = await Customer.findByIdAndDelete(req.params.id); HARD DELETE
-    const deletedCustomer = await Customer.updateOne({ _id: req.params.id}, { isActive: false }); // Soft delete
+    const deletedCustomer = await Customer.findByIdAndDelete(req.params.id); //HARD DELETE
+    //const deletedCustomer = await Customer.updateOne({ _id: req.params.id}, { isActive: false }); // Soft delete
    // Bill.updateOne({ _id: billId }, { isActive: false }).then(...); // Soft delete
 
     if (!deletedCustomer)
