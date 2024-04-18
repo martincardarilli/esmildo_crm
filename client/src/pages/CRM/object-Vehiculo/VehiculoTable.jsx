@@ -167,7 +167,8 @@ useEffect(() => {
       { Header: 'AÑO', accessor: 'año', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'KM', accessor: 'km', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-      { Header: 'PROPIETARIO', accessor: 'propietario.nombreApellido', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'PROPIETARIO', accessor: 'propietario.nombreApellido', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' ,Cell: ({ cell }) => {return (<a className="flex gap-2"href="#!"onClick={(e) => {e.preventDefault();}}><CsLineIcons icon="user" className="w-4"/>{cell.value}</a>);
+    }, },
       { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },  
      /* { Header: 'Vehiculo since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
       {Header: 'Tag', accessor: 'tag', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
