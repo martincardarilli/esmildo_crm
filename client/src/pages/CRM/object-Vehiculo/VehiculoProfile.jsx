@@ -52,9 +52,9 @@ export const VehiculoProfile = () => {
   useEffect(() => {
     const loadVehiculo = async () => {
       if (params.id) {
-        console.log('data requested in ClientProfile.jsx');
+        console.log('1826 data requested in ClientProfile.jsx');
         const vehiculo = await getVehiculo(params.id);
-        console.log('data received at ClientProfile.jsx');
+        console.log('126 data received at ClientProfile.jsx');
         console.log(vehiculo);
         setData(vehiculo);
         /*setValue("title", task.title);
@@ -68,6 +68,8 @@ export const VehiculoProfile = () => {
     };
     loadVehiculo();
   }, []);
+
+
   console.log('ACAPIDEVEHICULO');
   console.log(vehiculo);
   function formatDate(dateString) {
@@ -294,7 +296,7 @@ export const VehiculoProfile = () => {
                           <span>Propietario</span>
                           <CsLineIcons icon="dollar" className="text-primary" />
                         </div>
-                        <div className="cta-1 text-primary">{vehiculo.propietario} </div>
+                        <div className="cta-1 text-primary">{vehiculo.propietario ? vehiculo.propietario.nombreApellido : 'Loading...'} </div>
                       </Card.Body>
                     </Card>
                   </Col>

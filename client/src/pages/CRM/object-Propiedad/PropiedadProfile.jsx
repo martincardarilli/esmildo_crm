@@ -282,7 +282,7 @@ export const PropiedadProfile = () => {
                           <CsLineIcons icon="router" className="text-primary" />
                         </div>
                         <div className="text-small text-muted mb-1">ROUTER</div>
-                        <div className="cta-1 text-primary">{propiedad.propietario}</div>
+                        <div className="cta-1 text-primary">{propiedad.propietario ? propiedad.propietario.nombreApellido : 'Loading...'} </div>
                       </Card.Body>
                     </Card>
                   </Col>

@@ -200,7 +200,7 @@ export const updatePropiedad = async (req, res) => {
 
 export const getPropiedad = async (req, res) => {
   try {
-    const propiedad = await Propiedad.findById(req.params.id);
+    const propiedad = await Propiedad.findById(req.params.id).populate('propietario');
     if (!propiedad)
       return res.status(404).json({ message: "Propiedad not found" });
     return res.json(propiedad);
