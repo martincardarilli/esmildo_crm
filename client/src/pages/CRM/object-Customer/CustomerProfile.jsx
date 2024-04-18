@@ -286,7 +286,7 @@ export const CustomerProfile = () => {
                           <span>Propiedades</span>
                           <CsLineIcons icon="file-text" className="text-primary" />
                         </div>
-                        <div className="cta-1 text-primary">0 propiedades</div>
+                        <div className="cta-1 text-primary">{customer.vehiculos ? customer.vehiculos.length : "Loading"} propiedades</div> 
                       </Card.Body>
                     </Card>
                   </Col>
