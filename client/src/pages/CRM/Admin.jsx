@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Button, Row, Col, Card, Dropdown, Nav, Form, OverlayTrigger, Tooltip, Tab } from 'react-bootstrap';
 import { NavLink, useParams } from 'react-router-dom';
-import { LAYOUT } from '../components/constants.jsx';
-import HtmlHead from '../components/html-head/HtmlHead.jsx';
-import BreadcrumbList from '../components/breadcrumb-list/BreadcrumbList.jsx';
-import CsLineIcons from '../components/cs-line-icons/CsLineIcons.jsx';
+import { LAYOUT } from './components/constants.jsx';
+import HtmlHead from './components/html-head/HtmlHead.jsx';
+import BreadcrumbList from './components/breadcrumb-list/BreadcrumbList.jsx';
+import CsLineIcons from './components/cs-line-icons/CsLineIcons.jsx';
 //import useCustomLayout from './components/hooks/useCustomLayout';
 //import Clamp from 'components/clamp';
 
