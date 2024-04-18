@@ -1,7 +1,53 @@
 import Customer from "../models/customer.model.js";
+import Vehiculo from "../models/vehiculo.model.js";
+import Propiedad from "../models/propiedad.model.js";
+
 import History from "../models/history.model.js"; // Asegúrate de importar el modelo de Historia
 
 import mongoose from "mongoose";
+
+export const getCustomerDEPRECATED = async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
+    return res.json(customer);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+// Este metodo puede relentizar el servidor
+// Hay formas mas optimas de hacerlo
+export const getCustomer = async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
+console.log(customer);
+    // Supongamos que los IDs de los vehículos y propiedades están almacenados en el documento del cliente
+    const vehicles = Vehiculo.find({ propietario: customer._id });  // Asumiendo que 'owner' es la referencia en 'Vehicle'
+    console.log(vehicles);
+    const properties = Propiedad.find({ propietario: customer._id });  // Asumiendo que 'owner' es la referencia en 'Property'
+    console.log(properties);
+    // Esperar que ambas promesas se resuelvan
+    const results = await Promise.all([vehicles, properties]);
+
+    // Añadir estos datos al objeto del cliente para la respuesta
+    const response = {
+      ...customer.toObject(),  // Convertir el documento Mongoose a un objeto JavaScript
+      vehicles: results[0],    // Los vehículos asociados con el cliente
+      properties: results[1]   // Las propiedades asociadas con el cliente
+    };
+
+    return res.json(response);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
+
 
 export const getCustomers = async (req, res) => {
   try {
@@ -179,17 +225,6 @@ export const updateCustomer = async (req, res) => {
     });
 
     return res.json(updatedCustomer);
-  } catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
-};
-
-export const getCustomer = async (req, res) => {
-  try {
-    const customer = await Customer.findById(req.params.id);
-    if (!customer)
-      return res.status(404).json({ message: "Customer not found" });
-    return res.json(customer);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

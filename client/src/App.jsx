@@ -10,6 +10,8 @@ import './style/fix.css';
 import "./style/AutomationsProfile.css";
 import "./style/AutomationsTable.css";
 import "./style/AddEditModal.css";
+import './style/Table.css';
+import './style/Estados.css';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

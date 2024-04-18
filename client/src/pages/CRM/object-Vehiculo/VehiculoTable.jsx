@@ -148,27 +148,21 @@ useEffect(() => {
         },
       },
       {
-        Header: 'MODELO', accessor: 'modelo', sortable: true,  headerClassName: 'text-muted text-small text-uppercase w-20',
-        Cell: ({ cell }) => {
-          return (
-            <a
-              className="flex gap-2"
-              href="#!"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
-              <CsLineIcons icon="car" className="w-4"/>  {cell.value}  
-            </a>
-          );
-        },
+        Header: 'MODELO', accessor: 'modelo', sortable: true,  headerClassName: 'text-muted text-small text-uppercase w-20'
       },
       { Header: 'FABRICANTE', accessor: 'fabricante', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'AÑO', accessor: 'año', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'KM', accessor: 'km', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'PROPIETARIO', accessor: 'propietario.nombreApellido', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-      { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },  
+      { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
+      Cell: ({ cell }) => {
+        if (typeof cell.value === 'string') {
+        return <Badge bg="outline-primary"><span className={cell.value.replace(/\s/g, "_")}>{cell.value}</span></Badge>;
+        return null;  // o algún placeholder si es necesario
+        }
+      },
+     },  
      /* { Header: 'Vehiculo since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
       {Header: 'Tag', accessor: 'tag', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {

@@ -55,6 +55,7 @@ export const CustomerProfile = () => {
         console.log('data requested in ClientProfile.jsx');
         const customer = await getCustomer(params.id);
         console.log('data received at ClientProfile.jsx');
+        console.log('ACA WACHIN AGUANTE EL CAFE DE LUCHO');
         console.log(customer);
         setData(customer);
         /*setValue("title", task.title);

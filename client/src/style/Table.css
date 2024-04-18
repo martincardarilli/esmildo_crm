@@ -1,0 +1,13 @@
+.tableStyle{
+    min-height: 500px;
+    background: rgb(22, 22, 22);
+    border-radius: 7px;
+}
+
+.tableStyle tr{
+    background-color:#202020;
+}
+
+.tableStyle thead tr{
+    background-color: rgb(22,22,22) !important;
+}
