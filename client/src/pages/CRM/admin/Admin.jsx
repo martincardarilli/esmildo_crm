@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Button, Row, Col, Card, Dropdown, Nav, Form, OverlayTrigger, Tooltip, Tab } from 'react-bootstrap';
 import { NavLink, useParams } from 'react-router-dom';
-import { LAYOUT } from './components/constants.jsx';
-import HtmlHead from './components/html-head/HtmlHead';
-import BreadcrumbList from './components/breadcrumb-list/BreadcrumbList';
-import CsLineIcons from './components/cs-line-icons/CsLineIcons';
+import { LAYOUT } from '../components/constants.jsx';
+import HtmlHead from '../components/html-head/HtmlHead.jsx';
+import BreadcrumbList from '../components/breadcrumb-list/BreadcrumbList.jsx';
+import CsLineIcons from '../components/cs-line-icons/CsLineIcons.jsx';
 //import useCustomLayout from './components/hooks/useCustomLayout';
 //import Clamp from 'components/clamp';
 
@@ -74,61 +74,21 @@ export const Admin = () => {
                     <span className="align-middle">Overview</span>
                   </Nav.Link>
 
-                  <span className='menuTitle'>Required fields per Project</span>
-                  <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="models">
-                    <CsLineIcons icon="quiz" className="me-2" size="17" />
-                    <span className="align-middle">Technical Items</span>
-                  </Nav.Link>
-                  <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="roles">
-                    <CsLineIcons icon="quiz" className="me-2" size="17" />
-                    <span className="align-middle">SALT Support</span>
-                  </Nav.Link>
-                  <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="types">
-                    <CsLineIcons icon="quiz" className="me-2" size="17" />
-                    <span className="align-middle">support@rize.bm</span>
-                  </Nav.Link>
-
-                
-
-
-
-                  <span className='menuTitle' >CRM model configuration</span>
-
-
-                  <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="serviceplans">
-                    <CsLineIcons icon="suitcase" className="me-2" size="17" />
-                    <span className="align-middle">Client</span>
-                  </Nav.Link>
-
            
 
 
-                  <span className='menuTitle' >Service configuration</span>
+       
 
-
-
-
-<Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="serviceplans">
-  <CsLineIcons icon="wifi" className="me-2" size="17" />
-  <span className="align-middle">Service plans </span>
-</Nav.Link>
-
-<Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="servicetypes">
-  <CsLineIcons icon="antenna" className="me-2" size="17" />
-  <span className="align-middle">Service types </span>
-</Nav.Link>
-
-
-                  <span className='menuTitle'>Team configuration</span>
+                  <span className='menuTitle'>Configuración de equipo</span>
 
                   <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="users">
                     <CsLineIcons icon="user" className="me-2" size="17" />
-                    <span className="align-middle">Users</span>
+                    <span className="align-middle">Usuarios</span>
                   </Nav.Link>
 
                   <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="users">
                     <CsLineIcons icon="lock-off" className="me-2" size="17" />
-                    <span className="align-middle">Permissions</span>
+                    <span className="align-middle">Permisos</span>
                   </Nav.Link>
                   
                 </Nav>
@@ -283,8 +243,12 @@ export const Admin = () => {
 
 
               <Tab.Pane eventKey="users">
+
+
+
+                
                 {/* Friends Start */}
-                <h2 className="small-title">Friends</h2>
+                <h2 className="small-title">Usuarios</h2>
                 <Row className="row-cols-1 row-cols-md-2 row-cols-xxl-3 g-3">
                   <Col>
                     <Card>
