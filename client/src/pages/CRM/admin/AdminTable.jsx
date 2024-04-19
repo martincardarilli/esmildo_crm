@@ -34,7 +34,7 @@ const dummyData = [
 
 import {  useCustomers } from "../../../context/customerContext";
 
-export function CustomerTable() {
+export function AdminTable() {
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
   const { getCustomers, customers } = useCustomers(); // Usa la función getCustomers de tu contexto
 
@@ -52,13 +52,13 @@ export function CustomerTable() {
     //console.log(tableInstance);
 
 
-    const title = 'Personas';
+    const title = 'Usuarios';
     const description = 'Separate rows with edit, delete and add.';
   
     const breadcrumbs = [
       { to: '', text: 'Home' },
-      { to: 'customers', text: 'Personas' },
-  
+      { to: 'admin', text: 'Admin' },
+      { to: 'admin', text: 'Usuarios' },
     ];
 
 
@@ -109,7 +109,7 @@ useEffect(() => {
             <NavLink
               className="btn btn-primary btn-sm tableToProfile"
              // to={`/clientprofile`} // Agrega el ID a la URL
-                         to={`/persona/${_id}`} // Agrega el ID a la URL
+                         to={`/customer/${_id}`} // Agrega el ID a la URL
             >
               +info
             </NavLink>
