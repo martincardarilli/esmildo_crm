@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Button, Row, Col, Card, Dropdown, Nav, Form, OverlayTrigger, Tooltip, Tab } from 'react-bootstrap';
 import { NavLink, useParams } from 'react-router-dom';
-import { LAYOUT } from './components/constants.jsx';
-import HtmlHead from './components/html-head/HtmlHead.jsx';
-import BreadcrumbList from './components/breadcrumb-list/BreadcrumbList.jsx';
-import CsLineIcons from './components/cs-line-icons/CsLineIcons.jsx';
+import { LAYOUT } from '../components/constants.jsx';
+import HtmlHead from '../components/html-head/HtmlHead.jsx';
+import BreadcrumbList from '../components/breadcrumb-list/BreadcrumbList.jsx';
+import CsLineIcons from '../components/cs-line-icons/CsLineIcons.jsx';
 //import useCustomLayout from './components/hooks/useCustomLayout';
 //import Clamp from 'components/clamp';
 
@@ -71,7 +71,7 @@ export const Admin = () => {
                 <Nav className="flex-column menuIzq" activeKey="overview">
                   <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="overview">
                     <CsLineIcons icon="activity" className="me-2" size="17" />
-                    <span className="align-middle">Overview</span>
+                    <span className="align-middle">Configuración general</span>
                   </Nav.Link>
 
            
@@ -79,7 +79,7 @@ export const Admin = () => {
 
        
 
-                  <span className='menuTitle'>Configuración de equipo</span>
+                  <span className='menuTitle'>Configuración de usuarios</span>
 
                   <Nav.Link className="px-0 border-bottom border-separator-light cursor-pointer itemLista" eventKey="users">
                     <CsLineIcons icon="user" className="me-2" size="17" />

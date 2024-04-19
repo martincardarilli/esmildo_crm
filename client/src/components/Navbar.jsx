@@ -44,11 +44,13 @@ export function Navbar() {
                 <ButtonLink to="/admin"><CsLineIcons icon="lock-on" />Admin</ButtonLink>
               </li>
               <li className='navbarOption'>
-                <Link to="/" onClick={() => logout()}>
+         
 
                   <ButtonLink><CsLineIcons icon="gear" />                  {user.username}</ButtonLink>
-                </Link>
+          
               </li>
+
+              
               <li className='navbarOption'>
                 <Link to="/" onClick={() => logout()}>
 

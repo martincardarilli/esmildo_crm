@@ -19,7 +19,7 @@ import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
 import { NavLink } from 'react-router-dom'; // Importar NavLink
 import RecoverControl from './CustomerRecoverControlReturn';
 
-import RecoverAction from './CustomerRecoverControlAction'; //single recovery
+
 
 import RecoverButton from './CustomerRecoverButton';
 
@@ -138,18 +138,6 @@ useEffect(() => {
         Cell: ({ row }) => {
           const { checked, onChange } = row.getToggleRowSelectedProps();
           return <Form.Check className="form-check float-end mt-1" type="checkbox" checked={checked} onChange={onChange} />;
-        },
-      },
-      {
-        Header: 'Recover',
-        headerClassName: 'text-muted text-small text-uppercase w-5',
-        Cell: ({ row }) => {
- 
-          const  { _id } = row.original; // Obtén el ID desde la fila de datos asegurandote que es el ID del SQL
-
-          return (
-            <RecoverAction/>
-          );
         },
       },
     ];

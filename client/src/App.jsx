@@ -47,7 +47,7 @@ import { EditableTable } from "./pages/CRM/.drafts/EditableTable";
 
 
 import { AsanaTable } from "./pages/CRM/AsanaTable";
-import { Admin } from "./pages/CRM/Admin";
+import { Admin } from "./pages/CRM/admin/Admin";
 import { ClientProfile } from "./pages/CRM/.drafts/ClientProfile";
 
 import { CompletedTasks } from "./pages/CRM/CompletedTasks";
