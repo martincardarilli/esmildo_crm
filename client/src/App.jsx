@@ -12,6 +12,7 @@ import "./style/AutomationsTable.css";
 import "./style/AddEditModal.css";
 import './style/Table.css';
 import './style/Estados.css';
+import './style/HardDeleteControl.css';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -67,11 +68,9 @@ import { VehiculoTableRecover } from "./pages/CRM/object-Vehiculo/VehiculoTableR
 import { VehiculoProfile } from "./pages/CRM/object-Vehiculo/VehiculoProfile";
 import { VehiculoProvider } from "./context/vehiculoContext";
 
-import { BillTable } from "./pages/CRM/object-Bill/BillTable";
-import { BillProfile } from "./pages/CRM/object-Bill/BillProfile";
 
-import { AutomationsTable } from "./pages/CRM/object-Automations/AutomationsTable";
-import { AutomationsProfile } from "./pages/CRM/object-Automations/AutomationsProfile";
+
+
 import { RunProvider } from "./context/runContext";
 
 function App() {
@@ -107,9 +106,9 @@ function App() {
                      {/* <Route path="/clientprofile" element={<ClientProfile />} /> */}
 
                        {/* Customers */}
-                     <Route path="/customers" element={<CustomerTable />} />
-                     <Route path="/customers/erased" element={<CustomerTableRecover />} />
-                     <Route path="/customer/:id" element={<CustomerProfile />} />
+                     <Route path="/personas" element={<CustomerTable />} />
+                     <Route path="/personas/erased" element={<CustomerTableRecover />} />
+                     <Route path="/persona/:id" element={<CustomerProfile />} />
 
                       {/* Propiedad */}
                       <Route path="/propiedades" element={<PropiedadTable />} />
@@ -121,9 +120,7 @@ function App() {
                      <Route path="/vehiculos/erased" element={<VehiculoTableRecover />} />
                      <Route path="/vehiculo/:id" element={<VehiculoProfile />} />
 
-                      {/* Bills */}
-                      <Route path="/bills" element={<BillTable />} />
-                     <Route path="/bill/:id" element={<BillProfile />} />
+  
 
 
                       <Route path="/admin" element={<Admin />} />
@@ -131,8 +128,6 @@ function App() {
             
                       <Route path="/asana" element={<AsanaTable />} />
 
-                      <Route path="/automations" element={<AutomationsTable />} />
-                      <Route path="/automations/:id" element={<AutomationsProfile />} />
                     </Route>
                     {/* Protected Routes */}
                     

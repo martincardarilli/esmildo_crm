@@ -94,7 +94,7 @@ const ControlsDelete = ({ tableInstance }) => {
   return (
     <OverlayTrigger
       placement="top"
-      overlay={<Tooltip id="tooltip-top-delete">Delete</Tooltip>}
+      overlay={<Tooltip id="tooltip-top-delete">Eliminar</Tooltip>}
     >
       <Button
         onClick={onClick}

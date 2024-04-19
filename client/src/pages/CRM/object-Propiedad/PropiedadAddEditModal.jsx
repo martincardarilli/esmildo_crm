@@ -284,7 +284,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
   </div> */}
 
 
-          <div class="campoRelacional">
+          <div className="campoRelacional">
 
             <CsLineIcons icon="user" />
 

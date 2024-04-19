@@ -349,7 +349,7 @@ const ModalAddEditVehiculo = ({ tableInstance }) => {
           </div>
         
 
-          <div class="campoRelacional">
+          <div className="campoRelacional">
           <Form.Label>Propietario</Form.Label>
             <AutocompleteFloatingLabel label="Dueño (Persona)" name="propietario" handleChange={handleChange}/>
 

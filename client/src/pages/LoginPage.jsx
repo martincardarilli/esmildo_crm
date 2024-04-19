@@ -21,7 +21,7 @@ export function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/customers");
+      navigate("/inicio");
     }
   }, [isAuthenticated]);
 

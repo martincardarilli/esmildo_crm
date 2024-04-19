@@ -84,7 +84,7 @@ const ControlsDelete = ({ tableInstance }) => {
     return (
       <Button
         variant="foreground-alternate"
-        className="btn-icon btn-icon-only shadow delete-datatable"
+        className="btn-icon btn-icon-only shadow delete-datatable hardDelete"
         disabled
       >
         <CsLineIcons icon="bin" />
@@ -94,12 +94,12 @@ const ControlsDelete = ({ tableInstance }) => {
   return (
     <OverlayTrigger
       placement="top"
-      overlay={<Tooltip id="tooltip-top-delete">Delete</Tooltip>}
+      overlay={<Tooltip id="tooltip-top-delete">Eliminar definitivamente</Tooltip>}
     >
       <Button
         onClick={onClick}
         variant="foreground-alternate"
-        className="btn-icon btn-icon-only shadow delete-datatable"
+        className="btn-icon btn-icon-only shadow delete-datatable hardDelete"
       >
         <CsLineIcons icon="bin" />
       </Button>

@@ -1,0 +1,23 @@
+
+
+.hardDelete svg{
+
+
+    background-color: #b12828 !important;
+}
+
+
+
+
+
+.tablaBotones button.hardDelete:disabled svg{
+   /* border: 3px solid green !important;
+    box-sizing: border-box */
+  }
+
+
+
+
+  .recuperarBoton svg{
+  background-color: rgb(59, 154, 59) !important;
+  }

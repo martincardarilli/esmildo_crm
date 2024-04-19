@@ -17,7 +17,7 @@ const RecoverControl = ({ tableInstance }) => {
 
   const onClick = async () => {
 
-    navigate("/customers");
+    navigate("/personas");
   };
 
 

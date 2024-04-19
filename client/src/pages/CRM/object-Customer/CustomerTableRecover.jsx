@@ -186,15 +186,16 @@ useEffect(() => {
           </div>
 
           <div>
+
             <Row className="mb-3">
               <Col sm="12" md="5" lg="3" xxl="2">
                 <div className="d-inline-block float-md-start me-1 mb-1 mb-md-0 search-input-container w-100 shadow bg-foreground">
                   <ControlsSearch tableInstance={tableInstance} />
                 </div>
               </Col>
-              <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
+           <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                         <RecoverControl/><ControlHardDelete tableInstance={tableInstance}/><RecoverButton tableInstance={tableInstance} /> 
+                         <RecoverControl/> <ControlHardDelete tableInstance={tableInstance}/> <RecoverButton tableInstance={tableInstance} /> 
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />
@@ -202,7 +203,7 @@ useEffect(() => {
               </Col>
             </Row>
             <Row>
-              <Col xs="12">
+            <Col xs="12"  className="tableStyle">
                 <Table className="react-table rows" tableInstance={tableInstance} />
               </Col>
               <Col xs="12">

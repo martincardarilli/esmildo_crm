@@ -230,7 +230,7 @@ useEffect(() => {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                  <ControlsAdd tableInstance={tableInstance} /> {/* <ControlsEdit tableInstance={tableInstance} /> */} <ControlsDelete tableInstance={tableInstance} />  <RecoverControl/>
+                  <ControlsAdd tableInstance={tableInstance} />  <ControlsEdit tableInstance={tableInstance} />  <ControlsDelete tableInstance={tableInstance} />  <RecoverControl/>
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />

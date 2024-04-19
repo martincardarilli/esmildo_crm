@@ -84,7 +84,7 @@ const ControlsDelete = ({ tableInstance }) => {
     return (
       <Button
         variant="foreground-alternate"
-        className="btn-icon btn-icon-only shadow delete-datatable"
+        className="btn-icon btn-icon-only shadow delete-datatable recuperarBoton"
         disabled
       >
         <CsLineIcons icon="recycle" />
@@ -94,12 +94,12 @@ const ControlsDelete = ({ tableInstance }) => {
   return (
     <OverlayTrigger
       placement="top"
-      overlay={<Tooltip id="tooltip-top-delete">Recover</Tooltip>}
+      overlay={<Tooltip id="tooltip-top-delete">Recuperar</Tooltip>}
     >
       <Button
         onClick={onClick}
         variant="foreground-alternate"
-        className="btn-icon btn-icon-only shadow delete-datatable"
+        className="btn-icon btn-icon-only shadow delete-datatable recuperarBoton"
       >
         <CsLineIcons icon="recycle" />
       </Button>

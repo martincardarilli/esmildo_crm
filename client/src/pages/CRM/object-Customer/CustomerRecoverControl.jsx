@@ -17,7 +17,7 @@ const RecoverControl = ({ tableInstance }) => {
 
   const onClick = async () => {
     console.log('/navigate to TRASH') 
-    navigate("/customers/erased");
+    navigate("/personas/erased");
   };
 
 
