@@ -8,7 +8,7 @@ import ButtonsAddNew from '../components/ButtonsAddNew';
 import ControlsPageSize from '../components/ControlsPageSize';
 import ControlsAdd from '../components/ControlsAdd';
 import ControlsEdit from '../components/ControlsEdit';
-import ControlsDelete from './CustomerDeleteControl';
+import SoftDeleteControl from './SoftDeleteControl';
 import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './CustomerAddEditModal';
 import Table from '../components/Table';
@@ -36,7 +36,7 @@ import {  useCustomers } from "../../../context/customerContext";
 
 export function CustomerTable() {
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
-  const { getCustomers, customers } = useCustomers(); // Usa la función getCustomers de tu contexto
+  const { getCustomers, customers, updateCustomer } = useCustomers(); // Usa la función getCustomers de tu contexto
 
     //const [data, setData] = React.useState(dummyData);
     const [isOpenAddEditModal, setIsOpenAddEditModal] = useState(false);
@@ -72,7 +72,7 @@ export function CustomerTable() {
   };
   
   useEffect(() => {
-    console.log("useEffect[] INICIAL = loadCustomers()", customers);
+
     loadCustomers(); // Llama a la función al montar el componente
   }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar
 
@@ -80,7 +80,7 @@ export function CustomerTable() {
 
 
 useEffect(() => {
-  console.log("useEffect[customers] = ", customers);
+
 
   // Guardar el índice de página actual antes de actualizar los datos
   setSavedPageIndex(tableInstance.state.pageIndex);
@@ -223,7 +223,7 @@ useEffect(() => {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                  <ControlsAdd tableInstance={tableInstance} />  <ControlsEdit tableInstance={tableInstance} /> <ControlsDelete tableInstance={tableInstance} />  <RecoverControl/>
+                  <ControlsAdd tableInstance={tableInstance} />  <ControlsEdit tableInstance={tableInstance} /> <SoftDeleteControl tableInstance={tableInstance} getObjects={getCustomers} updateObject={updateCustomer}/>  <RecoverControl/>
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />

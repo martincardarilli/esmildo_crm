@@ -52,16 +52,11 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
   }, [isOpenAddEditModal, selectedFlatRows]);
 
   useEffect(() => {
-    console.log(`1833B ~ selectedPropiedad ${selectedPropiedad}`);
-    //   console.log(selectedFlatRows[0].original);
-    console.log(selectedFlatRows.length === 1);
-    console.log(selectedPropiedad);
-    console.log(tableInstance);
+
   }, [selectedPropiedad]);
 
   const handleChange = (event) => {
-    console.log('HANDLECHANGE PADRE')
-    console.log(`Event: `, event);
+
 
    
   
@@ -140,21 +135,16 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
     try {
       let response;
 
-      console.log("selectedFlatRows");
-      console.log(selectedFlatRows.length === 1);
+
 
       if (selectedFlatRows.length === 1) {
         response = await updatePropiedad(selectedPropiedad._id, selectedPropiedad);
       } else {
-        console.log("---------------------------------enviando---------------------");
-        console.log(selectedPropiedad);
-        console.log("---------------------------------enviando---------------------");
+
         response = await createPropiedad(selectedPropiedad);
       }
 
-      //console.log(response);
 
-      console.log(response);
 
       if (response.status === 200 || response.status === 201) {
         /*const newData =

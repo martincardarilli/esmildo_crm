@@ -124,10 +124,10 @@ export function VehiculoProvider({ children }) {
   const getVehiculoUpdates = async (id) => {
     try {
       //const res = await getVehiculoRequest(id);
-      console.log('2207 B vehiculoContext starting | ');
+
    
       const res = await historyController.getChangesByDocument(id);
-      console.log('2204 B vehiculoContext AFTER | ');
+
       console.log(res);
       // historyController.getChangesByDocument
       return res.data;

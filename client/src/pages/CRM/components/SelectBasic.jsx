@@ -12,8 +12,7 @@ const SelectBasic = ({ handleChange, name }) => {
   ];
 
   const handleChangeInternal = (event) => {
-    console.log("LOHSE");
-    console.log(event);
+
 
     let eventFake = {
       accessor: "estado", // name

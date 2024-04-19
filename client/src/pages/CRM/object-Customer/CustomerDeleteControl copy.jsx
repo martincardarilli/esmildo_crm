@@ -58,7 +58,7 @@ const ControlsDelete = ({ tableInstance }) => {
       toast.success(`Erased ${selectedFlatRows[i].original.name}`);
     //  await deleteCustomer(selectedFlatRows[i].original._id);
        response = await updateCustomer(selectedFlatRows[i].original._id, {isActive: false} );
-        console.log("acaaaaaaa")
+
     }
     getCustomers();
 

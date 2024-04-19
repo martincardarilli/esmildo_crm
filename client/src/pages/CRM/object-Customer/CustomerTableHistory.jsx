@@ -8,7 +8,7 @@ import ButtonsAddNew from '../components/ButtonsAddNew';
 import ControlsPageSize from '../components/ControlsPageSize';
 import ControlsAdd from '../components/ControlsAdd';
 import ControlsEdit from '../components/ControlsEdit';
-import ControlsDelete from './CustomerDeleteControl';
+//import ControlsDelete from './CustomerDeleteControl';
 import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './CustomerAddEditModal';
 import Table from '../components/Table';

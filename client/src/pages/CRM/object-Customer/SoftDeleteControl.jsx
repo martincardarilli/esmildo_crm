@@ -8,23 +8,18 @@ import { toast } from "react-toastify";
 import { useCustomers } from "../../../context/customerContext";
 import { useState, useEffect } from "react";
 
-const ControlsDelete = ({ tableInstance }) => {
-  // props??
+const SoftDeleteControl = ({ tableInstance, getObjects, updateObject }) => {
+
+
+  // ---start------------------- Aca maneja el row getObjects ---
   const {
     selectedFlatRows,
     data,
-    setData,
-    setIsOpenAddEditModal,
     isOpenAddEditModal,
     state: { selectedRowIds },
   } = tableInstance;
 
-  const onClick2 = () => {
-    console.log("test");
-    //await updateCustomer(selectedCustomer._id, selectedCustomer);
-    setData(data.filter((x, index) => selectedRowIds[index] !== true));
-    console.log(data);
-  };
+
 
   const emptyCustomer = {
     id: data.length + 1,
@@ -32,6 +27,7 @@ const ControlsDelete = ({ tableInstance }) => {
     address: "",
     hourFee: "",
   };
+
   const [selectedCustomer, setSelectedCustomer] = useState(emptyCustomer);
 
   useEffect(() => {
@@ -42,10 +38,17 @@ const ControlsDelete = ({ tableInstance }) => {
     }
     return () => {};
   }, [isOpenAddEditModal, selectedFlatRows]);
+ // ---end------------------- Aca maneja el row seleccionado ---
 
-  // states
-  const { createCustomer, updateCustomer, getCustomers, deleteCustomer } =
-    useCustomers(); // Usando funciones del contexto
+
+
+
+
+
+
+  // ---start------------------- Aca maneja el CRUD ---
+    //const { getCustomers, deleteCustomer } = useCustomers(); // Usando funciones del contexto
+
 
   const onClick = async () => {
     for (let i = 0; i < selectedFlatRows.length; i++) {
@@ -54,28 +57,20 @@ const ControlsDelete = ({ tableInstance }) => {
         selectedFlatRows[i].original._id
       );
       toast.success(`Erased ${selectedFlatRows[i].original.name}`);
-      await deleteCustomer(selectedFlatRows[i].original._id);
+     //   await deleteObject(selectedFlatRows[i].original._id);
+       response = await updateObject(selectedFlatRows[i].original._id, {isActive: false} );
     }
-    getCustomers();
+    getObjects();
 
-    //await deleteCustomer(selectedCustomer._id);
-    /*
-    if (selectedFlatRows.length === 1) {
-      await updateCustomer(selectedCustomer._id, selectedCustomer);
-      const { index } = selectedFlatRows[0];
-      const newData = data.map((row, rowIndex) => (rowIndex === index ? selectedCustomer : row));
-      //setData(newData);
-      getCustomers();
-    } else {
-      await createCustomer(selectedCustomer);
-      const newData = [selectedCustomer, ...data];
-      //setData(newData);
-      getCustomers();
-    }
-    setIsOpenAddEditModal(false);
-*/
   };
+  // ---end------------------- Aca maneja el CRUD ---
 
+
+
+
+
+
+  // ---start------------------- HTML ---
   if (selectedFlatRows.length === 0) {
     return (
       <Button
@@ -87,10 +82,12 @@ const ControlsDelete = ({ tableInstance }) => {
       </Button>
     );
   }
+
+
   return (
     <OverlayTrigger
       placement="top"
-      overlay={<Tooltip id="tooltip-top-delete">Delete</Tooltip>}
+      overlay={<Tooltip id="tooltip-top-delete">Eliminar</Tooltip>}
     >
       <Button
         onClick={onClick}
@@ -102,4 +99,6 @@ const ControlsDelete = ({ tableInstance }) => {
     </OverlayTrigger>
   );
 };
-export default ControlsDelete;
+// ---end------------------- HTML ---
+
+export default SoftDeleteControl;

@@ -118,10 +118,10 @@ export function PropiedadProvider({ children }) {
   const getPropiedadUpdates = async (id) => {
     try {
       //const res = await getPropiedadRequest(id);
-      console.log('2207 B propiedadContext starting | ');
+
    
       const res = await historyController.getChangesByDocument(id);
-      console.log('2204 B propiedadContext AFTER | ');
+
       console.log(res);
       // historyController.getChangesByDocument
       return res.data;

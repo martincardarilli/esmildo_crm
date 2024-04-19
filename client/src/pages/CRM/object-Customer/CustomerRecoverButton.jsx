@@ -19,12 +19,7 @@ const ControlsDelete = ({ tableInstance }) => {
     state: { selectedRowIds },
   } = tableInstance;
 
-  const onClick2 = () => {
-    console.log("test");
-    //await updateCustomer(selectedCustomer._id, selectedCustomer);
-    setData(data.filter((x, index) => selectedRowIds[index] !== true));
-    console.log(data);
-  };
+
 
   const emptyCustomer = {
     id: data.length + 1,

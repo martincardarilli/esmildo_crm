@@ -52,9 +52,8 @@ export function Navbar() {
 
               
               <li className='navbarOption'>
-                <Link to="/" onClick={() => logout()}>
-
-                  <ButtonLink><CsLineIcons icon="logout" /></ButtonLink>
+                <Link to="/" className="px-4 py-1 rounded-md" onClick={() => logout()}>
+                  <CsLineIcons icon="logout" />
                 </Link>
               </li>
             </>

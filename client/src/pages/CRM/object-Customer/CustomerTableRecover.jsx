@@ -8,7 +8,9 @@ import ButtonsAddNew from '../components/ButtonsAddNew';
 import ControlsPageSize from '../components/ControlsPageSize';
 import ControlsAdd from '../components/ControlsAdd';
 import ControlsEdit from '../components/ControlsEdit';
-import ControlHardDelete from './CustomerHardDeleteControl';
+
+import HardDeleteControl from './HardDeleteControl';
+
 import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './CustomerAddEditModal';
 import Table from '../components/Table';
@@ -34,7 +36,7 @@ export function CustomerTableRecover() {
   const [currentPage, setCurrentPage] = useState(0); // New state for current page
 
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
-  const { getDeletedCustomers, customers } = useCustomers(); // Usa la función getCustomers de tu contexto
+  const { getDeletedCustomers, customers, getCustomers, deleteCustomer } = useCustomers(); // Usa la función getCustomers de tu contexto
 
   const loadCustomers = async () => {
     try {
@@ -183,7 +185,7 @@ useEffect(() => {
               </Col>
            <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                         <RecoverControl/> <ControlHardDelete tableInstance={tableInstance}/> <RecoverButton tableInstance={tableInstance} /> 
+                         <RecoverControl/> <HardDeleteControl tableInstance={tableInstance} getObjects={getCustomers} deleteObject={deleteCustomer}/> <RecoverButton tableInstance={tableInstance} /> 
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />

@@ -17,18 +17,7 @@ import './style/HardDeleteControl.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Lazy loading components
-/*const HomePage = React.lazy(() => import("./pages/HomePage"));
-const RegisterPage = React.lazy(() => import("./pages/RegisterPage"));
-const TaskFormPage = React.lazy(() => import("./pages/TaskFormPage"));
-const LoginPage = React.lazy(() => import("./pages/LoginPage"));
-const TasksPage = React.lazy(() => import("./pages/TasksPage"));
-const CompletedTasks = React.lazy(() => import("./pages/CRM/CompletedTasks"));
-const ClientProfile = React.lazy(() => import("./pages/CRM/ClientProfile"));
-const Admin = React.lazy(() => import("./pages/CRM/Admin"));
-const EditableRows = React.lazy(() => import("./pages/CRM/EditableRows"));
-const CustomerTable = React.lazy(() => import("./pages/CRM/CustomerTable"));
-const AsanaTasks = React.lazy(() => import("./pages/CRM/AsanaTasks"));*/
+
 
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
@@ -43,15 +32,15 @@ import { TaskProvider } from "./context/tasksContext";
 
 
 
-import { EditableTable } from "./pages/CRM/.drafts/EditableTable";
 
 
-import { AsanaTable } from "./pages/CRM/AsanaTable";
+
+
 import { Admin } from "./pages/CRM/admin/Admin";
-import { ClientProfile } from "./pages/CRM/.drafts/ClientProfile";
 
-import { CompletedTasks } from "./pages/CRM/CompletedTasks";
-import { AsanaTaskProvider } from "./context/asanatasksContext";
+
+
+
 
 import { CustomerTable } from "./pages/CRM/object-Customer/CustomerTable";
 import { CustomerTableRecover } from "./pages/CRM/object-Customer/CustomerTableRecover";
@@ -77,7 +66,7 @@ function App() {
   return (
     <AuthProvider>
         <TaskProvider>
-        <AsanaTaskProvider>
+
         <CustomerProvider>
         <RunProvider>
         <PropiedadProvider>
@@ -88,11 +77,13 @@ function App() {
                 <Navbar />
                 <Suspense fallback={<div>Loading...</div>}>
                   <Routes>
+
                     {/* Public Routes */}
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     {/* Public Routes */}
+
 
                     {/* Protected Routes */}
                     <Route element={<ProtectedRoute />}>
@@ -101,9 +92,9 @@ function App() {
                       <Route path="/tasks/:id" element={<TaskFormPage />} />
                       <Route path="/profile" element={<h1>Profile</h1>} />
 
-                    {/* beta */}
-                      <Route path="/completed-tasks" element={<CompletedTasks />} />
-                     {/* <Route path="/clientprofile" element={<ClientProfile />} /> */}
+ 
+
+
 
                        {/* Customers */}
                      <Route path="/personas" element={<CustomerTable />} />
@@ -124,9 +115,9 @@ function App() {
 
 
                       <Route path="/admin" element={<Admin />} />
-                     {/*  <Route path="/EditableRows" element={<EditableTable />} /> */}
+
             
-                      <Route path="/asana" element={<AsanaTable />} />
+
 
                     </Route>
                     {/* Protected Routes */}
@@ -140,7 +131,7 @@ function App() {
         </PropiedadProvider>
         </RunProvider>
         </CustomerProvider>
-        </AsanaTaskProvider>
+
         </TaskProvider>
     </AuthProvider>
   );
