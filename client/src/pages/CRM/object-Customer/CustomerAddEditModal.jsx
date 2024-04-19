@@ -241,7 +241,7 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
             />
           </div>
           <div className="mb-3">
-            <Form.Label>Dni</Form.Label>
+            <Form.Label>DNI</Form.Label>
             <Form.Control
               type="number"
               name="dni"
@@ -250,7 +250,7 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
             />
           </div>
           <div className="mb-3">
-            <Form.Label>Cuit/Cuil</Form.Label>
+            <Form.Label>CUIT / CUIL</Form.Label>
             <Form.Control
               type="number"
               name="cuitCuil"
