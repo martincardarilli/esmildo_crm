@@ -1,8 +1,8 @@
-import { Router } from "express";
+import { Router } from 'express';
 
 import * as historyController from '../controllers-database/history.controller.js';
 
-import { auth } from "../middlewares/auth.middleware.js";
+import { auth } from '../middlewares/auth.middleware.js';
 
 //import { validateSchema } from "../middlewares/validator.middleware.js";
 //import { createCustomerSchema } from "../schemas/customer.schema.js";

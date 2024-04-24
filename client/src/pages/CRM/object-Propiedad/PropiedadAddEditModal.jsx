@@ -1,35 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import { Button, Form, Modal } from 'react-bootstrap';
 import SelectBasic from '../components/SelectBasic';
-import { usePropiedades } from "../../../context/propiedadContext";
+import { usePropiedades } from '../../../context/propiedadContext';
 
 //import { usePropiedades } from "./context/propiedadContext";
 
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
-import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
+import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
 import AutocompleteFloatingLabel from '../components/AutocompleteFloatingLabel';
 
 import BreadcrumbList from '../components/breadcrumb-list/BreadcrumbList';
 
 const ModalAddEditPropiedad = ({ tableInstance }) => {
-  const {
-    selectedFlatRows,
-    data,
-    setData,
-    setIsOpenAddEditModal,
-    isOpenAddEditModal,
-  } = tableInstance;
+  const { selectedFlatRows, data, setData, setIsOpenAddEditModal, isOpenAddEditModal } = tableInstance;
   const { createPropiedad, updatePropiedad, getPropiedades } = usePropiedades(); // Usando funciones del contexto
   const emptyPropiedad = {
     id: data.length + 1,
   };
   const [selectedPropiedad, setSelectedPropiedad] = useState(emptyPropiedad);
-  
+
   useEffect(() => {
-  //  console.log("PRE");
-  //  console.log(selectedFlatRows);
-  //  console.log("PRE");
+    //  console.log("PRE");
+    //  console.log(selectedFlatRows);
+    //  console.log("PRE");
 
     if (isOpenAddEditModal && selectedFlatRows.length === 1) {
       const propiedadData = { ...selectedFlatRows[0].original };
@@ -43,51 +37,43 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
       setSelectedPropiedad(emptyPropiedad);
     }
 
-  //  console.log('1833 | A quien vamos a modificar?');
-   // console.log('1833x | ', selectedPropiedad);
-   // console.log('1833 | encontrado');
-   // console.log(tableInstance);
+    //  console.log('1833 | A quien vamos a modificar?');
+    // console.log('1833x | ', selectedPropiedad);
+    // console.log('1833 | encontrado');
+    // console.log(tableInstance);
 
-    return () => { };
+    return () => {};
   }, [isOpenAddEditModal, selectedFlatRows]);
 
-  useEffect(() => {
-
-  }, [selectedPropiedad]);
+  useEffect(() => {}, [selectedPropiedad]);
 
   const handleChange = (event) => {
-
-
-   
-  
     // Check if the event is coming from an input element with a value property
     if (event.target && typeof event.target.value === 'string') {
-          // EVENTO DE ESCRIBIR
-          // EVENTO DE ESCRIBIR
-             // EVENTO DE ESCRIBIR
+      // EVENTO DE ESCRIBIR
+      // EVENTO DE ESCRIBIR
+      // EVENTO DE ESCRIBIR
 
       const value = event.target.value.trim();
       console.log(`Value: ${value}`);
-  
+
       // Update the state with the new value
       setSelectedPropiedad({
         ...selectedPropiedad,
-        [event.target.name]: value
+        [event.target.name]: value,
       });
-
     } else {
-         // EVENTO DE CLICK
-            // EVENTO DE CLICK
-               // EVENTO DE CLICK
+      // EVENTO DE CLICK
+      // EVENTO DE CLICK
+      // EVENTO DE CLICK
       console.log('Trying to handle non-input event...');
       // Try to find the input inside the `.campoRelacional` div and extract its value
-   
-       // Solucion = Preguntar si vino de suggestion click
-        setSelectedPropiedad({
-          ...selectedPropiedad,
-          [event.accessor]: event.valor // !!!!!!!!!!!!!!!! se pasa el ID directamente
-        });
-      
+
+      // Solucion = Preguntar si vino de suggestion click
+      setSelectedPropiedad({
+        ...selectedPropiedad,
+        [event.accessor]: event.valor, // !!!!!!!!!!!!!!!! se pasa el ID directamente
+      });
     }
   };
 
@@ -124,7 +110,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
   };*/
 
   const savePropiedad = async () => {
-    console.log("Propiedad seleccionado:", selectedPropiedad);
+    console.log('Propiedad seleccionado:', selectedPropiedad);
 
     // Validar campos requeridos
     /*if (!selectedPropiedad.name || !selectedPropiedad.address || !selectedPropiedad.hourFee) {
@@ -135,16 +121,11 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
     try {
       let response;
 
-
-
       if (selectedFlatRows.length === 1) {
         response = await updatePropiedad(selectedPropiedad._id, selectedPropiedad);
       } else {
-
         response = await createPropiedad(selectedPropiedad);
       }
-
-
 
       if (response.status === 200 || response.status === 201) {
         /*const newData =
@@ -155,11 +136,11 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
             : [selectedPropiedad, ...data];*/
 
         if (response.status === 200) {
-          toast.success("Updated Propiedad!");
+          toast.success('Updated Propiedad!');
         }
 
         if (response.status === 201) {
-          toast.success("Created Propiedad!");
+          toast.success('Created Propiedad!');
         }
         //setData(newData);
         getPropiedades();
@@ -169,20 +150,15 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
       }
     } catch (error) {
       toast.error(`Code ${error.code}; ${error.message}`);
-      console.error("error");
+      console.error('error');
       console.error(error);
 
+      const errorMessages = error.response && error.response.data && error.response.data.message ? error.response.data.message : `Error ${error.response}`;
 
-      const errorMessages =
-        error.response && error.response.data && error.response.data.message
-          ? error.response.data.message
-          : `Error ${error.response}`;
-
-
-      console.error("errorMessages");
+      console.error('errorMessages');
       console.error(errorMessages);
 
-      console.error("error.response");
+      console.error('error.response');
       console.error(error.response);
       // toast.error(`Error: ${errorMessages}`);
 
@@ -205,97 +181,83 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
 
       // Mostrar el mensaje formateado
       //toast.error(`Error: ${formattedErrorMessage}`);
-
     }
   };
+  const estadoOptions = [
+    { value: 'Disponible', label: 'Disponible' },
+    { value: 'No disponible', label: 'No Disponible' },
+    { value: 'Reservado', label: 'Reservado' },
+    { value: 'Vendido', label: 'Vendido' },
+  ];
 
+  // Opciones para el tipo
+  const tipoOptions = [
+    { value: 'Alquiler', label: 'Alquiler' },
+    { value: 'Venta', label: 'Venta' },
+    { value: 'Permuta', label: 'Permuta' },
+    { value: 'Otro', label: 'Otro' },
+  ];
   return (
-    <Modal
-      className="modal-right fade"
-      show={isOpenAddEditModal}
-      onHide={() => setIsOpenAddEditModal(false)}
-    >
+    <Modal className="modal-right fade" show={isOpenAddEditModal} onHide={() => setIsOpenAddEditModal(false)}>
       <Modal.Header>
-        <Modal.Title>
-          {selectedFlatRows.length === 1 ? "Editar Propiedad" : "Agregar Propiedad"}
-        </Modal.Title>
+        <Modal.Title>{selectedFlatRows.length === 1 ? 'Editar Propiedad' : 'Agregar Propiedad'}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <div className="mb-3">
-            <Form.Label><span class="requerido">*</span> Inmueble</Form.Label>
-            <Form.Control
-              type="text"
-              name="propiedad"
-              defaultValue={selectedPropiedad.propiedad}
-              onInput={handleChange}
-            />
+            <Form.Label>
+              <span class="requerido">*</span> Inmueble
+            </Form.Label>
+            <Form.Control type="text" name="propiedad" defaultValue={selectedPropiedad.propiedad} onInput={handleChange} />
           </div>
           <div className="mb-3">
             <Form.Label>Tipo</Form.Label>
-            <Form.Control
-              type="text"
+            <SelectBasic
               name="tipo"
-              defaultValue={selectedPropiedad.tipo}
-              onInput={handleChange}
+              defaultValue={selectedPropiedad.tipo} // Esto debe ser uno de los valores en tipoOptions
+              handleChange={handleChange}
+              options={tipoOptions}
             />
           </div>
           <div className="mb-3">
             <Form.Label>Superficie</Form.Label>
-            <Form.Control
-              type="number"
-              name="superficie"
-              defaultValue={selectedPropiedad.superficie}
-              onInput={handleChange}
-            />
+            <Form.Control type="number" name="superficie" defaultValue={selectedPropiedad.superficie} onInput={handleChange} />
           </div>
           <div className="mb-3">
-            <Form.Label><span class="requerido">*</span> Valor</Form.Label>
-            <Form.Control
-              type="number"
-              name="valor"
-              defaultValue={selectedPropiedad.valor}
-              onInput={handleChange}
-            />
+            <Form.Label>
+              <span class="requerido">*</span> Valor
+            </Form.Label>
+            <Form.Control type="number" name="valor" defaultValue={selectedPropiedad.valor} onInput={handleChange} />
           </div>
           <div className="mb-3">
             <Form.Label>Estado</Form.Label>
             <SelectBasic
-             name="estado"
-             defaultValue={selectedPropiedad.estado}
-             handleChange={handleChange}
+              name="estado"
+              defaultValue={selectedPropiedad.estado} // Esto debe ser uno de los valores en estadoOptions
+              handleChange={handleChange}
+              options={estadoOptions}
             />
           </div>
-         {/* <div class="campoRelacional">
+          {/* <div class="campoRelacional">
 
             <CsLineIcons icon="user" />
             <AutocompleteFloatingLabel label="Propietario" name="dueño" handleChange={handleChange} />
 
   </div> */}
 
-
           <div className="campoRelacional">
-
             <CsLineIcons icon="user" />
 
-            <AutocompleteFloatingLabel label="Dueño (Persona)" name="propietario" handleChange={handleChange}/>
-
+            <AutocompleteFloatingLabel label="Dueño (Persona)" name="propietario" handleChange={handleChange} />
           </div>
-
-
-
-
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button
-          variant="outline-primary"
-          onClick={() => setIsOpenAddEditModal(false)}
-        >
+        <Button variant="outline-primary" onClick={() => setIsOpenAddEditModal(false)}>
           Cancelar
         </Button>
         <Button variant="primary" onClick={savePropiedad}>
-          {selectedFlatRows.length === 1 ? "Actualizar" : "Agregar"}
+          {selectedFlatRows.length === 1 ? 'Actualizar' : 'Agregar'}
         </Button>
       </Modal.Footer>
     </Modal>

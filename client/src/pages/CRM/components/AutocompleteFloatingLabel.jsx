@@ -15,7 +15,7 @@ import { useCustomers } from "../../../context/customerContext";
 import { useVehiculos } from "../../../context/vehiculoContext";
 import { usePropiedades } from "../../../context/propiedadContext";
 
-const AutocompleteFloatingLabel = ({ label, name, handleChange }) => {
+const AutocompleteFloatingLabel = ({ label, name, handleChange, selectedValue  }) => {
           // OJO que arroja todo el frontend 
           // No "busca" despues de 1 o mas caracteres introducidos
           const { getCustomers, customers } = useCustomers(); // Usa la función getCustomers de tu contexto
@@ -54,6 +54,20 @@ const AutocompleteFloatingLabel = ({ label, name, handleChange }) => {
 
           }, [customers]);
 
+          useEffect(() => {
+            if (selectedValue) {
+                const selectedCustomer = customers.find(c => c._id === selectedValue);
+                if (selectedCustomer) {
+                    // Suponiendo que el estado de `value` es un objeto que contiene el ID y el nombreApellido
+                    const eventFake = {
+                        accessor: name, // Usar el `name` prop para asegurar la consistencia
+                        valor: selectedCustomer._id
+                    };
+                    handleChange(eventFake); // Actualizar el valor del propietario en el estado del padre
+                }
+            }
+        }, [selectedValue, customers, handleChange, name]);
+
           const escapeRegexCharacters = (str) => {
                     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
           };
@@ -77,7 +91,7 @@ const AutocompleteFloatingLabel = ({ label, name, handleChange }) => {
                     setSuggestions([]);
           };
 
-          const getSuggestionValue = (suggestion) => suggestion._id;
+          const getSuggestionValue = (suggestion) => suggestion.nombreApellido; // O lo que quieras mostrar en el input
 
           const renderSuggestion = (suggestion) => <div>{suggestion.nombreApellido} ({suggestion.dni})</div>;
 
@@ -122,6 +136,17 @@ const AutocompleteFloatingLabel = ({ label, name, handleChange }) => {
                     return <></>;
           }
 
+          const inputProps = {
+            placeholder: label,
+            name : name,
+            //value: valueState,
+            value: selectedValue ? `${selectedValue.nombreApellido} (${selectedValue.dni})` : '',
+            onChange: (event, { newValue }) => {
+                // No necesitas hacer nada aquí si la entrada está siendo controlada
+                // con el estado del formulario principal a través de handleChange
+            }
+            //onChange: changeInput,
+        };
           return (
                     <Autosuggest
                               suggestions={suggestions}
@@ -130,12 +155,7 @@ const AutocompleteFloatingLabel = ({ label, name, handleChange }) => {
                               getSuggestionValue={getSuggestionValue}
                               renderSuggestion={renderSuggestion}
                               focusInputOnSuggestionClick={false}
-                              inputProps={{
-                                        placeholder: label,
-                                        name: name,
-                                        value: valueState,
-                                        onChange: changeInput,
-                              }}
+                              inputProps={inputProps}
                               renderInputComponent={renderInputComponent}
 
                               onSuggestionSelected={onSuggestionSelected} // Nuevo

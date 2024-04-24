@@ -1,27 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Select from 'react-select';
 
-const SelectBasic = ({ handleChange, name }) => {
-  const [value, setValue] = useState();
+const SelectBasic = ({ handleChange, name, defaultValue, options }) => {
 
-  const options = [
-    { value: 'Disponible', label: 'Disponible' },
-    { value: 'No disponible', label: 'No disponible' },
-    { value: 'otro', label: 'otro' },
+  const handleChangeInternal = (selectedOption) => {
+    const event = {
+      target: {
+        name: name,
+        value: selectedOption.value,
+      },
+    };
+    handleChange(event);
+  };
 
-  ];
+  const value = options.find(option => option.value === defaultValue);
 
-  const handleChangeInternal = (event) => {
-
-
-    let eventFake = {
-      accessor: "estado", // name
-      valor: event.value
-  }
-    handleChange(eventFake);
-  }
-
-  return <Select classNamePrefix="react-select" options={options} value={value} onChange={handleChangeInternal} placeholder="" />;
+  return (
+    <Select
+      classNamePrefix="react-select"
+      options={options}
+      value={value}
+      onChange={handleChangeInternal}
+      name={name}
+      placeholder = {null}
+    />
+  );
 };
 
 export default SelectBasic;
