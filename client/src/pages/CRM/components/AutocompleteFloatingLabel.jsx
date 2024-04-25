@@ -139,13 +139,13 @@ const AutocompleteFloatingLabel = ({ label, name, handleChange, selectedValue  }
           const inputProps = {
             placeholder: label,
             name : name,
-            //value: valueState,
-            value: selectedValue ? `${selectedValue.nombreApellido} (${selectedValue.dni})` : '',
-            onChange: (event, { newValue }) => {
+            value: valueState,
+            //value: selectedValue ? `${selectedValue.nombreApellido} (${selectedValue.dni})` : '',
+            //onChange: (event, { newValue }) => {
                 // No necesitas hacer nada aquí si la entrada está siendo controlada
                 // con el estado del formulario principal a través de handleChange
             }
-            //onChange: changeInput,
+            onChange: changeInput,
         };
           return (
                     <Autosuggest
