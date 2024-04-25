@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-
+import SelectBasic from '../components/SelectBasic';
 import { useVehiculos } from "../../../context/vehiculoContext";
 
 //import { useVehiculos } from "./context/vehiculoContext";
@@ -215,7 +215,12 @@ const ModalAddEditVehiculo = ({ tableInstance }) => {
       
     }
   };
-
+  const estadoOptions = [
+    { value: 'Disponible', label: 'Disponible' },
+    { value: 'No disponible', label: 'No Disponible' },
+    { value: 'Reservado', label: 'Reservado' },
+    { value: 'Vendido', label: 'Vendido' },
+  ];
   return (
     <Modal
       className="modal-right fade"
@@ -283,13 +288,13 @@ const ModalAddEditVehiculo = ({ tableInstance }) => {
               onInput={handleChange}
             />
           </div>
-          <div className="mb-3">
+          <div className="ds-1">
             <Form.Label>Estado</Form.Label>
-            <Form.Control
-              type="text"
+            <SelectBasic
               name="estado"
-              defaultValue={selectedVehiculo.estado}
-              onInput={handleChange}
+              defaultValue={selectedVehiculo.estado} // Esto debe ser uno de los valores en estadoOptions
+              handleChange={handleChange}
+              options={estadoOptions}
             />
           </div>
           <div className="mb-3">

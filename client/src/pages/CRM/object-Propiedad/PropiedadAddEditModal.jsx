@@ -210,7 +210,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
             </Form.Label>
             <Form.Control type="text" name="propiedad" defaultValue={selectedPropiedad.propiedad} onInput={handleChange} />
           </div>
-          <div className="mb-3">
+          <div className="ds-1">
             <Form.Label>Tipo</Form.Label>
             <SelectBasic
               name="tipo"
@@ -229,7 +229,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
             </Form.Label>
             <Form.Control type="number" name="valor" defaultValue={selectedPropiedad.valor} onInput={handleChange} />
           </div>
-          <div className="mb-3">
+          <div className="ds-1">
             <Form.Label>Estado</Form.Label>
             <SelectBasic
               name="estado"

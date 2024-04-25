@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
 import { useCustomers } from "../../../context/customerContext";
-
+import InputMask from 'react-input-mask';
 //import { useCustomers } from "./context/customerContext";
 
 import { toast } from "react-toastify";
@@ -181,16 +181,19 @@ const ModalAddEditCustomer = ({ tableInstance }) => {
           </div>
           <div className="mb-3">
             <Form.Label>Telefono</Form.Label>
+            <InputMask mask="9999 999 999" defaultValue="" onChange={handleChange}></InputMask>
             <Form.Control
               type="number"
               name="telefono"
               defaultValue={selectedCustomer.telefono}
               onInput={handleChange}
             />
+            
           </div>
           <div className="mb-3">
             <Form.Label>Email</Form.Label>
             <Form.Control
+            
               type="text"
               name="email"
               defaultValue={selectedCustomer.email}

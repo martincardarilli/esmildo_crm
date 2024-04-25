@@ -92,6 +92,7 @@ color: red !important;
 /* --------- start ------------------------ Dropdown List Select Field */
 .react-select__control{
   border-radius:7px !important;
+  
 }
 
 .react-select__value-container{
@@ -102,3 +103,23 @@ color: red !important;
 
 
 
+/* En tu archivo CSS */
+.ds-1{
+  margin: 5% 0%!important;
+
+}
+.ds-1 .react-select__menu {
+  background-color: #000000!important; /* Color de fondo blanco */
+  border: 1px solid #ced4da!important; /* Un borde para distinguir el menú */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)!important; /* Una sombra suave para dar profundidad */
+  z-index: 100!important; /* Asegúrate de que el menú esté por encima de otros elementos */
+  border-radius: 7px!important;
+  padding-right: 10px!important;
+}
+.ds-1 .react-select__option {
+  cursor: pointer!important; /* Cursor en forma de mano para indicar que se puede seleccionar */
+  background-color: #202020!important; /* Color de fondo para las opciones */
+  border-radius: 7px!important;
+  margin: 5px !important;
+
+}
