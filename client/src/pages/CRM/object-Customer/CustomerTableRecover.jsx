@@ -17,7 +17,7 @@ import TablePagination from '../components/TablePagination';
 import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
 
 import { NavLink } from 'react-router-dom'; // Importar NavLink
-import RecoverControl from './CustomerRecoverControlReturn';
+import RecoverControl from '../components/controls-delete/RecoverControlReturn';
 
 import RecoverButton from '../components/controls-delete/ObjectRecoverButton';
 
@@ -29,7 +29,7 @@ export function CustomerTableRecover() {
   const [currentPage, setCurrentPage] = useState(0); // New state for current page
 
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
-  const { getDeletedCustomers, customers, getCustomers, deleteCustomer } = useCustomers(); // Usa la función getCustomers de tu contexto
+  const { getDeletedCustomers, customers, getCustomers, deleteCustomer, updateCustomer } = useCustomers(); // Usa la función getCustomers de tu contexto
 
   const loadCustomers = async () => {
     try {
@@ -175,7 +175,7 @@ export function CustomerTableRecover() {
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
                   <RecoverControl destino="/personas" />{' '}
                   <HardDeleteControl tableInstance={tableInstance} getObjects={getCustomers} deleteObject={deleteCustomer} />{' '}
-                  <RecoverButton tableInstance={tableInstance} />
+                  <RecoverButton tableInstance={tableInstance} getObjects={getCustomers} updateObject={updateCustomer} />
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />
