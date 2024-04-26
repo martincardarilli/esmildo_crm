@@ -185,7 +185,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
   };
   const estadoOptions = [
     { value: 'Disponible', label: 'Disponible' },
-    { value: 'No disponible', label: 'No Disponible' },
+    { value: 'No disponible', label: 'No disponible' },
     { value: 'Reservado', label: 'Reservado' },
     { value: 'Vendido', label: 'Vendido' },
   ];

@@ -1,36 +1,25 @@
-import React from "react";
-import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
+import React from 'react';
+import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
 
 //TEMPORAL??
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
-import { usePropiedades } from "../../../context/propiedadContext";
-import { useState, useEffect } from "react";
+import { usePropiedades } from '../../../context/propiedadContext';
+import { useState, useEffect } from 'react';
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-const RecoverControl = ({ tableInstance }) => {
-
-
+const RecoverControl = ({ tableInstance, destino }) => {
   const navigate = useNavigate();
 
   const onClick = async () => {
-    console.log('/navigate to TRASH') 
-    navigate("/propiedades/erased");
+    navigate(destino);
   };
 
-
   return (
-    <OverlayTrigger
-      placement="top" 
-      overlay={<Tooltip id="tooltip-top-delete">Recuperar</Tooltip>}
-    >
-      <Button
-        onClick={onClick}
-        variant="foreground-alternate"
-        className="btn-icon btn-icon-only shadow delete-datatable"
-      >
+    <OverlayTrigger placement="top" overlay={<Tooltip id="tooltip-top-delete">Recuperar</Tooltip>}>
+      <Button onClick={onClick} variant="foreground-alternate" className="btn-icon btn-icon-only shadow delete-datatable">
         <CsLineIcons icon="recycle" />
       </Button>
     </OverlayTrigger>

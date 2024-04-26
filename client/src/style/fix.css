@@ -13,7 +13,7 @@ main{
 /* ----------------------------------------------------------- */
 
 .webHeader {
-    background-color:rgb(4 4 4 / 88%) !important;
+    background-color:rgb(4 4 4 / 95%) !important;
     position:fixed !important;
     width: 100%;
     left:0;
@@ -23,6 +23,7 @@ main{
     display:flex;
     align-items: center;
     height: 80px;
+    z-index: 100;
 }
 
 .logoNavBar{

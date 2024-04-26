@@ -1,11 +1,11 @@
 import React from "react";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
+import CsLineIcons from "../cs-line-icons/CsLineIcons";
 
 //TEMPORAL??
 import { toast } from "react-toastify";
 
-import { useCustomers } from "../../../context/customerContext";
+import { useCustomers } from "../../../../context/customerContext";
 import { useState, useEffect } from "react";
 
 const ControlsDelete = ({ tableInstance }) => {
@@ -19,26 +19,21 @@ const ControlsDelete = ({ tableInstance }) => {
     state: { selectedRowIds },
   } = tableInstance;
 
-  const onClick2 = () => {
-    console.log("test");
-    //await updateCustomer(selectedCustomer._id, selectedCustomer);
-    setData(data.filter((x, index) => selectedRowIds[index] !== true));
-    console.log(data);
-  };
 
-  const emptyCustomer = {
+
+  const emptyObject = {
     id: data.length + 1,
     name: "",
     address: "",
     hourFee: "",
   };
-  const [selectedCustomer, setSelectedCustomer] = useState(emptyCustomer);
+  const [selectedCustomer, setSelectedCustomer] = useState(emptyObject);
 
   useEffect(() => {
     if (isOpenAddEditModal && selectedFlatRows.length === 1) {
       setSelectedCustomer(selectedFlatRows[0].original);
     } else {
-      setSelectedCustomer(emptyCustomer);
+      setSelectedCustomer(emptyObject);
     }
     return () => {};
   }, [isOpenAddEditModal, selectedFlatRows]);
@@ -55,10 +50,10 @@ const ControlsDelete = ({ tableInstance }) => {
         "Delete Cliente2 seleccionado: selectedFlatRows",
         selectedFlatRows[i].original._id
       );
-      toast.success(`Erased ${selectedFlatRows[i].original.name}`);
+      toast.success(`Recuperado ${selectedFlatRows[i].original.name}`);
     //  await deleteCustomer(selectedFlatRows[i].original._id);
-       response = await updateCustomer(selectedFlatRows[i].original._id, {isActive: false} );
-
+       response = await updateCustomer(selectedFlatRows[i].original._id, {isActive: true} );
+        console.log("acaaaaaaa")
     }
     getCustomers();
 
@@ -84,24 +79,24 @@ const ControlsDelete = ({ tableInstance }) => {
     return (
       <Button
         variant="foreground-alternate"
-        className="btn-icon btn-icon-only shadow delete-datatable"
+        className="btn-icon btn-icon-only shadow delete-datatable recuperarBoton"
         disabled
       >
-        <CsLineIcons icon="bin" />
+        <CsLineIcons icon="recycle" />
       </Button>
     );
   }
   return (
     <OverlayTrigger
       placement="top"
-      overlay={<Tooltip id="tooltip-top-delete">Eliminar</Tooltip>}
+      overlay={<Tooltip id="tooltip-top-delete">Recuperar</Tooltip>}
     >
       <Button
         onClick={onClick}
         variant="foreground-alternate"
-        className="btn-icon btn-icon-only shadow delete-datatable"
+        className="btn-icon btn-icon-only shadow delete-datatable recuperarBoton"
       >
-        <CsLineIcons icon="bin" />
+        <CsLineIcons icon="recycle" />
       </Button>
     </OverlayTrigger>
   );

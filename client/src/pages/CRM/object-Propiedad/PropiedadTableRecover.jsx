@@ -8,55 +8,49 @@ import ButtonsAddNew from '../components/ButtonsAddNew';
 import ControlsPageSize from '../components/ControlsPageSize';
 import ControlsAdd from '../components/ControlsAdd';
 import ControlsEdit from '../components/ControlsEdit';
-import ControlsDelete from './PropiedadDeleteControl';
+import HardDeleteControl from '../components/controls-delete/HardDeleteControl';
 import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './PropiedadAddEditModal';
 import Table from '../components/Table';
 import TablePagination from '../components/TablePagination';
 
-import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
+import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
 
 import { NavLink } from 'react-router-dom'; // Importar NavLink
 import RecoverControl from './PropiedadRecoverControlReturn';
+import RecoverButton from '../components/controls-delete/ObjectRecoverButton';
 
-import RecoverAction from './PropiedadRecoverControlAction';
+const dummyData = [];
 
-
-const dummyData = [
-];
-
-
-import {  usePropiedades } from "../../../context/propiedadContext";
+import { usePropiedades } from '../../../context/propiedadContext';
 
 export function PropiedadTableRecover() {
-
   const [currentPage, setCurrentPage] = useState(0); // New state for current page
 
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
-  const { getDeletedPropiedades, propiedades } = usePropiedades(); // Usa la función getPropiedades de tu contexto
+  const { getDeletedPropiedades, propiedades, getPropiedades, deletePropiedad } = usePropiedades(); // Usa la función getPropiedades de tu contexto
 
   const loadPropiedades = async () => {
     try {
-      const response = await getDeletedPropiedades(); 
+      const response = await getDeletedPropiedades();
       /*console.log(response);  no hay response, revisar getPropiedades, solo cambia el estado "propiedades */
-      console.log("DEBUG DELETED CUSTOMERS???? start");
+      console.log('DEBUG DELETED CUSTOMERS???? start');
       console.log(response);
-      console.log("DEBUG DELETED CUSTOMERS???? ends");
+      console.log('DEBUG DELETED CUSTOMERS???? ends');
       setData(response.data);
     } catch (error) {
-      console.error("Error al cargar los clientes: ", error);
+      console.error('Error al cargar los clientes: ', error);
     }
   };
-  
+
   useEffect(() => {
-   // console.log("useEffect[] INICIAL = loadPropiedades()", propiedades);
+    // console.log("useEffect[] INICIAL = loadPropiedades()", propiedades);
     loadPropiedades(); // Llama a la función al montar el componente
   }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar
 
+  // Observar cambios en el estado de 'propiedades'
 
-// Observar cambios en el estado de 'propiedades'
-
-/*
+  /*
 useEffect(() => {
   console.log("useEffect[propiedades] = ", propiedades);
  // console.log("Clientes record en Tabla:", propiedades);
@@ -65,7 +59,6 @@ useEffect(() => {
 
 */
 
-
   const title = 'Propiedades borradas';
   const description = 'Separate rows with edit, delete and add.';
 
@@ -73,8 +66,6 @@ useEffect(() => {
     { to: '', text: 'Home' },
     { to: 'propiedades', text: 'Propiedades' },
     { to: 'propiedades/erased', text: 'Propiedades borradas' },
-
- 
   ];
 
   const columns = React.useMemo(() => {
@@ -84,71 +75,61 @@ useEffect(() => {
         id: 'view',
         headerClassName: 'empty w-10',
         Cell: ({ row }) => {
- 
-          const  { _id } = row.original; // Obtén el ID desde la fila de datos asegurandote que es el ID del SQL
+          const { _id } = row.original; // Obtén el ID desde la fila de datos asegurandote que es el ID del SQL
 
           return (
             <NavLink
               className="btn btn-primary btn-sm tableToProfile"
-             // to={/clientprofile} // Agrega el ID a la URL
-                         to={`/propiedad/${_id}`} // Agrega el ID a la URL
+              // to={/clientprofile} // Agrega el ID a la URL
+              to={`/propiedad/${_id}`} // Agrega el ID a la URL
             >
               +info
             </NavLink>
           );
         },
       },
-        {
-          Header: 'PROPIEDAD',
-          accessor: 'propiedad',
-          sortable: true,
-          headerClassName: 'text-muted text-small text-uppercase w-20',
-          Cell: ({ cell }) => {
-            return (
-              <a
-                className="flex gap-2"
-                href="#!"
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                <CsLineIcons icon="home-garage" className="w-4"/>  {cell.value}  
-              </a>
-            );
-          },
+      {
+        Header: 'PROPIEDAD',
+        accessor: 'propiedad',
+        sortable: true,
+        headerClassName: 'text-muted text-small text-uppercase w-20',
+        Cell: ({ cell }) => {
+          return (
+            <a
+              className="flex gap-2"
+              href="#!"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <CsLineIcons icon="home-garage" className="w-4" /> {cell.value}
+            </a>
+          );
         },
-         { Header: 'TIPO', accessor: 'tipo', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
-        { Header: 'SUPERFICIE', accessor: 'superficie', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-        { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-        { Header: 'Propietario', accessor: 'propietario.nombreApellido', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-        { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-        
-       /* { Header: 'Propiedad since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
-        {
-          Header: 'Tag', accessor: 'tag', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
-          Cell: ({ cell }) => {
-            return <Badge bg="outline-primary">{cell.value}</Badge>;
-          },
+      },
+      { Header: 'TIPO', accessor: 'tipo', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'SUPERFICIE', accessor: 'superficie', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'Propietario', accessor: 'propietario.nombreApellido', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+
+      /* { Header: 'Propiedad since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
+      {
+        Header: 'Tag',
+        accessor: 'tag',
+        sortable: true,
+        headerClassName: 'text-muted text-small text-uppercase w-20',
+        Cell: ({ cell }) => {
+          return <Badge bg="outline-primary">{cell.value}</Badge>;
         },
-        {
+      },
+      {
         Header: '',
         id: 'action',
         headerClassName: 'empty w-10',
         Cell: ({ row }) => {
           const { checked, onChange } = row.getToggleRowSelectedProps();
           return <Form.Check className="form-check float-end mt-1" type="checkbox" checked={checked} onChange={onChange} />;
-        },
-      },
-      {
-        Header: 'Recover',
-        headerClassName: 'text-muted text-small text-uppercase w-5',
-        Cell: ({ row }) => {
- 
-          const  { _id } = row.original; // Obtén el ID desde la fila de datos asegurandote que es el ID del SQL
-
-          return (
-            <RecoverAction/>
-          );
         },
       },
     ];
@@ -193,7 +174,9 @@ useEffect(() => {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                  {/* <ControlsAdd tableInstance={tableInstance} /> <ControlsEdit tableInstance={tableInstance} /> <ControlsDelete tableInstance={tableInstance} /> */} <RecoverControl/> 
+                  <RecoverControl destino="/propiedades" />{' '}
+                  <HardDeleteControl tableInstance={tableInstance} getObjects={getPropiedades} deleteObject={deletePropiedad} />{' '}
+                  <RecoverButton tableInstance={tableInstance} />
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />
@@ -214,4 +197,4 @@ useEffect(() => {
       </Row>
     </>
   );
-};
+}

@@ -8,13 +8,13 @@ import ButtonsAddNew from '../components/ButtonsAddNew';
 import ControlsPageSize from '../components/ControlsPageSize';
 import ControlsAdd from '../components/ControlsAdd';
 import ControlsEdit from '../components/ControlsEdit';
-import SoftDeleteControl from './SoftDeleteControl';
+import SoftDeleteControl from '../components/controls-delete/SoftDeleteControl';
 import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './CustomerAddEditModal';
 import Table from '../components/Table';
 import TablePagination from '../components/TablePagination';
 
-import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
+import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
 
 import { NavLink } from 'react-router-dom'; // Importar NavLink
 import RecoverControl from './CustomerRecoverControl';
@@ -28,72 +28,52 @@ const dummyData = [
 ];
 */
 
-const dummyData = [
+const dummyData = [];
 
-];
-
-import {  useCustomers } from "../../../context/customerContext";
+import { useCustomers } from '../../../context/customerContext';
 
 export function CustomerTable() {
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
   const { getCustomers, customers, updateCustomer } = useCustomers(); // Usa la función getCustomers de tu contexto
 
-    //const [data, setData] = React.useState(dummyData);
-    const [isOpenAddEditModal, setIsOpenAddEditModal] = useState(false);
+  //const [data, setData] = React.useState(dummyData);
+  const [isOpenAddEditModal, setIsOpenAddEditModal] = useState(false);
 
-    const [currentPage, setCurrentPage] = useState(0); // New state for current page
-    const [pageSize, setPageSize] = useState(10); // Initial page size
-  
-    const [savedPageIndex, setSavedPageIndex] = useState(0);
-  
-  
+  const [currentPage, setCurrentPage] = useState(0); // New state for current page
+  const [pageSize, setPageSize] = useState(10); // Initial page size
 
-  
-    //console.log(tableInstance);
+  const [savedPageIndex, setSavedPageIndex] = useState(0);
 
+  //console.log(tableInstance);
 
-    const title = 'Personas';
-    const description = 'Separate rows with edit, delete and add.';
-  
-    const breadcrumbs = [
-      { to: '', text: 'Home' },
-      { to: 'customers', text: 'Personas' },
-  
-    ];
+  const title = 'Personas';
+  const description = 'Separate rows with edit, delete and add.';
 
+  const breadcrumbs = [
+    { to: '', text: 'Home' },
+    { to: 'customers', text: 'Personas' },
+  ];
 
   const loadCustomers = async () => {
     try {
-      const response = await getCustomers(); 
+      const response = await getCustomers();
       /*console.log(response);  no hay response, revisar getCustomers, solo cambia el estado "customers */
     } catch (error) {
-      console.error("Error al cargar los clientes: ", error);
+      console.error('Error al cargar los clientes: ', error);
     }
   };
-  
-  useEffect(() => {
 
+  useEffect(() => {
     loadCustomers(); // Llama a la función al montar el componente
   }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar
 
+  useEffect(() => {
+    // Guardar el índice de página actual antes de actualizar los datos
+    setSavedPageIndex(tableInstance.state.pageIndex);
 
-
-
-useEffect(() => {
-
-
-  // Guardar el índice de página actual antes de actualizar los datos
-  setSavedPageIndex(tableInstance.state.pageIndex);
-
-  // Establecer los nuevos datos en la tabla
-  setData(customers);
-
-}, [customers]);
-
-
-
-
-
+    // Establecer los nuevos datos en la tabla
+    setData(customers);
+  }, [customers]);
 
   const columns = React.useMemo(() => {
     return [
@@ -102,14 +82,13 @@ useEffect(() => {
         id: 'view',
         headerClassName: 'text-muted text-small text-uppercase w-5',
         Cell: ({ row }) => {
- 
-          const  { _id } = row.original; // Obtén el ID desde la fila de datos asegurandote que es el ID del SQL
+          const { _id } = row.original; // Obtén el ID desde la fila de datos asegurandote que es el ID del SQL
 
           return (
             <NavLink
               className="btn btn-primary btn-sm tableToProfile"
-             // to={`/clientprofile`} // Agrega el ID a la URL
-                         to={`/persona/${_id}`} // Agrega el ID a la URL
+              // to={`/clientprofile`} // Agrega el ID a la URL
+              to={`/persona/${_id}`} // Agrega el ID a la URL
             >
               +info
             </NavLink>
@@ -130,7 +109,7 @@ useEffect(() => {
                 e.preventDefault();
               }}
             >
-              <CsLineIcons icon="pen" className="w-4"/> 
+              <CsLineIcons icon="pen" className="w-4" />
             </a>
           );
         },
@@ -149,19 +128,23 @@ useEffect(() => {
                 e.preventDefault();
               }}
             >
-              <CsLineIcons icon="user" className="w-4"/>  {cell.value}  
+              <CsLineIcons icon="user" className="w-4" /> {cell.value}
             </a>
           );
         },
       },
-       { Header: 'DIRECCIÓN', accessor: 'direccion', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, 
+      { Header: 'DIRECCIÓN', accessor: 'direccion', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'TELEFONO', accessor: 'telefono', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'EMAIL', accessor: 'email', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'DNI', accessor: 'dni', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'CUIT/CUIL', accessor: 'cuitCuil', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-      
-     /* { Header: 'Customer since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
-      {Header: 'Tag', accessor: 'tag', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
+
+      /* { Header: 'Customer since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
+      {
+        Header: 'Tag',
+        accessor: 'tag',
+        sortable: true,
+        headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {
           return <Badge bg="outline-primary">{cell.value}</Badge>;
         },
@@ -178,10 +161,6 @@ useEffect(() => {
     ];
   }, []);
 
-
-
-
-
   const tableInstance = useTable(
     { columns, data, setData, isOpenAddEditModal, setIsOpenAddEditModal, initialState: { pageIndex: savedPageIndex, pageSize } },
     useGlobalFilter,
@@ -190,11 +169,6 @@ useEffect(() => {
     useRowSelect,
     useRowState
   );
-
-
-
-  
-
 
   return (
     <>
@@ -223,7 +197,9 @@ useEffect(() => {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                  <ControlsAdd tableInstance={tableInstance} />  <ControlsEdit tableInstance={tableInstance} /> <SoftDeleteControl tableInstance={tableInstance} getObjects={getCustomers} updateObject={updateCustomer}/>  <RecoverControl/>
+                  <ControlsAdd tableInstance={tableInstance} /> <ControlsEdit tableInstance={tableInstance} />{' '}
+                  <SoftDeleteControl tableInstance={tableInstance} getObjects={getCustomers} updateObject={updateCustomer} />{' '}
+                  <RecoverControl destino="/personas/erased" />
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />
@@ -231,7 +207,7 @@ useEffect(() => {
               </Col>
             </Row>
             <Row>
-              <Col xs="12"  className="tableStyle">
+              <Col xs="12" className="tableStyle">
                 <Table className="react-table rows" tableInstance={tableInstance} />
               </Col>
               <Col xs="12">
@@ -244,5 +220,4 @@ useEffect(() => {
       </Row>
     </>
   );
-};
-
+}
