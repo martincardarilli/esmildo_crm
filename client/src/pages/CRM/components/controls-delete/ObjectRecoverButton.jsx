@@ -58,7 +58,7 @@ const ObjectRecoverButton = ({ tableInstance, getObjects, updateObject }) => {
   // ---start------------------- HTML ---
   if (selectedFlatRows.length === 0) {
     return (
-      <Button variant="foreground-alternate" className="btn-icon btn-icon-only shadow delete-datatable" disabled>
+      <Button variant="foreground-alternate" className="btn-icon btn-icon-only shadow delete-datatable recuperarBoton" disabled>
         <CsLineIcons icon="recycle" />
       </Button>
     );
@@ -66,7 +66,7 @@ const ObjectRecoverButton = ({ tableInstance, getObjects, updateObject }) => {
 
   return (
     <OverlayTrigger placement="top" overlay={<Tooltip id="tooltip-top-delete">Recuperar</Tooltip>}>
-      <Button onClick={onClick} variant="foreground-alternate" className="btn-icon btn-icon-only shadow delete-datatable">
+      <Button onClick={onClick} variant="foreground-alternate"  className="btn-icon btn-icon-only shadow delete-datatable recuperarBoton">
         <CsLineIcons icon="recycle" />
       </Button>
     </OverlayTrigger>

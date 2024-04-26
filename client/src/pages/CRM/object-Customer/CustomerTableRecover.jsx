@@ -13,12 +13,9 @@ import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './CustomerAddEditModal';
 import Table from '../components/Table';
 import TablePagination from '../components/TablePagination';
-
 import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
-
 import { NavLink } from 'react-router-dom'; // Importar NavLink
 import RecoverControl from '../components/controls-delete/RecoverControlReturn';
-
 import RecoverButton from '../components/controls-delete/ObjectRecoverButton';
 
 const dummyData = [];

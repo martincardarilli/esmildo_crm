@@ -17,7 +17,7 @@ import TablePagination from '../components/TablePagination';
 import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
 
 import { NavLink } from 'react-router-dom'; // Importar NavLink
-import RecoverControl from '../components/controls-delete/ObjectRecoverButton';
+import RecoverControl from '../components/controls-delete/RecoverControl';
 
 /*
 const dummyData = [
@@ -199,7 +199,7 @@ export function CustomerTable() {
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
                   <ControlsAdd tableInstance={tableInstance} /> <ControlsEdit tableInstance={tableInstance} />{' '}
                   <SoftDeleteControl tableInstance={tableInstance} getObjects={getCustomers} updateObject={updateCustomer} />{' '}
-                  <RecoverControl destino="/personas/erased" />
+                  <RecoverControl tableInstance={tableInstance} destino="/personas/erased"  />
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />
