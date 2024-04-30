@@ -5,7 +5,6 @@ import CsLineIcons from '../cs-line-icons/CsLineIcons';
 //TEMPORAL??
 import { toast } from 'react-toastify';
 
-import { useCustomers } from '../../../../context/customerContext';
 import { useState, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';

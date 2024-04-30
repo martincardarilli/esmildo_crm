@@ -8,16 +8,14 @@ import ButtonsAddNew from '../components/ButtonsAddNew';
 import ControlsPageSize from '../components/ControlsPageSize';
 import ControlsAdd from '../components/ControlsAdd';
 import ControlsEdit from '../components/ControlsEdit';
-import ControlsDelete from './VehiculoDeleteControl';
 import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './VehiculoAddEditModal';
 import Table from '../components/Table';
 import TablePagination from '../components/TablePagination';
-
-import CsLineIcons from "../components/cs-line-icons/CsLineIcons";
-
+import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
+import SoftDeleteControl from '../components/controls-delete/SoftDeleteControl';
 import { NavLink } from 'react-router-dom'; // Importar NavLink
-import RecoverControl from './VehiculoRecoverControl';
+import RecoverControl from '../components/controls-delete/RecoverControl';
 
 /*
 const dummyData = [
@@ -28,17 +26,14 @@ const dummyData = [
 ];
 */
 
-const dummyData = [
+const dummyData = [];
 
-];
-
-import {  useVehiculos } from "../../../context/vehiculoContext";
+import { useVehiculos } from '../../../context/vehiculoContext';
 
 export function VehiculoTable() {
   const [data, setData] = React.useState(dummyData); // Tabla Inicialmente vacío
-  const { getVehiculos, vehiculos } = useVehiculos(); // Usa la función getVehiculos de tu contexto
+  const { getVehiculos, vehiculos, updateVehiculo } = useVehiculos(); // Usa la función getVehiculos de tu contexto
 
-  
   //const [data, setData] = React.useState(dummyData);
   const [isOpenAddEditModal, setIsOpenAddEditModal] = useState(false);
 
@@ -47,10 +42,7 @@ export function VehiculoTable() {
 
   const [savedPageIndex, setSavedPageIndex] = useState(0);
 
-
- 
   //console.log(tableInstance);
-
 
   const title = 'Vehiculos';
   const description = 'Separate rows with edit, delete and add.';
@@ -58,54 +50,41 @@ export function VehiculoTable() {
   const breadcrumbs = [
     { to: '', text: 'Home' },
     { to: 'vehiculos', text: 'Vehiculos' },
-
   ];
-
 
   const loadVehiculos = async () => {
     try {
-      const response = await getVehiculos(); 
+      const response = await getVehiculos();
       /*console.log(response);  no hay response, revisar getVehiculos, solo cambia el estado "vehiculos */
     } catch (error) {
-      console.error("Error al cargar las vehiculos: ", error);
+      console.error('Error al cargar las vehiculos: ', error);
     }
   };
-  
 
   /* SOLO SE EJECUTA UNA VEZ */
   useEffect(() => {
-    console.log("useEffect[] INICIAL = loadVehiculos()", vehiculos);
+    console.log('useEffect[] INICIAL = loadVehiculos()', vehiculos);
 
     loadVehiculos(); // Llama a la función al montar el componente
-    
   }, []); // El array vacío asegura que este efecto se ejecute solo una vez: al montar el componente
 
+  /* SE EJECUTA CADA VEZ QUE EL ESTADO "vehiculos" DEL PROVIDER CAMBIA */
 
-/* SE EJECUTA CADA VEZ QUE EL ESTADO "vehiculos" DEL PROVIDER CAMBIA */
+  useEffect(() => {
+    console.log('useEffect[vehiculos] = ', vehiculos);
 
-useEffect(() => {
-  console.log("useEffect[vehiculos] = ", vehiculos);
+    // Guardar el índice de página actual antes de actualizar los datos
+    setSavedPageIndex(tableInstance.state.pageIndex);
 
-  // Guardar el índice de página actual antes de actualizar los datos
-  setSavedPageIndex(tableInstance.state.pageIndex);
+    // Establecer los nuevos datos
+    setData(vehiculos);
 
-  // Establecer los nuevos datos
-  setData(vehiculos);
-
-  // Restablecer el índice de página después de que los datos se hayan actualizado
-  // Esto se hace en un setTimeout para asegurarse de que se ejecute después de que React haya procesado el ciclo de actualización
- // setTimeout(() => {
+    // Restablecer el índice de página después de que los datos se hayan actualizado
+    // Esto se hace en un setTimeout para asegurarse de que se ejecute después de que React haya procesado el ciclo de actualización
+    // setTimeout(() => {
     //tableInstance.gotoPage(savedPageIndex);
-//  }, 0);
-}, [vehiculos]);
-
-
-
-
-
-
-
-
+    //  }, 0);
+  }, [vehiculos]);
 
   const columns = React.useMemo(() => {
     return [
@@ -114,14 +93,13 @@ useEffect(() => {
         id: 'view',
         headerClassName: 'text-muted text-small text-uppercase w-5',
         Cell: ({ row }) => {
- 
-          const  { _id } = row.original; // Obtén el ID desde la fila de datos asegurandote que es el ID del SQL
+          const { _id } = row.original; // Obtén el ID desde la fila de datos asegurandote que es el ID del SQL
 
           return (
             <NavLink
               className="btn btn-primary btn-sm tableToProfile"
-             // to={`/clientprofile`} // Agrega el ID a la URL
-                         to={`/vehiculo/${_id}`} // Agrega el ID a la URL
+              // to={`/clientprofile`} // Agrega el ID a la URL
+              to={`/vehiculo/${_id}`} // Agrega el ID a la URL
             >
               +info
             </NavLink>
@@ -142,30 +120,63 @@ useEffect(() => {
                 e.preventDefault();
               }}
             >
-              <CsLineIcons icon="pen" className="w-4"/> 
+              <CsLineIcons icon="pen" className="w-4" />
             </a>
           );
         },
       },
       {
-        Header: 'MODELO', accessor: 'modelo', sortable: true,  headerClassName: 'text-muted text-small text-uppercase w-20'
+        Header: 'MODELO',
+        accessor: 'modelo',
+        sortable: true,
+        headerClassName: 'text-muted text-small text-uppercase w-20',
       },
       { Header: 'FABRICANTE', accessor: 'fabricante', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'AÑO', accessor: 'año', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'KM', accessor: 'km', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-      { Header: 'PROPIETARIO', accessor: 'propietario.nombreApellido', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',Cell: ({ cell }) => {return (<a className="flex gap-2"href="#!"onClick={(e) => {e.preventDefault();}}><CsLineIcons icon="user" className="w-4"/>{cell.value}</a>);
-    }, },
-      { Header: 'ESTADO', accessor: 'estado', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
-      Cell: ({ cell }) => {
-        if (typeof cell.value === 'string') {
-        return <Badge bg="outline-primary"><span className={cell.value.replace(/\s/g, "_")}>{cell.value}</span></Badge>;
-        return null;  // o algún placeholder si es necesario
-        }
+      {
+        Header: 'PROPIETARIO',
+        accessor: 'propietario.nombreApellido',
+        sortable: true,
+        headerClassName: 'text-muted text-small text-uppercase w-20',
+        Cell: ({ cell }) => {
+          return (
+            <a
+              className="flex gap-2"
+              href="#!"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <CsLineIcons icon="user" className="w-4" />
+              {cell.value}
+            </a>
+          );
+        },
       },
-     },  
-     /* { Header: 'Vehiculo since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
-      {Header: 'Tag', accessor: 'tag', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20',
+      {
+        Header: 'ESTADO',
+        accessor: 'estado',
+        sortable: true,
+        headerClassName: 'text-muted text-small text-uppercase w-20',
+        Cell: ({ cell }) => {
+          if (typeof cell.value === 'string') {
+            return (
+              <Badge bg="outline-primary">
+                <span className={cell.value.replace(/\s/g, '_')}>{cell.value}</span>
+              </Badge>
+            );
+            return null; // o algún placeholder si es necesario
+          }
+        },
+      },
+      /* { Header: 'Vehiculo since? Category', accessor: 'category', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' }, */
+      {
+        Header: 'Tag',
+        accessor: 'tag',
+        sortable: true,
+        headerClassName: 'text-muted text-small text-uppercase w-20',
         Cell: ({ cell }) => {
           return <Badge bg="outline-primary">{cell.value}</Badge>;
         },
@@ -182,10 +193,6 @@ useEffect(() => {
     ];
   }, []);
 
-
-
-
-
   const tableInstance = useTable(
     { columns, data, setData, isOpenAddEditModal, setIsOpenAddEditModal, initialState: { pageIndex: savedPageIndex, pageSize } },
     useGlobalFilter,
@@ -194,15 +201,6 @@ useEffect(() => {
     useRowSelect,
     useRowState
   );
-
-
-
-
-
-
-  
-
-
   return (
     <>
       <HtmlHead title={title} description={description} />
@@ -230,7 +228,9 @@ useEffect(() => {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                  <ControlsAdd tableInstance={tableInstance} />  <ControlsEdit tableInstance={tableInstance} />  <ControlsDelete tableInstance={tableInstance} />  <RecoverControl/>
+                  <ControlsAdd tableInstance={tableInstance} /> <ControlsEdit tableInstance={tableInstance} />{' '}
+                  <SoftDeleteControl tableInstance={tableInstance} getObjects={getVehiculos} updateObject={updateVehiculo} />{' '}
+                  <RecoverControl tableInstance={tableInstance} destino="/vehiculos/erased" />
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />
@@ -238,7 +238,7 @@ useEffect(() => {
               </Col>
             </Row>
             <Row>
-            <Col xs="12"  className="tableStyle">
+              <Col xs="12" className="tableStyle">
                 <Table className="react-table rows" tableInstance={tableInstance} />
               </Col>
               <Col xs="12">
@@ -251,5 +251,4 @@ useEffect(() => {
       </Row>
     </>
   );
-};
-
+}

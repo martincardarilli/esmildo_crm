@@ -18,7 +18,7 @@ import TablePagination from '../components/TablePagination';
 import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
 
 import { NavLink } from 'react-router-dom'; // Importar NavLink
-import RecoverControl from './PropiedadRecoverControl';
+import RecoverControl from '../components/controls-delete/RecoverControl';
 
 /*
 const dummyData = [

@@ -8,7 +8,7 @@ import ButtonsAddNew from '../components/ButtonsAddNew';
 import ControlsPageSize from '../components/ControlsPageSize';
 import ControlsAdd from '../components/ControlsAdd';
 import ControlsEdit from '../components/ControlsEdit';
-import HardDeleteControl from '../components/controls-delete/HardDeleteControl';
+
 import ControlsSearch from '../components/ControlsSearch';
 import ModalAddEdit from './PropiedadAddEditModal';
 import Table from '../components/Table';
@@ -17,9 +17,9 @@ import TablePagination from '../components/TablePagination';
 import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
 
 import { NavLink } from 'react-router-dom'; // Importar NavLink
-import RecoverControl from './PropiedadRecoverControlReturn';
+import RecoverControl from '../components/controls-delete/RecoverControlReturn';
 import RecoverButton from '../components/controls-delete/ObjectRecoverButton';
-
+import HardDeleteControl from '../components/controls-delete/HardDeleteControl';
 const dummyData = [];
 
 import { usePropiedades } from '../../../context/propiedadContext';
@@ -28,7 +28,7 @@ export function PropiedadTableRecover() {
   const [currentPage, setCurrentPage] = useState(0); // New state for current page
 
   const [data, setData] = React.useState(dummyData); // Inicialmente vacío
-  const { getDeletedPropiedades, propiedades, getPropiedades, deletePropiedad } = usePropiedades(); // Usa la función getPropiedades de tu contexto
+  const { getDeletedPropiedades, propiedades, getPropiedades, deletePropiedad, updatePropiedad } = usePropiedades(); // Usa la función getPropiedades de tu contexto
 
   const loadPropiedades = async () => {
     try {
@@ -50,14 +50,14 @@ export function PropiedadTableRecover() {
 
   // Observar cambios en el estado de 'propiedades'
 
-  /*
+  
 useEffect(() => {
   console.log("useEffect[propiedades] = ", propiedades);
  // console.log("Clientes record en Tabla:", propiedades);
   setData(propiedades);
 }, [propiedades]);
 
-*/
+
 
   const title = 'Propiedades borradas';
   const description = 'Separate rows with edit, delete and add.';
@@ -174,9 +174,9 @@ useEffect(() => {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                  <RecoverControl destino="/propiedades" />{' '}
+                <RecoverControl tableInstance={tableInstance} destino="/propiedades"/>
                   <HardDeleteControl tableInstance={tableInstance} getObjects={getPropiedades} deleteObject={deletePropiedad} />{' '}
-                  <RecoverButton tableInstance={tableInstance} />
+                  <RecoverButton tableInstance={tableInstance} getObjects={getPropiedades} updateObject={updatePropiedad} />
                 </div>
                 <div className="d-inline-block ControlsPageSize">
                   <ControlsPageSize tableInstance={tableInstance} />

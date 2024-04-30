@@ -6,8 +6,7 @@ export const getDeletedPropiedadesRequest = async () => axios.get("/propiedades/
 
 export const createPropiedadRequest = async (propiedad) => axios.post("/propiedades", propiedad);
 
-export const updatePropiedadRequest = async (id, propiedad) =>
-  axios.put(`/propiedades/${id}`, propiedad);
+export const updatePropiedadRequest = async (id, propiedad) => axios.put(`/propiedades/${id}`, propiedad);
 
 export const deletePropiedadRequest = async (id) => axios.delete(`/propiedades/${id}`);
 

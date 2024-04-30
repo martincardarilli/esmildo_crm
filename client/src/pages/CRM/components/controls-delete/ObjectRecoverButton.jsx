@@ -39,7 +39,10 @@ const ObjectRecoverButton = ({ tableInstance, getObjects, updateObject }) => {
   //const { getCustomers, deleteCustomer } = useCustomers(); // Usando funciones del contexto
 
   const onClick = async () => {
+    let response;
+
     for (let i = 0; i < selectedFlatRows.length; i++) {
+      selectedFlatRows[i].original._id
       try {
         const response = await updateObject(selectedFlatRows[i].original._id, { isActive: true });
         if (response.status === 200) {
