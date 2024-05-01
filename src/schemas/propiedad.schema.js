@@ -8,3 +8,5 @@ export const createPropiedadSchema = z.object({
                     required_error: "Valor es requerido.",
                   }),
 });
+
+

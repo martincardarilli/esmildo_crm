@@ -21,7 +21,7 @@ router.post("/propiedades", auth, validateSchema(createPropiedadSchema), createP
 
 router.get("/propiedades/:id", auth, getPropiedad);
 
-router.put("/propiedades/:id", auth, validateSchema(createPropiedadSchema), updatePropiedad); /* (!) NO VALIDA ESQUEMA EN UPDATE ??? */
+router.put("/propiedades/:id", auth, updatePropiedad); 
 
 router.delete("/propiedades/:id", auth, deletePropiedad);
 

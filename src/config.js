@@ -1,6 +1,6 @@
 export const PORT = process.env.PORT || 80;
 export const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb+srv://mc247:heybrother247@cluster0.dvjgpam.mongodb.net/";
+  process.env.MONGODB_URI || "mongodb+srv://mc247:heybrother247@cluster0.dvjgpam.mongodb.net/esmildo";
 export const TOKEN_SECRET = process.env.TOKEN_SECRET || "secret";
 /*
 export const FRONTEND_URL = process.env.FRONTEND_URL || "https://crm.rize.bm/";

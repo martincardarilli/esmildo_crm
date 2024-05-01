@@ -39,24 +39,8 @@ export const createVehiculo = async (req, res) => {
   try {
     console.log('1852 | CREATE Vehiculo'+ req.body);
     console.log(req.body);
-    const { fabricante, modelo, año, patente, km, valor, estado, color, puertas, traccion, motor, ac, dh, propietario } = req.body; // Ajusta los campos según el esquema de Vehiculo
-    const newVehiculo = new Vehiculo({
-      fabricante,
-      modelo,
-      año,
-      patente,
-      km,
-      valor,
-      estado,
-      color,
-      puertas,
-      traccion,
-      motor,
-      ac,
-      dh,
-      propietario: new mongoose.Types.ObjectId(propietario),
-     // Asegúrate de que este campo exista en tu esquema de Vehiculo
-    });
+   // const { fabricante, modelo, año, patente, km, valor, estado, color, puertas, traccion, motor, ac, dh, propietario } = req.body; // Ajusta los campos según el esquema de Vehiculo
+    const newVehiculo = new Vehiculo(req.body);
     await newVehiculo.save();
     res.status(201).json(newVehiculo);
   } catch (error) {

@@ -43,12 +43,12 @@ export const createPropiedad = async (req, res) => {
     console.log(req.body);
     console.log('--------starts--------------- req.body --------------------');
 
-    const { propiedad, tipo, superficie, valor, estado, propietario } = req.body; // Ajusta los campos según el esquema de Propiedad
+   // const { propiedad, tipo, superficie, valor, estado, propietario } = req.body; // Ajusta los campos según el esquema de Propiedad
 
     console.log('propietario???');
-    console.log(propietario);
+    console.log(req.body.propietario);
 
-    const newPropiedad = new Propiedad({ propiedad, tipo, superficie, valor, estado, propietario: new mongoose.Types.ObjectId(propietario) });
+    const newPropiedad = new Propiedad(req.body);
     await newPropiedad.save();
     res.status(201).json(newPropiedad);
   } catch (error) {
@@ -126,6 +126,11 @@ export const updatePropiedadDEPRECATED = async (req, res) => {
 // 2.0 UPDATED
 export const updatePropiedad = async (req, res) => {
   try {
+
+    console.log("HOLA?");
+
+
+    
     console.log('1852 | UPDATE Propiedad |', req.body);
 
     // console.log('2035 | FULL USER | starts', req);
@@ -148,7 +153,7 @@ export const updatePropiedad = async (req, res) => {
     }
 
     // Actualizar el cliente
-    const updatedPropiedad = await Propiedad.findByIdAndUpdate(id, updates, { new: true }).populate('propietario');
+    const updatedPropiedad = await Propiedad.findByIdAndUpdate(id, updates, { new: true });
 
     console.log('148 º updatedPropiedad');
     console.log(updatedPropiedad);
@@ -171,6 +176,7 @@ export const updatePropiedad = async (req, res) => {
 
     return res.json(updatedPropiedad);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: error.message });
   }
 };
