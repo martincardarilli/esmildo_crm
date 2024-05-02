@@ -184,10 +184,10 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
     }
   };
   const estadoOptions = [
-    { value: 'Disponible', label: 'Disponible' },
-    { value: 'No disponible', label: 'No disponible' },
-    { value: 'Reservado', label: 'Reservado' },
-    { value: 'Vendido', label: 'Vendido' },
+    { value: 'Disponible', label: 'Disponible', class: "disponible"},
+    { value: 'No disponible', label: 'No disponible', class: "noDisponible" },
+    { value: 'Reservado', label: 'Reservado', class: "reservado" },
+    { value: 'Vendido', label: 'Vendido', class: "vendido" },
   ];
 
   // Opciones para el tipo
@@ -229,7 +229,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
             </Form.Label>
             <Form.Control type="number" name="valor" defaultValue={selectedPropiedad.valor} onInput={handleChange} />
           </div>
-          <div className="ds-1">
+          <div className="ds-1 estadoField">
             <Form.Label>Estado</Form.Label>
             <SelectBasic
               name="estado"
