@@ -1,101 +1,70 @@
-/* --------- start ------------------------ otros Input field AddEditModal */
-
-.form-control{
-  border-radius:7px;
+/* Estilos generales para los campos del formulario */
+.form-control, .react-select__control {
+  border-radius: 7px;
   height: 40px;
+  border: 1px solid #ced4da;
 }
 
-.requerido{
-color: red !important;
+.requerido {
+  color: red !important;
 }
 
-/* --------- end ------------------------ otros Input field AddEditModal */
-
-
-
-
-
-/* --------- start ------------------------ Autosuggest (Campo Relacional) */
-
-.campoRelacional{
-        /*  color:green !important; */
-          position:relative;
-        margin-top:40px;
+/* Estilos para el contenedor del campo relacional y el ícono */
+.campoRelacional {
+  position: relative;
 }
 
-.campoRelacional svg{
-          position:absolute;
-          top: 15px !important;
-          left: 10px
+.campoRelacional svg {
+  position: absolute;
+  top: 15px;
+  left: 10px;
 }
 
-.campoRelacional .form-control, .campoRelacional label{
-          padding-left:40px;
+.campoRelacional .form-control, .campoRelacional label {
+  padding-left: 40px;
 }
 
-.campoRelacional .form-control{
-          border-radius:7px;
-}
-
-.campoRelacional span{
+.campoRelacional span {
   position: absolute;
   left: 40px;
   top: 55px;
 }
 
-.react-autosuggest__suggestions-container{
-  background-color:#0c0c0ce8;
-  margin-top:-5px;
-  border-left:1px solid white !important;
-  border-right:1px solid white !important;
-  border-bottom:1px solid white !important;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-
-}
-
+/* Mejoras visuales para el contenedor de sugerencias de autosuggest */
 .react-autosuggest__suggestions-container {
-  max-height: 150px; /* Ajusta esto según necesites */
+  background-color: #0c0c0ce8;
+  margin-top: -5px;
+  border: 1px solid white;
+  border-radius: 7px;
+  max-height: 150px;
   overflow-y: auto;
 }
 
-/* This styles the track (the part that the thumb moves along) */
+/* Personalización del scrollbar para el contenedor de sugerencias */
 .react-autosuggest__suggestions-container::-webkit-scrollbar-track {
-  background: #f1f1f1; /* or any color you want */
-  border-radius: 10px; /* if you want rounded corners */
+  background: #f1f1f1;
+  border-radius: 10px;
 }
 
-/* This styles the thumb (the part that you drag) */
 .react-autosuggest__suggestions-container::-webkit-scrollbar-thumb {
-  background: #888; /* or any color you want */
-  border-radius: 10px; /* if you want rounded corners */
+  background: #888;
+  border-radius: 10px;
 }
 
-/* This styles the thumb on hover */
 .react-autosuggest__suggestions-container::-webkit-scrollbar-thumb:hover {
-  background: #555; /* or any color you want */
+  background: #555;
 }
 
-/* This sets the width of the scrollbar */
 .react-autosuggest__suggestions-container::-webkit-scrollbar {
-  width: 10px; /* or the size you want */
+  width: 10px;
 }
 
-/* --------- end ------------------------ Autosuggest (Campo Relacional) */
-
-
-
-
-
-
-
-/* --------- start ------------------------ Dropdown List Select Field */
-.react-select__control{
-  border-radius:7px !important;
-  
+/* Estilos específicos para react-select utilizado en otros campos y el nuevo campo de moneda */
+.react-select__control, .react-select__menu {
+  border-radius: 7px !important;
 }
 
-.react-select__value-container{
+.react-select__value-container {
   padding: 5px 12px !important;
 }
 /* --------- end ------------------------ Dropdown List Select Field */
@@ -121,9 +90,10 @@ color: red !important;
   border-top-right-radius: 0px !important;
   margin-top:-5px !important;
 }
-.ds-1 .react-select__option {
-  cursor: pointer!important; /* Cursor en forma de mano para indicar que se puede seleccionar */
-  background-color: #202020!important; /* Color de fondo para las opciones */
+
+.ds-1 .react-select__option, .ds-2 .react-select__option {
+  cursor: pointer!important;
+  background-color: #202020!important;
   border-radius: 7px!important;
   margin: 5px !important;
 

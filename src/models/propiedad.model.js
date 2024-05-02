@@ -8,10 +8,16 @@ const propiedadSchema = new mongoose.Schema(
     tipo: {
       type: String,
     },
-    superficie: {
+    superficieType: {
+      type: String,
+    },
+    superficieValue: {
       type: Number,
     },
-    valor: {
+    valorType: {
+      type: String,
+    },
+    valorValue: {
       type: Number,
     },
     estado: {

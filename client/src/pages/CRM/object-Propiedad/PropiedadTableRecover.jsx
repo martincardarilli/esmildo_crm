@@ -104,6 +104,7 @@ export function PropiedadTableRecover() {
           );
         },
       },
+      
       { Header: 'TIPO', accessor: 'tipo', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'SUPERFICIE', accessor: 'superficie', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
