@@ -190,6 +190,15 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
     { value: 'Vendido', label: 'Vendido' },
   ];
 
+  const currencyOptions = [
+    { value: 'USD', label: 'USD' },
+    { value: 'ARS', label: 'ARS' },
+  ];
+  const superficieOptions = [
+    { value: 'm2', label: 'm2' },
+    { value: 'h', label: 'h' },
+  ];
+
   // Opciones para el tipo
   const tipoOptions = [
     { value: 'Alquiler', label: 'Alquiler' },
@@ -197,6 +206,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
     { value: 'Permuta', label: 'Permuta' },
     { value: 'Otro', label: 'Otro' },
   ];
+
   return (
     <Modal className="modal-right fade" show={isOpenAddEditModal} onHide={() => setIsOpenAddEditModal(false)}>
       <Modal.Header>
@@ -219,16 +229,42 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
               options={tipoOptions}
             />
           </div>
+
           <div className="mb-3">
             <Form.Label>Superficie</Form.Label>
-            <Form.Control type="number" name="superficie" defaultValue={selectedPropiedad.superficie} onInput={handleChange} />
+            <div className="mb-4">
+              <div className="ds-2">
+                <SelectBasic
+                  name="superficieType"
+                  defaultValue={selectedPropiedad.superficie || 'm2'} // Asegúrate de manejar el estado inicial adecuadamente
+                  handleChange={handleChange}
+                  options={superficieOptions}
+                ></SelectBasic>
+              </div>
+              <div className="ds-3">
+                <Form.Control type="number" name="superficieValue" defaultValue={selectedPropiedad.superficie} onInput={handleChange} />
+              </div>
+            </div>
           </div>
           <div className="mb-3">
             <Form.Label>
-              <span class="requerido">*</span> Valor
+              <span className="requerido">*</span> Valor
             </Form.Label>
-            <Form.Control type="number" name="valor" defaultValue={selectedPropiedad.valor} onInput={handleChange} />
+            <div className="mb-4">
+              <div className="ds-2">
+                <SelectBasic
+                  name="valorType"
+                  defaultValue={selectedPropiedad.currency || 'ARS'} // Asegúrate de manejar el estado inicial adecuadamente
+                  handleChange={handleChange}
+                  options={currencyOptions}
+                ></SelectBasic>
+              </div>
+              <div className="ds-3">
+                <Form.Control type="number" name="valorValue" defaultValue={selectedPropiedad.valor} onInput={handleChange} />
+              </div>
+            </div>
           </div>
+
           <div className="ds-1">
             <Form.Label>Estado</Form.Label>
             <SelectBasic
@@ -238,17 +274,18 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
               options={estadoOptions}
             />
           </div>
+
           {/* <div class="campoRelacional">
 
             <CsLineIcons icon="user" />
             <AutocompleteFloatingLabel label="Propietario" name="dueño" handleChange={handleChange} />
 
   </div> */}
-
+            <Form.Label>Dueño (Persona)</Form.Label>
           <div className="campoRelacional">
             <CsLineIcons icon="user" />
 
-            <AutocompleteFloatingLabel label="Dueño (Persona)" name="propietario" handleChange={handleChange} />
+            <AutocompleteFloatingLabel label="Buscar" name="propietario" handleChange={handleChange} />
           </div>
         </Form>
       </Modal.Body>

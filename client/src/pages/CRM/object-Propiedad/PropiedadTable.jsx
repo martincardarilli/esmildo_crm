@@ -148,8 +148,10 @@ export function PropiedadTable() {
         },
       },
       { Header: 'TIPO', accessor: 'tipo', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-      { Header: 'SUPERFICIE', accessor: 'superficie', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
-      { Header: 'VALOR', accessor: 'valor', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      //{ Header: 'area', accessor: 'superficieType', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'SUPERFICIE', accessor: 'superficieValue', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      //{ Header: '$', accessor: 'valorType', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
+      { Header: 'VALOR', accessor: 'valorValue', sortable: true, headerClassName: 'text-muted text-small text-uppercase w-20' },
       {
         Header: 'Propietario',
         accessor: 'propietario.nombreApellido',
