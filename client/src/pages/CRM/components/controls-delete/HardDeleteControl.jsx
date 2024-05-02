@@ -41,8 +41,10 @@ const HardDeleteControl = ({ tableInstance, getObjects, deleteObject }) => {
     for (let i = 0; i < selectedFlatRows.length; i++) {
       console.log('Delete Cliente2 seleccionado: selectedFlatRows', selectedFlatRows[i].original._id);
       toast.success(`Erased ${selectedFlatRows[i].original.name}`);
-      await deleteObject(selectedFlatRows[i].original._id);
+      let response = await deleteObject(selectedFlatRows[i].original._id);
+      console.log(response);
       //response = await updateCustomer(selectedFlatRows[i].original._id, {isActive: false} );
+
     }
     getObjects();
   };

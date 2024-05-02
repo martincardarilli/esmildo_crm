@@ -91,8 +91,8 @@ export const createVehiculo = async (req, res) => {
 
 export const deleteVehiculo = async (req, res) => {
   try {
-    //const deletedVehiculo = await Vehiculo.findByIdAndDelete(req.params.id); HARD DELETE
-    const deletedVehiculo = await Vehiculo.updateOne({ _id: req.params.id}, { isActive: false }); // Soft delete
+    const deletedVehiculo = await Vehiculo.findByIdAndDelete(req.params.id); //HARD DELETE
+    //const deletedVehiculo = await Vehiculo.updateOne({ _id: req.params.id}, { isActive: false }); // Soft delete
    // Bill.updateOne({ _id: billId }, { isActive: false }).then(...); // Soft delete
 
     if (!deletedVehiculo)

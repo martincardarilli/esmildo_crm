@@ -48,13 +48,19 @@ export function VehiculoProvider({ children }) {
 
   const deleteVehiculo = async (id) => {
     try {
-      const res = await deleteVehiculoRequest(id);
-      if (res.status === 204)
-        setVehiculos(vehiculos.filter((vehiculo) => vehiculo._id !== id));
+        const res = await deleteVehiculoRequest(id);
+        if (res.status === 204) {
+            setVehiculos(prevVehiculos => prevVehiculos.filter(vehiculo => vehiculo._id !== id));
+        } else {
+            console.error('Failed to delete vehiculo with status:', res.status);
+        }
+        return res;
     } catch (error) {
-      console.log(error);
+        console.error('Failed to delete vehiculo:', error);
+        // Opcional: rethrow el error si quieres manejarlo más arriba en la jerarquía de componentes
+        throw error;
     }
-  };
+};
 
   const createVehiculo = async (vehiculo) => {
     try {

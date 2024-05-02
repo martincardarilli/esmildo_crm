@@ -52,7 +52,7 @@ export function CustomerTableRecover() {
     console.log('useEffect[customers] = ', customers);
     // console.log("Clientes record en Tabla:", customers);
     //setData(customers);
-    loadCustomers();
+    setData(customers);
   }, [customers]);
 
   const title = 'Personas borradas';

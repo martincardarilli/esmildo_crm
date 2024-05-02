@@ -50,14 +50,11 @@ export function PropiedadTableRecover() {
 
   // Observar cambios en el estado de 'propiedades'
 
-  
-useEffect(() => {
-  console.log("useEffect[propiedades] = ", propiedades);
- // console.log("Clientes record en Tabla:", propiedades);
-  setData(propiedades);
-}, [propiedades]);
-
-
+  useEffect(() => {
+    console.log('useEffect[propiedades] = ', propiedades);
+    // console.log("Clientes record en Tabla:", propiedades);
+    loadPropiedades();
+  }, [propiedades]);
 
   const title = 'Propiedades borradas';
   const description = 'Separate rows with edit, delete and add.';
@@ -174,7 +171,7 @@ useEffect(() => {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                <RecoverControl tableInstance={tableInstance} destino="/propiedades"/>
+                  <RecoverControl tableInstance={tableInstance} destino="/propiedades" />
                   <HardDeleteControl tableInstance={tableInstance} getObjects={getPropiedades} deleteObject={deletePropiedad} />{' '}
                   <RecoverButton tableInstance={tableInstance} getObjects={getPropiedades} updateObject={updatePropiedad} />
                 </div>

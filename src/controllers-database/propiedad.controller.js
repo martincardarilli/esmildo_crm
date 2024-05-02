@@ -93,8 +93,8 @@ export const createPropiedad = async (req, res) => {
 
 export const deletePropiedad = async (req, res) => {
   try {
-    //const deletedPropiedad = await Propiedad.findByIdAndDelete(req.params.id); HARD DELETE
-    const deletedPropiedad = await Propiedad.updateOne({ _id: req.params.id }, { isActive: false }); // Soft delete
+    const deletedPropiedad = await Propiedad.findByIdAndDelete(req.params.id);// HARD DELETE
+   // const deletedPropiedad = await Propiedad.updateOne({ _id: req.params.id }, { isActive: false }); // Soft delete
     // Bill.updateOne({ _id: billId }, { isActive: false }).then(...); // Soft delete
 
     if (!deletedPropiedad) return res.status(404).json({ message: 'Propiedad not found' });

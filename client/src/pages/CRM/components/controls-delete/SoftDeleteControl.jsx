@@ -51,7 +51,7 @@ const SoftDeleteControl = ({ tableInstance, getObjects, updateObject }) => {
         toast.error(`Error erasing ${selectedFlatRows[i].original.name}: ${error.message}`);
       }
     }
-    getObjects();
+   getObjects();
   };
   // ------------------- Aca maneja el CRUD ---
 

@@ -54,7 +54,7 @@ export function VehiculoTableRecover() {
   useEffect(() => {
     console.log('useEffect[vehiculos] = ', vehiculos);
     // console.log("Clientes record en Tabla:", vehiculos);
-    setData(vehiculos);
+    loadVehiculos();
   }, [vehiculos]);
 
   const title = 'Vehiculos borrados';
