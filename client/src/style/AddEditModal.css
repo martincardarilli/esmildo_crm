@@ -77,7 +77,9 @@
   margin: 5% 0%!important;
 
 }
-.ds-1 .react-select__menu {
+
+
+.ds-1 .react-select__menu, .ds-2 .react-select__menu, .react-select__menu{
   background-color:#0c0c0ce8 !important;
   border: 1px solid #ced4da!important; /* Un borde para distinguir el menú */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)!important; /* Una sombra suave para dar profundidad */
@@ -91,7 +93,7 @@
   margin-top:-5px !important;
 }
 
-.ds-1 .react-select__option, .ds-2 .react-select__option {
+.ds-1 .react-select__option, .ds-2 .react-select__option{
   cursor: pointer!important;
   background-color: #202020!important;
   border-radius: 7px!important;
@@ -124,3 +126,82 @@
   border-radius: 5px 10px;
 }
 
+
+
+.ds-1{
+  margin: 5% 0%!important;
+}
+
+
+ .ds-2{
+  
+  z-index: 50;
+  width: 34%; 
+}
+
+.ds-3{
+  
+  z-index: 50;
+  width: 65%;
+}
+
+.mb-4{
+  display:flex;
+}
+
+/*
+
+.ds-1 .react-select_menu, .ds-2 .react-select_menu {
+  background-color: #000000!important;
+  border: 1px solid #ced4da!important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)!important;
+  z-index: 100!important;
+  border-radius: 7px!important;
+  padding-right: 10px!important;
+}
+
+.ds-1 .react-select_option, .ds-2 .react-select_option {
+  cursor: pointer!important;
+  background-color: #202020!important;
+  border-radius: 7px!important;
+  margin: 5px !important;
+}
+
+.ds-1{
+  margin: 5% 0%!important;
+}
+
+
+ .ds-2{
+  
+  z-index: 50;
+  width: 34%; 
+}
+
+.ds-3{
+  
+  z-index: 50;
+  width: 65%;
+}
+
+.mb-4{
+  display:flex;
+}
+
+*/
+
+.superficieValue input.form-control{
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-right:none !important;
+}
+
+.superficieType .react-select__control{
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
+
+
+.react-select__menu{
+  background-color:#0c0c0ce8 !important;
+}

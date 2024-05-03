@@ -233,16 +233,18 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
           <div className="mb-3">
             <Form.Label>Superficie</Form.Label>
             <div className="mb-4">
-              <div className="ds-2">
+              
+              <div className="ds-3 superficieValue">
+                <Form.Control type="number" name="superficieValue" defaultValue={selectedPropiedad.superficie} onInput={handleChange} />
+              </div>
+
+              <div className="ds-2 superficieType">
                 <SelectBasic
                   name="superficieType"
                   defaultValue={selectedPropiedad.superficie || 'm2'} // Asegúrate de manejar el estado inicial adecuadamente
                   handleChange={handleChange}
                   options={superficieOptions}
                 ></SelectBasic>
-              </div>
-              <div className="ds-3">
-                <Form.Control type="number" name="superficieValue" defaultValue={selectedPropiedad.superficie} onInput={handleChange} />
               </div>
             </div>
           </div>
