@@ -31,14 +31,14 @@ export function PropiedadProvider({ children }) {
 
   const getDeletedPropiedades = async () => {
 
-    try{
+    try {
 
-    const res = await getDeletedPropiedadesRequest();
-    //setPropiedades(res.data);
+      const res = await getDeletedPropiedadesRequest();
+      //setPropiedades(res.data);
 
-    return res;
+      return res;
 
-    }catch(error){
+    } catch (error) {
 
       throw error;
 
@@ -63,11 +63,11 @@ export function PropiedadProvider({ children }) {
       console.log("-----------------propiedad CONTEXT (antes de enviar)---------------");
 
       // Que le quite el id...
-//delete propiedad.id;
-console.log(propiedad);
+      delete propiedad.id;
+      console.log(propiedad);
 
-
-          const response = await createPropiedadRequest(propiedad);
+      // DINAMICO
+      const response = await createPropiedadRequest(propiedad);
 
       //console.log(response);
 
@@ -109,7 +109,7 @@ console.log(propiedad);
     try {
       //const res = await getPropiedadRequest(id);
 
-   
+
       const res = await historyController.getChangesByDocument(id);
 
       console.log(res);
@@ -131,8 +131,8 @@ console.log(propiedad);
         hourFee: propiedad.hourFee
       };
       */
-     
-     // console.log("try to update");
+
+      // console.log("try to update");
       const response = await updatePropiedadRequest(id, propiedad);
       console.log(response);
       if (response.status === 200) {
@@ -140,7 +140,7 @@ console.log(propiedad);
           propiedades.map((item) => (item._id === id ? response.data : item))
         );
         //toast.success("Propiedad updated!");
-        return response; 
+        return response;
       }
     } catch (error) {
 

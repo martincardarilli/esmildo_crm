@@ -71,7 +71,7 @@ export function VehiculoProvider({ children }) {
       
       O SER DINAMICO */
 
-      let vehiculoFix = {
+     /* let vehiculoFix = {
         fabricante: vehiculo.fabricante,
         modelo: vehiculo.modelo,
         año: vehiculo.año,
@@ -87,9 +87,13 @@ export function VehiculoProvider({ children }) {
         dh: vehiculo.dh,
         propietario: vehiculo.propietario,
 
-      };
+      }; */
 
-      const response = await createVehiculoRequest(vehiculoFix);
+       // Que le quite el id...
+       delete vehiculo.id;
+       console.log(vehiculo);
+
+      const response = await createVehiculoRequest(vehiculo);
 
       //console.log(response);
 
