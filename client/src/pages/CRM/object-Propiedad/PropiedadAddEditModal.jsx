@@ -276,12 +276,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
             />
           </div>
 
-          {/* <div class="campoRelacional">
-
-            <CsLineIcons icon="user" />
-            <AutocompleteFloatingLabel label="Propietario" name="dueño" handleChange={handleChange} />
-
-  </div> */}
+      
             <Form.Label>Dueño (Persona)</Form.Label>
           <div className="campoRelacional">
             <CsLineIcons icon="user" />

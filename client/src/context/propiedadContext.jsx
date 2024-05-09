@@ -58,26 +58,16 @@ export function PropiedadProvider({ children }) {
 
   const createPropiedad = async (propiedad) => {
     try {
-      console.log("-----------------propiedad SIN FIX---------------");
+      console.log("-----------------propiedad CONTEXT---------------");
       console.log(propiedad);
-      console.log("-----------------propiedad SIN FIX---------------");
-      /* {id: 5, name: '123', address: '123', hourFee: '123'} */
+      console.log("-----------------propiedad CONTEXT (antes de enviar)---------------");
 
-      /* ESTO NECESITA ACTUALIZARSE CADA VEZ QUE SE AGREGA UN CAMPO NUEVO,
-      
-      O SER DINAMICO */
+      // Que le quite el id...
+//delete propiedad.id;
+console.log(propiedad);
 
-      let propiedadFix = {
-        propiedad: propiedad.propiedad,
-        tipo: propiedad.tipo,
-        superficie: propiedad.superficie,
-        valor: propiedad.valor,
-        estado: propiedad.estado,
-        dueño: propiedad.dueño,
-        propietario: propiedad.propietario
-      };
 
-      const response = await createPropiedadRequest(propiedadFix);
+          const response = await createPropiedadRequest(propiedad);
 
       //console.log(response);
 

@@ -39,6 +39,8 @@ export const getDeletedPropiedades = async (req, res) => {
 
 export const createPropiedad = async (req, res) => {
   try {
+console.log("HOLA?");
+
     console.log('--------starts--------------- req.body --------------------');
     console.log(req.body);
     console.log('--------starts--------------- req.body --------------------');

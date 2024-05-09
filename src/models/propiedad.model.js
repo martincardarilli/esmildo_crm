@@ -12,13 +12,13 @@ const propiedadSchema = new mongoose.Schema(
       type: String,
     },
     superficieValue: {
-      type: Number,
+      type: String,
     },
     valorType: {
       type: String,
     },
     valorValue: {
-      type: Number,
+      type: String,
     },
     estado: {
       type: String,
