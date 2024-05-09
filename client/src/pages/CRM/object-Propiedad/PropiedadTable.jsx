@@ -247,8 +247,7 @@ export function PropiedadTable() {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none tablaBotones">
-                  <ControlsAdd tableInstance={tableInstance} /> <ControlsEdit tableInstance={tableInstance} />
-                  <SoftDeleteControl tableInstance={tableInstance} getObjects={getPropiedades} updateObject={updatePropiedad} />{' '}
+                  <ControlsAdd tableInstance={tableInstance} /> <ControlsEdit tableInstance={tableInstance} /> <SoftDeleteControl tableInstance={tableInstance} getObjects={getPropiedades} updateObject={updatePropiedad} />{' '}
                   <RecoverControl destino="/propiedades/erased" />
                 </div>
                 <div className="d-inline-block ControlsPageSize">

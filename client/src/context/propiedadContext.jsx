@@ -62,9 +62,14 @@ export function PropiedadProvider({ children }) {
       console.log(propiedad);
       console.log("-----------------propiedad CONTEXT (antes de enviar)---------------");
 
-      // Que le quite el id...
+      // Que le quite el id (NUMERO ROW DE LA TABLA)
       delete propiedad.id;
       console.log(propiedad);
+
+      // FIXBUG: Se empezo a escribir propietario pero luego se borro, vino propietario vacio (defectuoso) desde JSON
+      if (propiedad.propietario == ''){
+        delete propiedad.propietario;
+      }
 
       // DINAMICO
       const response = await createPropiedadRequest(propiedad);

@@ -49,7 +49,7 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
 
   const handleChange = (event) => {
     // Check if the event is coming from an input element with a value property
-    if (event.target && typeof event.target.value === 'string') {
+    if (event.target && typeof event.target.value === 'string' || typeof event.target.value === 'number') { 
       // EVENTO DE ESCRIBIR
       // EVENTO DE ESCRIBIR
       // EVENTO DE ESCRIBIR
@@ -75,6 +75,11 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
         [event.accessor]: event.valor, // !!!!!!!!!!!!!!!! se pasa el ID directamente
       });
     }
+
+
+    console.log(selectedPropiedad);
+
+
   };
 
   /* const handleChange = (event) => {
@@ -230,6 +235,9 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
             />
           </div>
 
+
+
+
           <div className="mb-3">
             <Form.Label>Superficie</Form.Label>
             <div className="mb-4">
@@ -248,6 +256,9 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
               </div>
             </div>
           </div>
+
+
+
           <div className="mb-3">
             <Form.Label>
               <span className="requerido">*</span> Valor
@@ -266,6 +277,10 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
               </div>
             </div>
           </div>
+
+
+
+          
           <div className="ds-1 estadoField">
             <Form.Label>Estado</Form.Label>
             <SelectBasic

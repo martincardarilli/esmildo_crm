@@ -91,6 +91,8 @@
   border-top-left-radius: 0px !important;
   border-top-right-radius: 0px !important;
   margin-top:-5px !important;
+
+ 
 }
 
 .ds-1 .react-select__option, .ds-2 .react-select__option{
@@ -98,7 +100,7 @@
   background-color: #202020!important;
   border-radius: 7px!important;
   margin: 5px !important;
-
+  display:block;
 }
 
 
@@ -135,7 +137,7 @@
 
  .ds-2{
   
-  z-index: 50;
+  z-index: 60;
   width: 34%; 
 }
 
