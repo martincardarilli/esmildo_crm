@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+import fileUpload from "express-fileupload'";
 
 import authRoutes from "./routes/auth.routes.js";
 import taksRoutes from "./routes/tasks.routes.js"; // native
@@ -13,6 +14,7 @@ import historyRoutes from "./routes/history.routes.js";
 import runRoutes from "./routes/run.routes.js";
 import propiedadesRoutes from "./routes/propiedad.routes.js";
 import vehiculosRoutes from "./routes/vehiculo.routes.js";
+import uploadRoutes from "./routes/upload.routes.js"; 
 
 import http from "http";
 import https from "https";
@@ -41,6 +43,8 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
 
+app.use(fileUpload()); // Middleware para manejar la carga de archivos
+
 // native
 app.use("/api/auth", authRoutes);
 app.use("/api", taksRoutes);
@@ -59,6 +63,17 @@ app.use("/api/", vehiculosRoutes);
    // const privateKey = fs.readFileSync('/home/ubuntu/crm.rize.bm.key', 'utf8');
    // const certificate = fs.readFileSync('/home/ubuntu/crm.rize.bm.pem', 'utf8');
    // const credentials = { key: privateKey, cert: certificate };
+
+
+
+
+app.use("/api/upload", uploadRoutes); // Ruta para subir archivos
+
+// Asegúrate de servir las imágenes subidas de manera correcta.
+// Agrega esto antes de definir las rutas
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+
 
 if (process.env.NODE_ENV === "production") {
   (async () => {
