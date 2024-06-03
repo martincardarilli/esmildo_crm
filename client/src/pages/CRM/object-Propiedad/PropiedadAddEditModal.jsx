@@ -12,6 +12,8 @@ import AutocompleteFloatingLabel from '../components/AutocompleteFloatingLabel';
 
 import BreadcrumbList from '../components/breadcrumb-list/BreadcrumbList';
 
+import ImageUpload from './ImageUpload';
+
 const ModalAddEditPropiedad = ({ tableInstance }) => {
   const { selectedFlatRows, data, setData, setIsOpenAddEditModal, isOpenAddEditModal } = tableInstance;
   const { createPropiedad, updatePropiedad, getPropiedades } = usePropiedades(); // Usando funciones del contexto
@@ -219,6 +221,9 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
+
+          <ImageUpload/>
+          
           <div className="mb-3">
             <Form.Label>
               <span class="requerido">*</span> Inmueble

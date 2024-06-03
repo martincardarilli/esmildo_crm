@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
-import fileUpload from "express-fileupload'";
+import fileUpload from "express-fileupload";
+import path from "path"; 
+import { fileURLToPath } from "url";
 
 import authRoutes from "./routes/auth.routes.js";
 import taksRoutes from "./routes/tasks.routes.js"; // native
@@ -22,6 +24,10 @@ import fs from "fs";
 
 
 import { FRONTEND_URL } from "./config.js";
+
+// Define __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
