@@ -4,6 +4,7 @@ import axios from 'axios';
 function ImageUpload() {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -15,12 +16,13 @@ function ImageUpload() {
     formData.append('file', file);
 
     try {
-      const res = await axios.post('/api/upload', formData, {
+      const res = await axios.post('http://localhost:80/api/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
-      setMessage('File uploaded successfully: ' + res.data.filePath);
+      setMessage('File uploaded successfully');
+      setImageUrl(`http://localhost:80${res.data.filePath}`); // Guarda la URL de la imagen
     } catch (err) {
       setMessage('Error uploading file: ' + err.message);
     }
@@ -33,6 +35,12 @@ function ImageUpload() {
         <button type="submit">Upload</button>
       </form>
       {message && <p>{message}</p>}
+      {imageUrl && (
+        <div>
+          <p>Image URL: <a href={imageUrl} target="_blank" rel="noopener noreferrer">{imageUrl}</a></p>
+          <img src={imageUrl} alt="Uploaded file" />
+        </div>
+      )}
     </div>
   );
 }

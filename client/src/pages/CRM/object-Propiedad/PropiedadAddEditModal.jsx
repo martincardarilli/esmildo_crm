@@ -222,8 +222,8 @@ const ModalAddEditPropiedad = ({ tableInstance }) => {
       <Modal.Body>
         <Form>
 
-          <ImageUpload/>
-          
+          {/* <ImageUpload/> */}
+
           <div className="mb-3">
             <Form.Label>
               <span class="requerido">*</span> Inmueble

@@ -20,6 +20,8 @@ import CsLineIcons from '../components/cs-line-icons/CsLineIcons';
 import { NavLink } from 'react-router-dom'; // Importar NavLink
 import RecoverControl from '../components/controls-delete/RecoverControl';
 
+import ImageUpload from './ImageUpload';
+
 /*
 const dummyData = [
   { id: 1, name: 'SALT', since: "Jan 2022", stock: 15, category: '', tag: 'New' },
@@ -256,6 +258,7 @@ export function PropiedadTable() {
               </Col>
             </Row>
             <Row>
+              <ImageUpload />
               <Col xs="12" className="tableStyle">
                 <Table className="react-table rows" tableInstance={tableInstance} />
               </Col>
